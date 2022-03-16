@@ -2,12 +2,14 @@
 
 This project is Team ESCH's(Engineering Student who takes Care of Health) college graduation work
 
-Team leader - joy9610027
-Member - HIBAR97
-
-Full stack
-Font end
-back end
++ Team leader - joy9610027
++ Member - HIBAR97
++ Member - 
++ Member -
+----------
++ Full stack
++ Font end
++ back end
 ## Commit Formet 
 Details can be written in Korean But keep the format staight
 
