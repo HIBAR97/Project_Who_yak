@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/Layout_SigUp_Logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="회원가입"
+            android:textAlignment="center"
+            android:textSize="50dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Layout_Sigup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Layout_SigUp_Logo"
+        android:orientation="vertical">
+
+        //ID Input
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal"
+            android:text="아이디"
+            android:textSize="20dp">
+
+            <EditText
+                android:id="@+id/Edittext_Signup_Id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="아이디"
+                android:inputType="text" />
+
+            //Id_check Button
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/Btn_Id_check"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="중복 체크"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        //Password Input
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="아이디"
+            android:textSize="20dp">
+
+            <EditText
+                android:id="@+id/Edittext_Signup_Password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="비밀번호"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        //rePassword Input
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="아이디"
+            android:textSize="20dp">
+
+            <EditText
+                android:id="@+id/Edittext_Signup_rePassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="비밀번호 확인"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        //User Name Input
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="이름"
+            android:textSize="20dp">
+
+            <EditText
+                android:id="@+id/Edittext_Signup_UserName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="이름"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        //Email Input
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="이메일"
+            android:textSize="20dp">
+
+            <EditText
+                android:id="@+id/Edittext_Signup_Email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="이메일"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        //Connect User Input
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="연결 회원 아이디"
+            android:textSize="20dp">
+
+            <EditText
+                android:id="@+id/Edittext_Signup_CUser"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="연결 회원 아이디"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        //Sign up Button
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/Login_Button_ID"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Signin by Id"/>
+
+    </LinearLayout>
+</RelativeLayout>
