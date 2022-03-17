@@ -1,18 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    // App Logo
+    <LinearLayout
+        android:id="@+id/Layout_Logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/App_logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="WHO? 약"
+            android:textAlignment="center"
+            android:textSize="50dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Layout_ID"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        //ID Input
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="아이디"
+            android:textSize="20dp">
+
+            <EditText
+                android:id="@+id/Edittext_Id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="ID"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        //Password Input
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="비밀번호"
+            android:textSize="20dp">
+
+            <EditText
+                android:id="@+id/Edittext_Password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Password"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        //Sigin Button
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/Login_Button_ID"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:text="Signin by Id"/>
+
+        //Sigup Button
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/Sigin_Button_ID"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="Sigup"/>
+
+        //Voice accistent able Button
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/Voice_acc_Button_ID"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="35dp"
+            android:text="음성 비/활성화"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
