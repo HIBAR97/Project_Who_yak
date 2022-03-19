@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_Who_yak">
         <activity
+            android:name=".activity_Camara_scan"
+            android:exported="false" />
+        <activity
             android:name=".SignUp_activity"
             android:exported="false" />
         <activity

@@ -29,6 +29,7 @@
         android:orientation="vertical">
 
         //ID Input
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,6 +67,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         //Sigin Button
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/Login_Button_ID"
             android:layout_width="match_parent"
@@ -73,18 +75,20 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="20dp"
-            android:text="Signin by Id"/>
+            android:text="Signin by Id" />
 
         //Sigup Button
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/Sigin_Button_ID"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:text="Sigup"/>
+            android:text="Sigup" />
 
         //Voice accistent able Button
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/Voice_acc_Button_ID"
             android:layout_width="match_parent"
@@ -92,7 +96,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="35dp"
-            android:text="음성 비/활성화"/>
+            android:text="음성 비/활성화" />
     </LinearLayout>
 
 
