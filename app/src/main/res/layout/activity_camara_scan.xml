@@ -79,6 +79,7 @@
     </HorizontalScrollView>
 
     //Warning msg Layout
+
     <LinearLayout
         android:id="@+id/Layout_warning_msg"
         android:layout_width="match_parent"
@@ -89,7 +90,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="촬영간 유의사항 \n 1. 사각 테두리 내 서류 전체가 들어오도록 촬영"/>
+            android:text="촬영간 유의사항 \n 1. 사각 테두리 내 서류 전체가 들어오도록 촬영" />
 
     </LinearLayout>
 
