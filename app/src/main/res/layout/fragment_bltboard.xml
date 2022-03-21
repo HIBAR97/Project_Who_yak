@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/blt_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="0dp">
+
+        <TextView
+            android:id="@+id/gz_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="공지사항" />
+
+        <Button
+            android:id="@+id/gz1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="gongzi1" />
+
+        <Button
+            android:id="@+id/gz2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="gongzi1" />
+
+        <Button
+            android:id="@+id/gz3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="gongzi1" />
+
+        <TextView
+            android:id="@+id/ppl_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="인기글" />
+
+        <Button
+            android:id="@+id/ppl1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ppl1" />
+
+        <Button
+            android:id="@+id/ppl2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ppl2" />
+
+        <TextView
+            android:id="@+id/spn_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="카테고리" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spn_main"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content" />
+
+            <RadioGroup
+                android:id="@+id/rdo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rdo_btn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:checked="true"
+                    android:text="최신순" />
+
+                <RadioButton
+                    android:id="@+id/rdo_btn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:text="인기순"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/read1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="read1"/>
+
+        <Button
+            android:id="@+id/read2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="read2"/>
+
+        <Button
+            android:id="@+id/read3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="read3"/>
+
+        <Button
+            android:id="@+id/read4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="read4"/>
+
+        <Button
+            android:id="@+id/read5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="read5"/>
+
+        <Button
+            android:id="@+id/read6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="read6"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
