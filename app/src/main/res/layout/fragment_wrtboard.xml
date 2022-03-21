@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/blt_main"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="0dp">
+
+        <TextView
+            android:id="@+id/rmb_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="제목" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/wrt_title"
+            android:text="입력" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spn_main"
+                android:layout_width="150dp"
+                android:layout_height="35dp"/>
+
+            <TextView
+                android:id="@+id/fp_text"
+                android:layout_marginLeft="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="파일첨부"/>
+
+            <Button
+                android:id="@+id/fl_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="추가"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/rmb_bonmun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="본문" />
+
+        <EditText
+            android:id="@+id/wrt_bonmun"
+            android:layout_width="match_parent"
+            android:layout_height="540dp"
+            android:text="입력"
+            android:gravity="clip_horizontal"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/blt_btn"
+        android:layout_below="@+id/blt_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:weightSum="2"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/blt_brd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="등록">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/blt_rmb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="취소">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+    </LinearLayout>
+
+</RelativeLayout>
