@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button btnSignUp;
-
         Button btnSignIn;
 
         btnSignUp = (Button)findViewById(R.id.Sigin_Button_ID);

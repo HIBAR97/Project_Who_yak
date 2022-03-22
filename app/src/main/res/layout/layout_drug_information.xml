@@ -158,6 +158,7 @@
     </LinearLayout>
 
     //Fragment area layout
+
     <FrameLayout
         android:id="@+id/FrameLayout_Drug"
         android:layout_width="match_parent"
