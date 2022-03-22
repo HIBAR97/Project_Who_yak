@@ -18,6 +18,7 @@ public class UserpageActivity extends AppCompatActivity {
     //home
     Button btnHome;
 
+
     btnHome = (Button)findViewById(R.id.btnhome);
 
     //home Button Listener
