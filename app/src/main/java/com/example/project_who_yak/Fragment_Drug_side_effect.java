@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 public class Fragment_Drug_side_effect extends Fragment {
     @Nullable
+    //Connect xml file using container
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_drug_side_effect, container, false);

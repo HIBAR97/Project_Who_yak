@@ -5,7 +5,6 @@
     android:orientation="vertical">
 
     //Title layout
-
     <LinearLayout
         android:id="@+id/Layout_Drug_title"
         android:layout_width="fill_parent"
@@ -13,6 +12,7 @@
         android:weightSum="3"
         android:orientation="horizontal">
 
+        //Voice button
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,6 +26,7 @@
 
         </LinearLayout>
 
+        //Title layout
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,6 +42,7 @@
 
         </LinearLayout>
 
+        //home Button
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,7 +59,6 @@
     </LinearLayout>
 
     //Drug name Layout
-
     <LinearLayout
         android:id="@+id/Layout_Drug_name"
         android:layout_width="fill_parent"
@@ -66,6 +67,7 @@
         android:orientation="horizontal"
         android:weightSum="3">
 
+        //Blank area layout
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -73,6 +75,7 @@
 
         </LinearLayout>
 
+        //Drug name layout
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,7 +91,7 @@
 
         </LinearLayout>
 
-
+        // Serch layout
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,6 +106,7 @@
         </LinearLayout>
     </LinearLayout>
 
+    //4 Kinds btn set layout
     <LinearLayout
         android:id="@+id/Layout_Drug_Button"
         android:layout_width="fill_parent"
@@ -111,6 +115,7 @@
         android:weightSum="4"
         android:orientation="horizontal">
 
+        //Info btn
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/Btn_Drug_info"
             android:layout_width="wrap_content"
@@ -120,6 +125,7 @@
 
         </androidx.appcompat.widget.AppCompatButton>
 
+        //Detail btn
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/Btn_Drug_detail"
             android:layout_width="wrap_content"
@@ -129,6 +135,7 @@
 
         </androidx.appcompat.widget.AppCompatButton>
 
+        //Side effect btn
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/Btn_Drug_side_effect"
             android:layout_width="wrap_content"
@@ -138,6 +145,7 @@
 
         </androidx.appcompat.widget.AppCompatButton>
 
+        //Precautin btn
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/Btn_Drug_precaution"
             android:layout_width="wrap_content"
@@ -148,6 +156,7 @@
         </androidx.appcompat.widget.AppCompatButton>
     </LinearLayout>
 
+    //Fragment area layout
     <FrameLayout
         android:id="@+id/FrameLayout_Drug"
         android:layout_width="match_parent"

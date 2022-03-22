@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class Drug_information extends AppCompatActivity {
 
+    //Variable declaration FragmentManager, Fragment page
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
     private Fragment_Drug_info Frag_Drug_info;
@@ -19,6 +20,7 @@ public class Drug_information extends AppCompatActivity {
     private Fragment_Drug_side_effect Frag_Drug_side_effect;
     private Fragment_Drug_precaution Frag_Drug_precaution;
 
+    // When activity started
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -26,11 +28,13 @@ public class Drug_information extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_drug_information);
 
+        //Varivable btn
         Button btn_Drug_info;
         Button btn_Drug_detail;
         Button btn_Drug_side_effect;
         Button btn_Drug_precaution;
 
+        //Conect btn on layout
         btn_Drug_info = (Button)findViewById(R.id.Btn_Drug_info);
         btn_Drug_detail = (Button)findViewById(R.id.Btn_Drug_detail);
         btn_Drug_side_effect = (Button)findViewById(R.id.Btn_Drug_side_effect);
@@ -38,15 +42,17 @@ public class Drug_information extends AppCompatActivity {
 
         fragmentManager = getSupportFragmentManager();
 
+        //Fragment page variable
         Frag_Drug_info = new Fragment_Drug_info();
         Frag_Drug_detail = new Fragment_Drug_detail();
         Frag_Drug_side_effect = new Fragment_Drug_side_effect();
         Frag_Drug_precaution = new Fragment_Drug_precaution();
 
-
+        //Default fragment
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_info).commitAllowingStateLoss();
 
+        //btn Listener
         btn_Drug_info.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -78,5 +84,7 @@ public class Drug_information extends AppCompatActivity {
                 transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_precaution).commitAllowingStateLoss();
             }
         });
+
+
     }
 }
