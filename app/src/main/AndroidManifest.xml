@@ -12,6 +12,9 @@
         <activity android:name=".UserpageActivity"
             android:exported="false"/>
         <activity
+            android:name=".activity_bltboard"
+            android:exported="false"/>
+        <activity
             android:name=".HomeActivity"
             android:exported="false"/>
         <activity
