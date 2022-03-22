@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_Who_yak">
+        <activity android:name=".UserpageActivity"
+            android:exported="false"/>
         <activity
             android:name=".HomeActivity"
             android:exported="false"/>
