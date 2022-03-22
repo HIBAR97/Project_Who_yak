@@ -24,10 +24,12 @@ public class activity_bltboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bltboard);
 
+        Button btn_blt_home;
         Button btn_bltboard;
         Button btn_wrtboard;
         Button btn_rmbboard;
 
+        btn_blt_home = (Button)findViewById(R.id.btn_blt_home);
         btn_bltboard = (Button)findViewById(R.id.blt_brd);
         btn_wrtboard = (Button)findViewById(R.id.blt_wrt);
         btn_rmbboard = (Button)findViewById(R.id.blt_rmb);
@@ -41,6 +43,14 @@ public class activity_bltboard extends AppCompatActivity {
 
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.FrameLayout_bltscreen, fragment_bltboard).commitAllowingStateLoss();
+
+        btn_blt_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btn_bltboard.setOnClickListener(new View.OnClickListener(){
             @Override
