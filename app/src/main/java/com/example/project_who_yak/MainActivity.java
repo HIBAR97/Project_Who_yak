@@ -15,8 +15,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button btnSignUp;
+        Button btnSignIn;
 
         btnSignUp = (Button)findViewById(R.id.Sigin_Button_ID);
+        btnSignIn = (Button)findViewById(R.id.Login_Button_ID);
 
         //Sigin Button Listener
         btnSignUp.setOnClickListener(new View.OnClickListener(){
@@ -28,6 +30,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Login_Button Listener
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
         
     }
 }

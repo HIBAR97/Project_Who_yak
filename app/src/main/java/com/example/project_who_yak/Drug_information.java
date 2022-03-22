@@ -29,12 +29,14 @@ public class Drug_information extends AppCompatActivity {
         setContentView(R.layout.layout_drug_information);
 
         //Varivable btn
+        Button btn_Drug_info_home;
         Button btn_Drug_info;
         Button btn_Drug_detail;
         Button btn_Drug_side_effect;
         Button btn_Drug_precaution;
 
         //Conect btn on layout
+        btn_Drug_info_home = (Button)findViewById(R.id.Btn_Drug_info_Home);
         btn_Drug_info = (Button)findViewById(R.id.Btn_Drug_info);
         btn_Drug_detail = (Button)findViewById(R.id.Btn_Drug_detail);
         btn_Drug_side_effect = (Button)findViewById(R.id.Btn_Drug_side_effect);
@@ -53,6 +55,14 @@ public class Drug_information extends AppCompatActivity {
         transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_info).commitAllowingStateLoss();
 
         //btn Listener
+        btn_Drug_info_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         btn_Drug_info.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {

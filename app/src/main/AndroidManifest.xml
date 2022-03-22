@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_Who_yak">
         <activity
+            android:name=".HomeActivity"
+            android:exported="false"/>
+        <activity
             android:name=".Drug_information"
             android:exported="false"/>
         <activity
