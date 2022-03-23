@@ -41,7 +41,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Drug_information.class);
                 startActivity(intent);
-                //setContentView(R.layout.layout_drug_information);
             }
         });
 
