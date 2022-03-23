@@ -7,7 +7,7 @@
     <LinearLayout
         android:id="@+id/Layout_notice_linear"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:orientation="vertical">
 
         <TextView
@@ -16,20 +16,20 @@
             android:layout_height="wrap_content"
             android:text="공지사항" />
 
-        <FrameLayout
-            android:id="@+id/Layout_notice_fragment"
+        <ListView
+            android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:layout_weight="1" />
 
-
-        </FrameLayout>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/Layout_notice_popular"
         android:layout_below="@+id/Layout_notice_linear"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:orientation="vertical">
         <TextView
             android:id="@+id/ppl_name"
@@ -37,11 +37,10 @@
             android:layout_height="wrap_content"
             android:text="인기글" />
 
-        <FrameLayout
+        <ListView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </FrameLayout>
+            android:layout_height="match_parent"
+            android:background="@color/light_blue_600"/>
 
     </LinearLayout>
 
@@ -87,6 +86,16 @@
                 android:text="인기순"/>
 
             </RadioGroup>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/light_blue_A400"/>
         </LinearLayout>
     </LinearLayout>
 
