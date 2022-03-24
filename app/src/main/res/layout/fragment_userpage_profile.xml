@@ -1,85 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:orientation="vertical">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp">
-
-            <Button
-                android:id="@+id/btnvoice"
-                android:layout_width="70dp"
-                android:layout_height="45dp"
-                android:layout_gravity="left"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:text="음성" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="마이페이지"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btnhome"
-                android:layout_width="70dp"
-                android:layout_height="45dp"
-                android:layout_gravity="right"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:text="홈" />
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="3">
-
-            <Button
-                android:id="@+id/btnprofile"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_gravity="left"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:text="회원정보" />
-
-            <Button
-                android:id="@+id/btnmanual"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_gravity="center"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:text="매뉴얼" />
-
-
-            <Button
-                android:id="@+id/btnsetting"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_gravity="right"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:text="설정" />
-        </FrameLayout>
-    </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="720dp"
-        android:layout_marginTop="90dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
 
@@ -218,14 +146,6 @@
         </RadioGroup>
 
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="845dp"
-        android:orientation="vertical">
-
         <Button
             android:id="@+id/btnDel"
             android:layout_width="wrap_content"
@@ -233,6 +153,4 @@
             android:layout_gravity="end"
             android:text="수정" />
     </LinearLayout>
-
-
 </RelativeLayout>
