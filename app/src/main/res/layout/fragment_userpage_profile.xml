@@ -100,13 +100,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="추가정보"
-            android:textStyle="bold"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="010-1234-5678"
             android:textSize="15sp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -117,8 +119,9 @@
         <DatePicker
             android:layout_width="wrap_content"
             android:layout_height="100dp"
+            android:layout_gravity="center"
             android:calendarViewShown="false"
-            android:datePickerMode="spinner"/>
+            android:datePickerMode="spinner" />
 
 
         <TextView
@@ -130,19 +133,21 @@
 
         <RadioGroup
             android:id="@+id/radiogroup_sex"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <RadioButton
                 android:id="@+id/radiobutton_male"
-                android:text="남성"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:text="남성" />
+
             <RadioButton
                 android:id="@+id/radiobutton_female"
-                android:text="여성"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:text="여성" />
         </RadioGroup>
 
 

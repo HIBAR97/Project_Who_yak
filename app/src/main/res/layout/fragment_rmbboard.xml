@@ -17,53 +17,60 @@
             android:layout_height="wrap_content"
             android:text="작성글" />
 
-        <Button
-            android:id="@+id/rmb1"
+        <ListView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="remember1" />
+            android:layout_height="300dp"
+            android:layout_weight="1"
+            android:background="@color/light_blue_A400" />
 
-        <Button
-            android:id="@+id/rmb2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="remember2" />
 
-        <Button
-            android:id="@+id/rmb3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="remember3" />
+<!--        <Button-->
+<!--            android:id="@+id/rmb1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="remember1" />-->
 
-        <Button
-            android:id="@+id/rmb4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="remember4" />
+<!--        <Button-->
+<!--            android:id="@+id/rmb2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="remember2" />-->
 
-        <Button
-            android:id="@+id/rmb5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="remember5" />
+<!--        <Button-->
+<!--            android:id="@+id/rmb3"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="remember3" />-->
 
-        <Button
-            android:id="@+id/rmb6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="remember6" />
+<!--        <Button-->
+<!--            android:id="@+id/rmb4"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="remember4" />-->
 
-        <Button
-            android:id="@+id/rmb7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="remember7" />
+<!--        <Button-->
+<!--            android:id="@+id/rmb5"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="remember5" />-->
 
-        <Button
-            android:id="@+id/rmb8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="remember8" />
+<!--        <Button-->
+<!--            android:id="@+id/rmb6"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="remember6" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/rmb7"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="remember7" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/rmb8"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="remember8" />-->
 
     </LinearLayout>
 
@@ -72,7 +79,6 @@
         android:layout_below="@+id/blt_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom"
         android:weightSum="2"
         android:orientation="horizontal">
 
