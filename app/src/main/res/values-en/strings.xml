@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WHO? YAK</string>
+    <string name="btn_Id_signin">SIGIN BY ID</string>
+    <string name="btn_Signin">Sign In</string>
+    <string name="btn_Voice_acc">Voice Acc</string>
+    <string name="btn_Userpage">My Page</string>
+    <string name="btn_Search">Search</string>
+    <string name="btn_Scan">Scan</string>
+    <string name="btn_Schedule">Schedule</string>
+    <string name="btn_Voice">Voice</string>
+    <string name="btn_Board">Board</string>
+    <string name="text_Signin">Sign In</string>
+    <string name="edittext_Signin">Sign In</string>
+    <string name="text_ID">ID</string>
+    <string name="btn_Id_check">ID Check</string>
+    <string name="edittext_Password">Password</string>
+    <string name="edittext_Password">P</string>
+    <string name="edittext_rePassword">Check Password</string>
+    <string name="edittext_UserName">Name</string>
+    <string name="edittext_Email">Email</string>
+    <string name="edittext_CUser">Connect User ID</string>
+</resources>

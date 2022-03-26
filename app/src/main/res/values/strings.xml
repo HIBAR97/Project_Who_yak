@@ -1,5 +1,30 @@
 <resources>
-    <string name="app_name">Project_Who_yak</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+<!--    activity_main xml-->
+    <string name="app_name">WHO? 약</string>
+    <string name="btn_Id_signin">SIGIN BY ID</string>
+    <string name="btn_Signin">회원가입</string>
+    <string name="btn_Voice_acc">음성 비/활성화</string>
+
+<!--    activity_sign_up xml-->
+    <string name="edittext_Signin">회원가입</string>
+    <string name="text_ID">아이디</string>
+    <string name="btn_Id_check">중복 체크</string>
+    <string name="edittext_Password">비밀번호</string>
+    <string name="edittext_rePassword">비밀번호 확인</string>
+    <string name="edittext_UserName">이름</string>
+    <string name="edittext_Email">이메일</string>
+    <string name="edittext_CUser">연결 회원 아이디</string>
+
+<!--activity_home xml-->
+    <string name="btn_Search">검색</string>
+    <string name="btn_Scan">스캔</string>
+    <string name="btn_Schedule">달력</string>
+    <string name="btn_Board">게시판</string>
+    <string name="btn_Voice">음성</string>
+    <string name="btn_Userpage">마이페이지</string>
+    <string name="text_Signin">회원가입</string>
+
+<!--    layout_drug_information xml-->
+
 </resources>
