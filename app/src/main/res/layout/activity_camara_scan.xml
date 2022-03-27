@@ -90,7 +90,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="촬영간 유의사항 \n 1. 사각 테두리 내 서류 전체가 들어오도록 촬영" />
+            android:text="@string/text_camara" />
 
     </LinearLayout>
 
@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:text="사진 촬영">
+            android:text="@string/btn_takePic">
 
         </Button>
 
@@ -125,7 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:text="뒤로 가기">
+            android:text="@string/btn_back">
 
         </Button>
     </LinearLayout>
