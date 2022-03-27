@@ -15,9 +15,25 @@
     <string name="text_ID">ID</string>
     <string name="btn_Id_check">ID Check</string>
     <string name="edittext_Password">Password</string>
-    <string name="edittext_Password">P</string>
+    <string name="edittext_Password">Password</string>
     <string name="edittext_rePassword">Check Password</string>
     <string name="edittext_UserName">Name</string>
     <string name="edittext_Email">Email</string>
     <string name="edittext_CUser">Connect User ID</string>
+    <string name="edittext_DrugName">Drug Name</string>
+    <string name="edittext_DrugName">Drug</string>
+    <string name="btn_Home">Home</string>
+    <string name="text_Druginfo">Drug Info</string>
+    <string name="btn_Druginfo">Info</string>
+    <string name="btn_Druginfo">Inf</string>
+    <string name="btn_Drugdetail">Detail</string>
+    <string name="btn_Drugsideeffect">Side effect</string>
+    <string name="btn_Drugprecaution">Precaution</string>
+    <string name="btn_Drugprecaution">Pre</string>
+    <string name="edittext_side_effect">Fragment C</string>
+    <string name="edittext_detail">Fragment B</string>
+    <string name="edittext_detail">Fragment B</string>
+    <string name="edittext_info">Fragment A</string>
+    <string name="edittext_precaution">Fragment D</string>
+    <string name="edittext_precaution">Fragment D</string>
 </resources>

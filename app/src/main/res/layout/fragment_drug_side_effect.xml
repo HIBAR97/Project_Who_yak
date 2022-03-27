@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <EditText
         android:id="@+id/Frag_effect_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fragment C"
+        android:text="@string/edittext_side_effect"
         android:textSize="50dp"/>
 
 </RelativeLayout>

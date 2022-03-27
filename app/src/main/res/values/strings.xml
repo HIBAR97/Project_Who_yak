@@ -26,5 +26,25 @@
     <string name="text_Signin">회원가입</string>
 
 <!--    layout_drug_information xml-->
+    <string name="text_Druginfo">약품 정보</string>
+    <string name="btn_Home">홈</string>
+    <string name="edittext_DrugName">약품 이름</string>
+    <string name="btn_Druginfo">소개</string>
+    <string name="btn_Drugdetail">상세</string>
+    <string name="btn_Drugsideeffect">부작용</string>
+    <string name="btn_Drugprecaution">주의사D</string>
+
+<!--    fragment_drug_info-->
+    <string name="edittext_info">Fragment A</string>
+
+<!--    fragment_drug_detail-->
+    <string name="edittext_detail">Fragment B</string>
+
+    <!--    fragment_drug_side_effect-->
+    <string name="edittext_side_effect">Fragment C</string>
+
+<!--    fragment_drug_precaution-->
+    <string name="edittext_precaution">Fragment D</string>
+
 
 </resources>

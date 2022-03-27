@@ -21,7 +21,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="음성"
+                android:text="@string/btn_Voice"
                 android:textAlignment="center"/>
 
         </LinearLayout>
@@ -36,7 +36,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="약품 정보"
+                android:text="@string/text_Druginfo"
                 android:textAlignment="center"
                 android:textSize="30dp" />
 
@@ -53,7 +53,7 @@
                 android:id="@+id/Btn_Drug_info_Home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="홈"
+                android:text="@string/btn_Home"
                 android:textAlignment="center"/>
 
         </LinearLayout>
@@ -83,10 +83,10 @@
             android:gravity="center"
             android:layout_weight="2">
 
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="약품 이름"
+                android:text="@string/edittext_DrugName"
                 android:textSize="30dp"
                 android:textAlignment="center" />
 
@@ -102,7 +102,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="검색"/>
+                android:text="@string/btn_Search"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -122,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="소개">
+            android:text="@string/btn_Druginfo">
 
         </androidx.appcompat.widget.AppCompatButton>
 
@@ -132,7 +132,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="상세">
+            android:text="@string/btn_Drugdetail">
 
         </androidx.appcompat.widget.AppCompatButton>
 
@@ -142,7 +142,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="부작용">
+            android:text="@string/btn_Drugsideeffect">
 
         </androidx.appcompat.widget.AppCompatButton>
 
@@ -152,7 +152,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="주의사항">
+            android:text="@string/btn_Drugprecaution">
 
         </androidx.appcompat.widget.AppCompatButton>
     </LinearLayout>
