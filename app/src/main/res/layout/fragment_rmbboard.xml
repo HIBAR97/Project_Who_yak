@@ -15,7 +15,7 @@
             android:id="@+id/rmb_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="작성글" />
+            android:text="@string/tv_rmb" />
 
         <ListView
             android:layout_width="match_parent"
@@ -87,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="수정">
+            android:text="@string/btn_fix">
 
         </androidx.appcompat.widget.AppCompatButton>
 
@@ -96,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="삭제">
+            android:text="@string/btn_delete">
 
         </androidx.appcompat.widget.AppCompatButton>
 

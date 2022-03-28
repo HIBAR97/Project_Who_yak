@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="음성"
+                android:text="@string/btn_Voice"
                 android:textAlignment="center"/>
         </LinearLayout>
 
@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
-                android:text="홈" />
+                android:text="@string/btn_Home" />
 
         </LinearLayout>
     </LinearLayout>
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="회원정보" />
+            android:text="@string/btn_profile" />
 
 
 
@@ -83,7 +83,7 @@
             android:id="@+id/btnmanual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="매뉴얼"
+            android:text="@string/btn_manual"
             android:layout_weight="1"/>
 
 
@@ -92,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="설정" />
+            android:text="@string/btn_setting" />
 
     </LinearLayout>
 

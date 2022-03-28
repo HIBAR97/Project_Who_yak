@@ -14,14 +14,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="게시판 알림"
+            android:text="@string/tv_bltboard_Notification"
             android:textSize="25sp"
             android:textStyle="bold" />
 
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="게시글 알림"
+        android:text="@string/tv_bltboard_Notification"
         android:textSize="15sp" />
         <RadioGroup
             android:id="@+id/radiogroup_bltboard"
@@ -43,7 +43,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="댓글 알림"
+            android:text="@string/tv_comments_Notification"
             android:textSize="15sp" />
         <RadioGroup
             android:id="@+id/radiogroup_ripple"
@@ -66,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="시각장애인 도움 기능"
+            android:text="@string/tv_visual"
             android:textSize="15sp" />
         <RadioGroup
             android:id="@+id/radiogroup_help"
@@ -90,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="제스처 기능"
+            android:text="@string/tv_gesture"
             android:textSize="15sp" />
         <RadioGroup
             android:id="@+id/radiogroup_gesture"
@@ -113,18 +113,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="회원"
+            android:text="@string/tv_user"
             android:textSize="25sp"
             android:textStyle="bold"/>
         <Button
             android:id="@+id/btnLogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="로그아웃"/>
+            android:text="@string/btn_logOut"/>
         <Button
             android:id="@+id/btnwithdrawl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="회원탈퇴"/>
+            android:text="@string/btn_withdrawal"/>
     </LinearLayout>
 </RelativeLayout>

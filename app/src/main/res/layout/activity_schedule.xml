@@ -20,13 +20,13 @@
                 android:layout_gravity="left"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:text="음성" />
+                android:text="@string/btn_Voice" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="달력"
+                android:text="@string/tv_calendar"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -37,7 +37,7 @@
                 android:layout_gravity="right"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:text="홈" />
+                android:text="@string/btn_Home" />
         </FrameLayout>
     </LinearLayout>
 
@@ -77,7 +77,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="금일"
+                android:text="@string/tv_today"
                 android:textSize="20sp" />
 
             <ListView
@@ -88,7 +88,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="다가올 일정"
+                android:text="@string/tv_upComing"
                 android:textSize="20sp" />
 
             <ListView
@@ -108,7 +108,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="추가">
+                android:text="@string/btn_fileAdd">
+
 
             </androidx.appcompat.widget.AppCompatButton>
 
@@ -117,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="수정">
+                android:text="@string/btn_fix">
 
             </androidx.appcompat.widget.AppCompatButton>
 
@@ -126,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="삭제">
+                android:text="@string/btn_delete">
 
             </androidx.appcompat.widget.AppCompatButton>
 

@@ -14,7 +14,7 @@
             android:id="@+id/gz_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="공지사항" />
+            android:text="@string/tv_notice" />
 
         <ListView
             android:id="@+id/listView"
@@ -35,7 +35,7 @@
             android:id="@+id/ppl_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="인기글" />
+            android:text="@string/tv_pplName" />
 
         <ListView
             android:layout_width="match_parent"
@@ -54,7 +54,7 @@
             android:id="@+id/spn_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="카테고리" />
+            android:text="@string/tv_category" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,13 +77,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:checked="true"
-                android:text="최신순" />
+                android:text="@string/rdbtn_latest" />
 
             <RadioButton
                 android:id="@+id/rdo_btn2"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:text="인기순"/>
+                android:text="@string/rdbtn_popularity"/>
 
             </RadioGroup>
 

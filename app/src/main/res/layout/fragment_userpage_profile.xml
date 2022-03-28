@@ -14,33 +14,33 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="필수정보"
+            android:text="@string/tv_essentialInfo"
             android:textSize="25sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="아이디"
+            android:text="@string/text_ID"
             android:textSize="15sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/userid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="userid"
-            android:textSize="20sp" />
+            android:hint="@string/edittext_userId"
+            android:textSize="15sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="현재 비밀번호"
+            android:text="@string/tv_nowPassword"
             android:textSize="15sp" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="비밀번호"
+            android:hint="@string/edittext_Password"
             android:inputType="textPassword"
             android:textSize="15sp" />
 
@@ -48,72 +48,72 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="수정 비밀번호"
+            android:text="@string/tv_fixPassword"
             android:textSize="15sp" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="수정 비밀번호"
+            android:hint="@string/edittext_fixPassword"
             android:inputType="textPassword"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="수정 비밀번호 확인"
+            android:text="@string/tv_refixPassword"
             android:textSize="15sp" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="수정 비밀번호"
+            android:hint="@string/edittext_refixPassword"
             android:inputType="textPassword"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="이름"
+            android:text="@string/tv_name"
             android:textSize="15sp" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="홍길동"
+            android:hint="@string/edittext_nameHint"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="관련회원 아이디"
+            android:text="@string/edittext_CUser"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="relatedid"
+            android:text="@string/tv_cUser_Hint"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="추가정보"
+            android:text="@string/tv_addtionInfo"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="010-1234-5678"
+            android:hint="@string/edittext_phoneNum"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="생년월일"
+            android:text="@string/tv_birth"
             android:textSize="20sp" />
 
         <DatePicker
@@ -128,7 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="성별"
+            android:text="@string/tv_sex"
             android:textSize="20sp" />
 
         <RadioGroup
@@ -141,13 +141,13 @@
                 android:id="@+id/radiobutton_male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="남성" />
+                android:text="@string/rdbtn_male" />
 
             <RadioButton
                 android:id="@+id/radiobutton_female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="여성" />
+                android:text="@string/rdbtn_female" />
         </RadioGroup>
 
 
@@ -156,6 +156,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="수정" />
+            android:text="@string/btn_fix" />
     </LinearLayout>
 </RelativeLayout>

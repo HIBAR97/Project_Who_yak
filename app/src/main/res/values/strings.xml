@@ -58,4 +58,67 @@
     <string name="btn_wrt">작성</string>
 
 <!--    fragment_bltboard xml-->
+    <string name="tv_notice">공지사항</string>
+    <string name="tv_pplName">인기글</string>
+    <string name="tv_category">카테고리</string>
+    <string name="rdbtn_latest">최신순</string>
+    <string name="rdbtn_popularity">인기순</string>
+
+<!--    fragment_rmbboard xml-->
+    <string name="tv_rmb">작성글</string>
+    <string name="btn_fix">수정</string>
+    <string name="btn_delete">삭제</string>
+
+<!--    fragment_wrtboard xml-->
+    <string name="tv_title">제목</string>
+    <string name="edittext_input">입력</string>
+    <string name="tv_file">파일첨부</string>
+    <string name="btn_fileAdd">추가</string>
+    <string name="tv_text">본문</string>
+    <string name="btn_WriteAdd">등록</string>
+    <string name="btn_Cancel">취소</string>
+    
+<!--    activity_schedule xml-->
+    <string name="tv_calendar">달력</string>
+    <string name="tv_schedule">일정</string>
+    <string name="tv_today">금일</string>
+    <string name="tv_upComing">다가올 일정</string>
+
+<!--    activity_userpage xml-->
+    <string name="tv_myPage">마이페이지</string>
+    <string name="btn_profile">회원정보</string>
+    <string name="btn_manual">매뉴얼</string>
+    <string name="btn_setting">설정</string>
+    
+<!--    fragment_userpage xml-->
+    <string name="tv_essentialInfo">필수정보</string>
+    <string name="edittext_userId">유저 아이디</string>
+    <string name="tv_nowPassword">현재 비밀번호</string>
+    <string name="tv_fixPassword">수정 비밀번호</string>
+    <string name="edittext_fixPassword">수정 비밀번호</string>
+    <string name="tv_refixPassword">수정 비밀번호 확인</string>
+    <string name="edittext_refixPassword">수정 비밀번호</string>
+    <string name="tv_name">이름</string>
+    <string name="edittext_nameHint">홍길동</string>
+    <string name="tv_cUser_Hint">relatedid</string>
+    <string name="tv_addtionInfo">추가정보</string>
+    <string name="edittext_phoneNum">010-1234-5678</string>
+    <string name="tv_birth">생년월일</string>
+    <string name="tv_sex">성별</string>
+    <string name="rdbtn_male">남성</string>
+    <string name="rdbtn_female">여성</string>
+    
+<!--    fragment_userpage_manual xml-->
+    <string name="tv_calenderManual">1.달력에 원하는 날짜를 선택하면 일정을 추가 할 수 있습니다. \n2.\n3. \n4. \n5. \n6.</string>
+    <string name="tv_bltboardManual">1.\n2.\n3. \n4. \n5. \n6.</string>
+    
+<!--    fragment_userpage_setting-->
+    <string name="tv_bltboard_Notification">게시판 알림</string>
+    <string name="tv_comments_Notification">댓글 알림</string>
+    <string name="tv_visual">시각장애인 도움 기능</string>
+    <string name="tv_gesture">제스쳐 기능</string>
+    <string name="tv_user">회원</string>
+    <string name="btn_logOut">로그아웃</string>
+    <string name="btn_withdrawal">회원탈퇴</string>
+
 </resources>
