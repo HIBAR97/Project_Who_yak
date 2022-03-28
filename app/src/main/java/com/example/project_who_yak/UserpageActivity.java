@@ -57,8 +57,9 @@ public class UserpageActivity extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener(){
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-            startActivity(intent);
+            finish();
+//            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+//            startActivity(intent);
         }
     });
 
