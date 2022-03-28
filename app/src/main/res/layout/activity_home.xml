@@ -26,8 +26,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/app_name"
-                android:textSize="25sp"
+                android:text="WHO?약"
+                android:fontFamily="@font/yak_pro"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <Button
@@ -52,6 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_Search">
 
         </androidx.appcompat.widget.AppCompatButton>
@@ -61,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_Scan">
 
         </androidx.appcompat.widget.AppCompatButton>
@@ -70,6 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_Schedule">
 
         </androidx.appcompat.widget.AppCompatButton>
@@ -79,6 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_Board">
 
         </androidx.appcompat.widget.AppCompatButton>

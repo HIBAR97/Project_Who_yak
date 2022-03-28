@@ -18,8 +18,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/app_name"
+            android:fontFamily="@font/yak_pro"
             android:textAlignment="center"
-            android:textSize="50dp" />
+            android:textSize="40dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -46,6 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="ID"
+                android:fontFamily="@font/yak_air"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,6 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Password"
+                android:fontFamily="@font/yak_air"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,6 +79,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="20dp"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_Id_signin" />
 
         //Sigup Button
@@ -86,6 +90,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_Signin" />
 
         //Voice accistent able Button
@@ -97,6 +102,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="35dp"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_Voice_acc" />
     </LinearLayout>
 
