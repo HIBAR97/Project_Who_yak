@@ -7,5 +7,8 @@
     <font android:font="@font/yak_air"
         android:fontStyle="normal"/>
 
+    <font android:font="@font/yak_dohyun"
+        android:fontStyle="normal"/>
+
 
 </font-family>

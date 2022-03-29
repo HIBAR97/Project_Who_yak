@@ -14,6 +14,7 @@
             android:id="@+id/gz_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
             android:text="@string/tv_notice" />
 
         <ListView
@@ -35,6 +36,7 @@
             android:id="@+id/ppl_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
             android:text="@string/tv_pplName" />
 
         <ListView
@@ -54,6 +56,7 @@
             android:id="@+id/spn_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
             android:text="@string/tv_category" />
 
         <LinearLayout
@@ -77,12 +80,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:checked="true"
+                android:fontFamily="@font/yak_air"
                 android:text="@string/rdbtn_latest" />
 
             <RadioButton
                 android:id="@+id/rdo_btn2"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
+                android:fontFamily="@font/yak_air"
                 android:text="@string/rdbtn_popularity"/>
 
             </RadioGroup>

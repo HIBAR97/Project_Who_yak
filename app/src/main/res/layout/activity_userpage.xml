@@ -37,8 +37,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="마이페이지"
-                android:textSize="30sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/yak_air"
+                android:textSize="45sp"
                 android:textAlignment="center"/>
 
         </LinearLayout>
@@ -74,6 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_profile" />
 
 
@@ -84,6 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_manual"
+            android:fontFamily="@font/yak_air"
             android:layout_weight="1"/>
 
 
@@ -92,6 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_setting" />
 
     </LinearLayout>

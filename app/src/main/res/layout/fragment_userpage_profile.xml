@@ -14,33 +14,37 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_pro"
             android:text="@string/tv_essentialInfo"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textSize="23sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
             android:text="@string/text_ID"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/userid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edittext_userId"
+            android:fontFamily="@font/yak_air"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
             android:text="@string/tv_nowPassword"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edittext_Password"
+            android:fontFamily="@font/yak_air"
             android:inputType="textPassword"
             android:textSize="15sp" />
 
@@ -48,64 +52,73 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
             android:text="@string/tv_fixPassword"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edittext_fixPassword"
+            android:fontFamily="@font/yak_air"
             android:inputType="textPassword"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
             android:text="@string/tv_refixPassword"
-            android:textSize="15sp" />
+            android:textSize="17sp" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edittext_refixPassword"
+            android:fontFamily="@font/yak_air"
             android:inputType="textPassword"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
             android:text="@string/tv_name"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
             android:hint="@string/edittext_nameHint"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
             android:text="@string/edittext_CUser"
-            android:textSize="15sp" />
+            android:textSize="17sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
             android:text="@string/tv_cUser_Hint"
-            android:textSize="15sp" />
+            android:textSize="17sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@string/tv_addtionInfo"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/yak_pro"
+            android:textSize="20sp"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
             android:hint="@string/edittext_phoneNum"
             android:textSize="15sp" />
 
@@ -113,8 +126,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:fontFamily="@font/yak_air"
             android:text="@string/tv_birth"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
 
         <DatePicker
             android:layout_width="wrap_content"
@@ -128,8 +142,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:fontFamily="@font/yak_air"
             android:text="@string/tv_sex"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
 
         <RadioGroup
             android:id="@+id/radiogroup_sex"
@@ -141,12 +156,14 @@
                 android:id="@+id/radiobutton_male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/yak_air"
                 android:text="@string/rdbtn_male" />
 
             <RadioButton
                 android:id="@+id/radiobutton_female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/yak_air"
                 android:text="@string/rdbtn_female" />
         </RadioGroup>
 

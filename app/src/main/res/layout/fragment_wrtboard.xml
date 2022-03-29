@@ -15,12 +15,15 @@
             android:id="@+id/rmb_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
+            android:textSize="20sp"
             android:text="@string/tv_title" />
 
         <EditText
             android:id="@+id/wrt_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
             android:hint="@string/edittext_input" />
 
         <LinearLayout
@@ -38,6 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
+                android:fontFamily="@font/yak_air"
                 android:text="@string/tv_file" />
 
             <Button
@@ -52,6 +56,8 @@
             android:id="@+id/rmb_bonmun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
+            android:textSize="20sp"
             android:text="@string/tv_text" />
 
         <EditText
@@ -59,6 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:gravity="clip_horizontal"
+            android:fontFamily="@font/yak_air"
             android:hint="@string/edittext_input" />
 
     </LinearLayout>
@@ -76,6 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_WriteAdd">
 
         </androidx.appcompat.widget.AppCompatButton>
@@ -85,6 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_Cancel">
 
         </androidx.appcompat.widget.AppCompatButton>

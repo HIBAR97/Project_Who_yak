@@ -33,9 +33,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/yak_air"
                 android:text="@string/tv_bltboard"
                 android:textAlignment="center"
-                android:textSize="30dp" />
+                android:textSize="40dp" />
 
         </LinearLayout>
 
@@ -68,6 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_bltboard">
 
 
@@ -78,6 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_rmb">
 
         </androidx.appcompat.widget.AppCompatButton>
@@ -87,6 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_wrt">
 
         </androidx.appcompat.widget.AppCompatButton>

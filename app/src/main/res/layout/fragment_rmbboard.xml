@@ -15,6 +15,7 @@
             android:id="@+id/rmb_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
             android:text="@string/tv_rmb" />
 
         <ListView
@@ -87,6 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_fix">
 
         </androidx.appcompat.widget.AppCompatButton>
@@ -96,6 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_delete">
 
         </androidx.appcompat.widget.AppCompatButton>

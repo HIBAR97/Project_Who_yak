@@ -37,8 +37,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_Druginfo"
+                android:fontFamily="@font/yak_air"
                 android:textAlignment="center"
-                android:textSize="30dp" />
+                android:textSize="40dp" />
 
         </LinearLayout>
 
@@ -87,6 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/edittext_DrugName"
+                android:fontFamily="@font/yak_air"
                 android:textSize="30dp"
                 android:textAlignment="center" />
 
@@ -122,6 +124,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_Druginfo">
 
         </androidx.appcompat.widget.AppCompatButton>
@@ -132,6 +135,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_Drugdetail">
 
         </androidx.appcompat.widget.AppCompatButton>
@@ -142,6 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_Drugsideeffect">
 
         </androidx.appcompat.widget.AppCompatButton>
@@ -152,6 +157,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
             android:text="@string/btn_Drugprecaution">
 
         </androidx.appcompat.widget.AppCompatButton>

@@ -14,15 +14,16 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_pro"
             android:text="@string/tv_bltboard_Notification"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textSize="25sp" />
 
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
         android:text="@string/tv_bltboard_Notification"
-        android:textSize="15sp" />
+        android:textSize="20sp" />
         <RadioGroup
             android:id="@+id/radiogroup_bltboard"
             android:orientation="horizontal"
@@ -43,8 +44,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
             android:text="@string/tv_comments_Notification"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
         <RadioGroup
             android:id="@+id/radiogroup_ripple"
             android:orientation="horizontal"
@@ -66,8 +68,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/yak_air"
             android:text="@string/tv_visual"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
         <RadioGroup
             android:id="@+id/radiogroup_help"
             android:orientation="horizontal"
@@ -76,11 +79,13 @@
             <RadioButton
                 android:id="@+id/radiogroup_help_on"
                 android:text="활성화"
+                android:fontFamily="@font/yak_air"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <RadioButton
                 android:id="@+id/radiogroup_help_off"
                 android:text="비활성화"
+                android:fontFamily="@font/yak_air"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </RadioGroup>
@@ -91,7 +96,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/tv_gesture"
-            android:textSize="15sp" />
+            android:fontFamily="@font/yak_air"
+            android:textSize="20sp" />
         <RadioGroup
             android:id="@+id/radiogroup_gesture"
             android:orientation="horizontal"
@@ -100,11 +106,13 @@
             <RadioButton
                 android:id="@+id/radiogroup_gesture_on"
                 android:text="활성화"
+                android:fontFamily="@font/yak_air"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <RadioButton
                 android:id="@+id/radiogroup_gesture_off"
                 android:text="비활성화"
+                android:fontFamily="@font/yak_air"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </RadioGroup>
@@ -114,8 +122,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/tv_user"
-            android:textSize="25sp"
-            android:textStyle="bold"/>
+            android:fontFamily="@font/yak_pro"
+            android:textSize="25sp" />
         <Button
             android:id="@+id/btnLogout"
             android:layout_width="wrap_content"
