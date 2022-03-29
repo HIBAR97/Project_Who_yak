@@ -19,13 +19,14 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/User_Profile_UserID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/text_ID"
             android:textSize="15sp" />
 
-        <EditText
-            android:id="@+id/userid"
+        <TextView
+            android:id="@+id/frag_userid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edittext_userId"
