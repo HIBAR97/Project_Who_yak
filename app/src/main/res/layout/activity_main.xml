@@ -66,8 +66,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Password"
-                android:fontFamily="@font/yak_air"
-                android:inputType="text" />
+                android:inputType="textPassword" />
+<!--           inputtype이 textpassword일경우 오류있음      android:fontFamily="@font/yak_air"-->
+
         </com.google.android.material.textfield.TextInputLayout>
 
         //Sigin Button
