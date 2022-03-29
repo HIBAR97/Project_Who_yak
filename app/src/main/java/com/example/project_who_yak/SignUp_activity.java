@@ -21,6 +21,7 @@ public class SignUp_activity extends AppCompatActivity {
 
     private String userID;
     private String userPassword;
+    private String userrePassword;
     private String userName;
     private String userEmail;
     private String userCID;
@@ -37,6 +38,7 @@ public class SignUp_activity extends AppCompatActivity {
 
         EditText idText = (EditText) findViewById(R.id.Edittext_Signup_Id);
         EditText passwordText = (EditText) findViewById(R.id.Edittext_Signup_Password);
+        EditText repasswordText = (EditText) findViewById(R.id.Edittext_Signup_rePassword);
         EditText nameText = (EditText) findViewById(R.id.Edittext_Signup_UserName);
         EditText emailText = (EditText) findViewById(R.id.Edittext_Signup_Email);
         EditText cidText = (EditText) findViewById(R.id.Edittext_Signup_CUser);
@@ -121,12 +123,22 @@ public class SignUp_activity extends AppCompatActivity {
 
                 String userID = idText.getText().toString();
                 String userPassword = passwordText.getText().toString();
+                String userrePassword = repasswordText.getText().toString();
                 String userName = nameText.getText().toString();
                 String userEmail = emailText.getText().toString();
                 String userCID = cidText.getText().toString();
+
+                if(!userrePassword.equals(userPassword))
+                {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(SignUp_activity.this);
+                    dialog = builder.setMessage("비밀번호 와 비밀번호 확인이 다릅니다.")
+                            .setNegativeButton("확인",null)
+                            .create();
+                    dialog.show();
+                    return;
+                }
                 if(!validate)
                 {
-                    Toast.makeText(getApplicationContext(),"먼저 중복 체크를 해주세요.",Toast.LENGTH_SHORT).show();
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignUp_activity.this);
                     dialog = builder.setMessage("먼저 중복 체크를 해주세요.")
                             .setNegativeButton("확인",null)
