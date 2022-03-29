@@ -19,14 +19,15 @@
             android:textSize="23sp" />
 
         <TextView
+            android:id="@+id/User_Profile_UserID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/yak_air"
             android:text="@string/text_ID"
             android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/userid"
+        <TextView
+            android:id="@+id/frag_userid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edittext_userId"

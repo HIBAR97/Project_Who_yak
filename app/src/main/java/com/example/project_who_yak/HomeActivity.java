@@ -9,11 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
+    String userID;
     Button btnSearch;
     Button btnScan;
     Button btnSchedule;
     Button btnBoard;
     Button btnUserPage;
+    //Button btnVoice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +27,21 @@ public class HomeActivity extends AppCompatActivity {
         btnScan = findViewById(R.id.btnScan);
         btnSchedule = findViewById(R.id.btnSchedule);
         btnBoard = findViewById(R.id.btnBoard);
+        //btnVoice = findViewById(R.id.btnvoice);
+         Intent intentmain = getIntent();
+        String userID = intentmain.getStringExtra("userID");
+        //btnVoice.setText(userID);
+
 
 
         btnUserPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), UserpageActivity.class);
+                intent.putExtra("userID",userID);
                 startActivity(intent);
+
+
             }
         });
 
