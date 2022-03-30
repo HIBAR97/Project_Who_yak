@@ -24,10 +24,10 @@ public class Fragment_Userpage_profile extends Fragment {
 
         //아이디값을 가져오기위한 bundle
         view = inflater.inflate(R.layout.fragment_userpage_profile, container, false);
-        Bundle bundle = getArguments();
-        String userID = bundle.getString("userID");
-        fraguserid = view.findViewById(R.id.frag_userid);
-        fraguserid.setText(userID);
+        //Bundle bundle = getArguments();
+        //String userID = bundle.getString("userID");
+       // fraguserid = view.findViewById(R.id.frag_userid);
+       // fraguserid.setText(userID);
         return view;
 
     }

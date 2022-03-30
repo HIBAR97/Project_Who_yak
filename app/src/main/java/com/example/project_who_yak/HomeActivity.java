@@ -28,8 +28,8 @@ public class HomeActivity extends AppCompatActivity {
         btnSchedule = findViewById(R.id.btnSchedule);
         btnBoard = findViewById(R.id.btnBoard);
         //btnVoice = findViewById(R.id.btnvoice);
-         Intent intentmain = getIntent();
-        String userID = intentmain.getStringExtra("userID");
+         //Intent intentmain = getIntent();
+        //String userID = intentmain.getStringExtra("userID");
         //btnVoice.setText(userID);
 
 
@@ -38,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), UserpageActivity.class);
-                intent.putExtra("userID",userID);
+                //intent.putExtra("userID",userID);
                 startActivity(intent);
 
 
