@@ -85,13 +85,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/Latout_button"
-        android:layout_below="@+id/Hrz_view">
+        android:layout_below="@+id/Hrz_view"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/text_camara" />
 
+        <TextView
+            android:id="@+id/ocrResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     //Button Layout
