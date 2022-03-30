@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -40,7 +41,7 @@ public class activity_Camara_scan extends AppCompatActivity {
     //OCR 변수
     Bitmap image;
     private TessBaseAPI mTess;
-    String datapath = "/Users/kimandrew/AndroidStudioProjects/Project_Who_yak/app/src/main/assets/";
+    String datapath = "";
     TextView OCRTextview;
 
     @Override
@@ -61,7 +62,7 @@ public class activity_Camara_scan extends AppCompatActivity {
         //OCR 기능
         image = BitmapFactory.decodeResource(getResources(), R.drawable.ocr_kr);
         datapath = getFilesDir() + ""; // 언어파일 경로
-        checkFile(new File(datapath + "tessdata/")); // 트레이닝 데이터 확인
+        checkFile(new File(datapath + "/tessdata/kor.traineddata")); // 트레이닝 데이터 확인
         String lang = "kor"; // 언어 세팅
         //OCR 세팅
         mTess = new TessBaseAPI();
@@ -95,7 +96,11 @@ public class activity_Camara_scan extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Main으로 이동
-                finish();
+                //finish();
+                String OCResult = null;
+                mTess.setImage(image);
+                OCResult = mTess.getUTF8Text();
+                OCRTextview.setText(OCResult);
             }
         });
     }
@@ -137,7 +142,7 @@ public class activity_Camara_scan extends AppCompatActivity {
             copyFiles();
         }
         if (dir.exists()){
-            String datafilepath = "/tessdata/kor.traineddata";
+            String datafilepath = "/tesseract/";
             File datafile = new File(datafilepath);
             if(!datafile.exists()){
                 copyFiles();
@@ -147,9 +152,11 @@ public class activity_Camara_scan extends AppCompatActivity {
 
     private void copyFiles() {
         try {
-            String filePath = "/tessdata/kor.traineddata";
+           // String filePath = "/data/user/0/com.example.project_who_yak/files/tesseract/tessdata";
+            String filePath = "tessdata/";
             AssetManager assetManager = getAssets();
-            InputStream instream = assetManager.open("tessdata/kor.traineddata");
+            //InputStream instream = assetManager.open("tessdata/kor.traineddata");
+            InputStream instream = assetManager.open("/Users/kimandrew/AndroidStudioProjects/Project_Who_yak/app/src/main/assets/tessdata/kor.traineddata");
             OutputStream outstream = new FileOutputStream(filePath);
 
             byte[] buffer = new byte[1024];
@@ -165,9 +172,7 @@ public class activity_Camara_scan extends AppCompatActivity {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
-            } catch (Exception e){
-                e.printStackTrace();
-        }
+            }
     }
 
     //이미지에서 텍스트 읽기
