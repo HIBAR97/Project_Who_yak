@@ -142,7 +142,7 @@ public class activity_Camara_scan extends AppCompatActivity {
             copyFiles();
         }
         if (dir.exists()){
-            String datafilepath = "/tesseract/";
+            String datafilepath = "/Users/kimandrew/AndroidStudioProjects/Project_Who_yak/app/src/main/assets/tessdata/kor.traineddata";
             File datafile = new File(datafilepath);
             if(!datafile.exists()){
                 copyFiles();
@@ -152,8 +152,8 @@ public class activity_Camara_scan extends AppCompatActivity {
 
     private void copyFiles() {
         try {
-           // String filePath = "/data/user/0/com.example.project_who_yak/files/tesseract/tessdata";
-            String filePath = "tessdata/";
+            String filePath = "/tessdata/kor.traineddata";
+            //String filePath = "tessdata/";
             AssetManager assetManager = getAssets();
             //InputStream instream = assetManager.open("tessdata/kor.traineddata");
             InputStream instream = assetManager.open("/Users/kimandrew/AndroidStudioProjects/Project_Who_yak/app/src/main/assets/tessdata/kor.traineddata");
