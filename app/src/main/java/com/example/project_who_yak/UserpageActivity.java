@@ -44,8 +44,8 @@ public class UserpageActivity extends AppCompatActivity {
         btnProfile = (Button)findViewById(R.id.btnprofile);
         btnManual = (Button)findViewById(R.id.btnmanual);
         btnSetting = (Button)findViewById(R.id.btnsetting);
-        Intent intentHome = getIntent();
-        String userID = intentHome.getStringExtra("userID");
+        //Intent intentHome = getIntent();
+        //String userID = intentHome.getStringExtra("userID");
 
 
         fragmentManager = getSupportFragmentManager();
@@ -62,9 +62,9 @@ public class UserpageActivity extends AppCompatActivity {
 
 
         //fragment에게 유저 아이디 전송
-        Bundle bundle = new Bundle();
-        bundle.putString("userID",userID);
-        Frag_Userpage_profile.setArguments(bundle);
+        //Bundle bundle = new Bundle();
+        //bundle.putString("userID",userID);
+        //Frag_Userpage_profile.setArguments(bundle);
 
 
         //home Button Listener
