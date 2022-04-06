@@ -3,14 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project_Who_yak/app/src/main/res/drawable/calendar_selector.xml" value="0.11200000000000002" />
+        <entry key="..\:/Project_Who_yak/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Project_Who_yak/app/src/main/res/drawable/ic_logo_background.xml" value="0.1" />
+        <entry key="..\:/Project_Who_yak/app/src/main/res/drawable/transparent_calendar_element.xml" value="0.1" />
         <entry key="..\:/Project_Who_yak/app/src/main/res/font/my_fonts.xml" value="0.2074074074074074" />
         <entry key="..\:/Project_Who_yak/app/src/main/res/layout/activity_bltboard.xml" value="0.264" />
         <entry key="..\:/Project_Who_yak/app/src/main/res/layout/activity_camara_scan.xml" value="0.2" />
         <entry key="..\:/Project_Who_yak/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/Project_Who_yak/app/src/main/res/layout/activity_main.xml" value="0.2512820512820513" />
-        <entry key="..\:/Project_Who_yak/app/src/main/res/layout/activity_schedule.xml" value="0.264" />
+        <entry key="..\:/Project_Who_yak/app/src/main/res/layout/activity_schedule.xml" value="0.2" />
         <entry key="..\:/Project_Who_yak/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
         <entry key="..\:/Project_Who_yak/app/src/main/res/layout/activity_userpage.xml" value="0.264" />
+        <entry key="..\:/Project_Who_yak/app/src/main/res/layout/calendar_selector.xml" value="0.1" />
         <entry key="..\:/Project_Who_yak/app/src/main/res/layout/fragment_bltboard.xml" value="0.24947916666666667" />
         <entry key="..\:/Project_Who_yak/app/src/main/res/layout/fragment_drug_details.xml" value="0.24947916666666667" />
         <entry key="..\:/Project_Who_yak/app/src/main/res/layout/fragment_drug_info.xml" value="0.16802536231884058" />
