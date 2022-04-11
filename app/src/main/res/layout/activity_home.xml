@@ -20,6 +20,8 @@
                 android:layout_gravity="left"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
+                android:drawableRight="@drawable/voice"
+                android:background="#00ff0000"
                 android:text="@string/btn_Voice" />
 
             <TextView
@@ -33,12 +35,14 @@
 
             <Button
                 android:id="@+id/btnUserpage"
-                android:layout_width="105dp"
-                android:layout_height="45dp"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
                 android:layout_gravity="right"
+                android:layout_marginTop="3dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:text="@string/btn_Userpage" />
+                android:drawableLeft="@drawable/userpage"
+                android:background="#00ff0000"/>
 
         </FrameLayout>
     </LinearLayout>

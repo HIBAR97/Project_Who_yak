@@ -10,6 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:weightSum="3"
+        android:paddingTop="1dp"
         android:orientation="horizontal">
 
         //Voice button
@@ -19,9 +20,10 @@
             android:layout_weight="1"
             android:gravity="left">
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_Voice"
+                android:layout_width="75dp"
+                android:layout_height="45dp"
+                android:drawableRight="@drawable/voice"
+                android:background="#00ff0000"
                 android:textAlignment="center"/>
 
         </LinearLayout>
@@ -52,9 +54,10 @@
 
             <Button
                 android:id="@+id/Btn_Drug_info_Home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_Home"
+                android:layout_width="75dp"
+                android:layout_height="40dp"
+                android:drawableRight="@drawable/home"
+                android:background="#00ff0000"
                 android:textAlignment="center"/>
 
         </LinearLayout>
@@ -102,9 +105,10 @@
             android:gravity="right">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_Search"/>
+                android:layout_width="75dp"
+                android:layout_height="45dp"
+                android:drawableRight="@drawable/search"
+                android:background="#00ff0000"/>
 
         </LinearLayout>
     </LinearLayout>

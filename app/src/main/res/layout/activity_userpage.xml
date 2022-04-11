@@ -19,11 +19,12 @@
 
             <Button
                 android:id="@+id/btnvoice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_width="75dp"
+                android:layout_height="45dp"
+                android:drawableRight="@drawable/voice"
+                android:background="#00ff0000"
                 android:text="@string/btn_Voice"
-                android:textAlignment="center"/>
+                android:textAlignment="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -36,10 +37,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="마이페이지"
                 android:fontFamily="@font/yak_air"
-                android:textSize="45sp"
-                android:textAlignment="center"/>
+                android:text="마이페이지"
+                android:textAlignment="center"
+                android:textSize="45sp" />
 
         </LinearLayout>
 
@@ -51,10 +52,10 @@
 
             <Button
                 android:id="@+id/btnhome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:text="@string/btn_Home" />
+                android:layout_width="75dp"
+                android:layout_height="45dp"
+                android:drawableRight="@drawable/home"
+                android:background="#00ff0000"/>
 
         </LinearLayout>
     </LinearLayout>
