@@ -21,6 +21,8 @@ import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
 import com.prolificinteractive.materialcalendarview.format.TitleFormatter;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -83,13 +85,17 @@ public class ScheduleActivity extends AppCompatActivity {
         calendarView.addDecorators(new DayDecorator(this));
 
         // 좌우 화살표 가운데의 연/월이 보이는 방식 커스텀
-        calendarView.setTitleFormatter(new TitleFormatter() {
+        calendarView.setTitleFormatter(new  TitleFormatter() {
             @Override
             public CharSequence format(CalendarDay day) {
                 // CalendarDay라는 클래스는 LocalDate 클래스를 기반으로 만들어진 클래스다
                 // 때문에 MaterialCalendarView에서 연/월 보여주기를 커스텀하려면 CalendarDay 객체의 getDate()로 연/월을 구한 다음 LocalDate 객체에 넣어서
                 // LocalDate로 변환하는 처리가 필요하다
-                Date inputText = day.getDate();
+                Date date = day.getDate();
+                LocalDate inputText = date.toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDate();
+
                 String[] calendarHeaderElements = inputText.toString().split("-");
                 StringBuilder calendarHeaderBuilder = new StringBuilder();
                 calendarHeaderBuilder.append(calendarHeaderElements[0])
