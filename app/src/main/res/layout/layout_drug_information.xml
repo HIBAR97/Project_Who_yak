@@ -88,6 +88,7 @@
             android:layout_weight="2">
 
             <EditText
+                android:id="@+id/Edittext_Drug_Search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/edittext_DrugName"
@@ -105,6 +106,7 @@
             android:gravity="right">
 
             <Button
+                android:id="@+id/Btn_Drug_search"
                 android:layout_width="75dp"
                 android:layout_height="45dp"
                 android:drawableRight="@drawable/search"
@@ -175,6 +177,14 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/Layout_Drug_Button"
         android:layout_marginTop="0dp">
+        <ListView
+            android:id="@+id/Drug_ListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerHeight="10dp"
+            android:divider="@color/white">
+
+        </ListView>
 
 
     </FrameLayout>
