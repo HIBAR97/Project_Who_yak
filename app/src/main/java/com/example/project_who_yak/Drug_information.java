@@ -1,14 +1,32 @@
 package com.example.project_who_yak;
 
-import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Drug_information extends AppCompatActivity {
 
@@ -20,6 +38,15 @@ public class Drug_information extends AppCompatActivity {
     private Fragment_Drug_side_effect Frag_Drug_side_effect;
     private Fragment_Drug_precaution Frag_Drug_precaution;
 
+    private String Drug_name;
+    private AlertDialog dialog;
+    private ListView drugListView;
+    private DrugListAdapter Adapter;
+    public List<Drug> drugList;
+    public String Drug_name2;
+    public String Drug_Search_name;
+    public String drugInfo2;
+    public Drug drug2;
     // When activity started
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +55,21 @@ public class Drug_information extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_drug_information);
 
+
+        LinearLayout layout_drug_btn = (LinearLayout) findViewById(R.id.Layout_Drug_Button);
+        drugListView = (ListView) findViewById(R.id.Drug_ListView);
+        drugList = new ArrayList<Drug>();
+        Adapter = new DrugListAdapter(getApplicationContext(), drugList);
+        drugListView.setAdapter(Adapter);
+        EditText edt_Drug_search_name;
+
         //Varivable btn
         Button btn_Drug_info_home;
         Button btn_Drug_info;
         Button btn_Drug_detail;
         Button btn_Drug_side_effect;
         Button btn_Drug_precaution;
+        Button btn_Drug_search;
 
         //Conect btn on layout
         btn_Drug_info_home = (Button)findViewById(R.id.Btn_Drug_info_Home);
@@ -41,7 +77,10 @@ public class Drug_information extends AppCompatActivity {
         btn_Drug_detail = (Button)findViewById(R.id.Btn_Drug_detail);
         btn_Drug_side_effect = (Button)findViewById(R.id.Btn_Drug_side_effect);
         btn_Drug_precaution = (Button)findViewById(R.id.Btn_Drug_precaution);
+        btn_Drug_search = (Button)findViewById(R.id.Btn_Drug_search);
 
+        //edt
+        edt_Drug_search_name = (EditText)findViewById(R.id.Edittext_Drug_Search);
         fragmentManager = getSupportFragmentManager();
 
         //Fragment page variable
@@ -51,10 +90,31 @@ public class Drug_information extends AppCompatActivity {
         Frag_Drug_precaution = new Fragment_Drug_precaution();
 
         //Default fragment
-        transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_info).commitAllowingStateLoss();
+        //transaction = fragmentManager.beginTransaction();
+        //transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_info).commitAllowingStateLoss();
 
+
+
+        layout_drug_btn.setVisibility(View.GONE);
         //btn Listener
+
+
+        drugListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                layout_drug_btn.setVisibility(View.VISIBLE);
+                drugListView.setVisibility(View.GONE);
+                Drug_name2 = drugList.get(i).getDrugname().toString();
+                //Toast.makeText(getApplicationContext(),Drug_name2,Toast.LENGTH_SHORT).show();
+                new BackgroudTaskInfo().execute();
+                Bundle bundle = new Bundle();
+                bundle.putString("drugInfo",drugInfo2);
+                Frag_Drug_info.setArguments(bundle);
+                transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_info).commitAllowingStateLoss();
+
+            }
+        });
         btn_Drug_info_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,9 +124,34 @@ public class Drug_information extends AppCompatActivity {
             }
         });
 
+
+        btn_Drug_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Drug_Search_name = edt_Drug_search_name.getText().toString();
+
+                if(Drug_Search_name.equals(""))
+                {
+                    Toast.makeText(getApplicationContext(),"빈칸입니다.",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                new BackgroudTaskSerch().execute();
+
+//                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+//                startActivity(intent);
+            }
+        });
+
+
+
         btn_Drug_info.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                drugListView.setVisibility(View.GONE);
+                Bundle bundle = new Bundle();
+                bundle.putString("drugName",Drug_name2);
+                Frag_Drug_info.setArguments(bundle);
                 transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_info).commitAllowingStateLoss();
             }
@@ -75,6 +160,10 @@ public class Drug_information extends AppCompatActivity {
         btn_Drug_detail.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                drugListView.setVisibility(View.GONE);
+                Bundle bundle = new Bundle();
+                bundle.putString("drugName",Drug_name2);
+                Frag_Drug_detail.setArguments(bundle);
                 transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_detail).commitAllowingStateLoss();
             }
@@ -83,6 +172,10 @@ public class Drug_information extends AppCompatActivity {
         btn_Drug_side_effect.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                drugListView.setVisibility(View.GONE);
+                Bundle bundle = new Bundle();
+                bundle.putString("drugName",Drug_name2);
+                Frag_Drug_side_effect.setArguments(bundle);
                 transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_side_effect).commitAllowingStateLoss();
             }
@@ -91,11 +184,217 @@ public class Drug_information extends AppCompatActivity {
         btn_Drug_precaution.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                drugListView.setVisibility(View.GONE);
+                Bundle bundle = new Bundle();
+                bundle.putString("drugName",Drug_name2);
+                Frag_Drug_precaution.setArguments(bundle);
                 transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_precaution).commitAllowingStateLoss();
             }
         });
 
 
+
+
+        new BackgroudTask().execute();
+
     }
+
+
+    class BackgroudTaskInfo extends AsyncTask<Void, Void, String>{
+
+
+        String target;
+        @Override
+        protected void onPreExecute() {
+            try {
+                target = "http://whoyak.dothome.co.kr/DrugInfo.php?drugName="+ URLEncoder.encode(Drug_name2,"UTF-8");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        @Override
+        protected String doInBackground(Void... voids) {
+
+            try {
+                URL url = new URL(target);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String temp;
+                StringBuilder stringBuilder = new StringBuilder();
+                while((temp = bufferedReader.readLine()) != null)
+                {
+                    stringBuilder.append(temp + "\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        public void onProgressUpdate(Void... values){
+            super.onProgressUpdate();
+        }
+
+        @Override
+        public void onPostExecute(String result){
+            try{
+                JSONObject jsonObject = new JSONObject(result);
+                JSONArray jsonArray = jsonObject.getJSONArray("response");
+                int count=0;
+                while(count < jsonArray.length()){
+                    JSONObject object = jsonArray.getJSONObject(count);
+                    drugInfo2 = object.getString("drugInfo");
+                    drug2 = new Drug(drugInfo2);
+                    drugList.clear();
+                    drugList.add(drug2);
+                    Adapter.notifyDataSetChanged();
+                    Toast.makeText(getApplicationContext(),drugInfo2,Toast.LENGTH_SHORT).show();
+                    count++;
+                    return;
+                }
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+
+    }
+
+    class BackgroudTaskSerch extends AsyncTask<Void, Void, String>{
+
+
+        String target;
+        @Override
+        protected void onPreExecute() {
+            try {
+                target = "http://whoyak.dothome.co.kr/DrugSearch.php?drugName="+ URLEncoder.encode(Drug_Search_name,"UTF-8");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        @Override
+        protected String doInBackground(Void... voids) {
+
+            try {
+                URL url = new URL(target);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String temp;
+                StringBuilder stringBuilder = new StringBuilder();
+                while((temp = bufferedReader.readLine()) != null)
+                {
+                    stringBuilder.append(temp + "\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        public void onProgressUpdate(Void... values){
+            super.onProgressUpdate();
+        }
+
+        @Override
+        public void onPostExecute(String result){
+            try{
+                JSONObject jsonObject = new JSONObject(result);
+                JSONArray jsonArray = jsonObject.getJSONArray("response");
+                int count=0;
+                String drugName;
+                while(count < jsonArray.length()){
+                    JSONObject object = jsonArray.getJSONObject(count);
+                    drugName = object.getString("drugName");
+                    Drug drug = new Drug(drugName);
+                    drugList.clear();
+                    drugList.add(drug);
+                    Adapter.notifyDataSetChanged();
+                    count++;
+                }
+                if(count==0){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Drug_information.this);
+                    dialog = builder.setMessage("조회된 내용이 없습니다.")
+                            .setNegativeButton("확인", null)
+                            .create();
+                    dialog.show();
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    class BackgroudTask extends AsyncTask<Void, Void, String>{
+
+
+        String target;
+
+        @Override
+        protected void onPreExecute() {
+            target = "http://whoyak.dothome.co.kr/DrugList.php";
+        }
+        @Override
+        protected String doInBackground(Void... voids) {
+
+            try {
+                URL url = new URL(target);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String temp;
+                StringBuilder stringBuilder = new StringBuilder();
+                while((temp = bufferedReader.readLine()) != null)
+                {
+                    stringBuilder.append(temp + "\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        public void onProgressUpdate(Void... values){
+            super.onProgressUpdate();
+        }
+
+        @Override
+        public void onPostExecute(String result){
+            try{
+                JSONObject jsonObject = new JSONObject(result);
+                JSONArray jsonArray = jsonObject.getJSONArray("response");
+                int count=0;
+                String drugName;
+                while(count < jsonArray.length()){
+                    JSONObject object = jsonArray.getJSONObject(count);
+                    drugName = object.getString("drugName");
+                    Drug drug = new Drug(drugName);
+                    drugList.add(drug);
+                    Adapter.notifyDataSetChanged();
+                    count++;
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

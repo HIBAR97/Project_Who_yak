@@ -12,10 +12,10 @@
 
     <EditText
         android:id="@+id/Frag_info_text"
-        android:layout_below="@+id/Frag_info_iv"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/Frag_info_iv"
         android:text="@string/edittext_info"
-        android:textSize="50dp"/>
+        android:textSize="50dp" />
 
 </RelativeLayout>
