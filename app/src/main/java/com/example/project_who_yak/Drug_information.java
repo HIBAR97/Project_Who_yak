@@ -96,9 +96,8 @@ public class Drug_information extends AppCompatActivity {
 
 
         layout_drug_btn.setVisibility(View.GONE);
+
         //btn Listener
-
-
         drugListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -162,6 +161,10 @@ public class Drug_information extends AppCompatActivity {
         btn_Drug_info.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+
+                //버튼 눌러도 정보 보여줄 수 있도록 세팅
+                new BackgroudTaskInfo().execute();
+
                 Bundle bundle = new Bundle();
                 bundle.putString("drugName",Drug_name2);
                 Frag_Drug_info.setArguments(bundle);
