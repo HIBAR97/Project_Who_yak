@@ -1,51 +1,49 @@
 package com.example.project_who_yak;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.List;
 
 
 public class Fragment_Drug_info extends Fragment {
 
-    private EditText edt_druginfo;
+    public EditText edt_druginfo;
     private View view;
     private String DrugName_info3;
     private List<Drug> drugList;
-    private String drugInfo;
+
 
     @Nullable
     //Connect xml file using container
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //return inflater.inflate(R.layout.fragment_drug_info, container, false);
                //아이디값을 가져오기위한 bundle
         view = inflater.inflate(R.layout.fragment_drug_info, container, false);
-        Bundle bundle = getArguments();
-        drugInfo = bundle.getString("drugInfo");
+
         edt_druginfo = view.findViewById(R.id.Frag_info_text);
-        edt_druginfo.setText(drugInfo);
+
+        if (this.getArguments() != null){
+            String drugInfo = getArguments().getString("drugInfo");
+            edt_druginfo.setText(drugInfo);
+        }
+
+
+
+//        Bundle bundle = getArguments();
+//        drugInfo = bundle.getString("drugInfo");
+//        edt_druginfo = view.findViewById(R.id.Frag_info_text);
+//        edt_druginfo.setText(drugInfo);
+
         return view;
+        //return inflater.inflate(R.layout.fragment_drug_info,null);
 
     }
 

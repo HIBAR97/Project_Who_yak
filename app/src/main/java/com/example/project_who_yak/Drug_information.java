@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -21,7 +22,6 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -45,7 +45,7 @@ public class Drug_information extends AppCompatActivity {
     public List<Drug> drugList;
     public String Drug_name2;
     public String Drug_Search_name;
-    public String drugInfo2;
+    public String drugInfo;
     public Drug drug2;
     // When activity started
     @Override
@@ -107,11 +107,25 @@ public class Drug_information extends AppCompatActivity {
                 Drug_name2 = drugList.get(i).getDrugname().toString();
                 //Toast.makeText(getApplicationContext(),Drug_name2,Toast.LENGTH_SHORT).show();
                 new BackgroudTaskInfo().execute();
-                Bundle bundle = new Bundle();
-                bundle.putString("drugInfo",drugInfo2);
-                Frag_Drug_info.setArguments(bundle);
-                transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_info).commitAllowingStateLoss();
+
+//                Fragment fragment = new Fragment_Drug_info();
+//
+//                Bundle bundle = new Bundle();
+//                bundle.putString("drugName",Drug_name2);
+//
+//                bundle.putString("drugInfo",drugInfo);
+//                fragment.setArguments(bundle);
+//                //Frag_Drug_info.setArguments(bundle);
+//
+//                transaction = fragmentManager.beginTransaction();
+//                transaction.replace(R.id.FrameLayout_Drug, fragment).commitAllowingStateLoss();
+
+
+//                transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_info);
+//               transaction.commit();
+//                Frag_Drug_info.setArguments(bundle);
+//                transaction = fragmentManager.beginTransaction();
+//                transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_info).commitAllowingStateLoss();
 
             }
         });
@@ -148,7 +162,6 @@ public class Drug_information extends AppCompatActivity {
         btn_Drug_info.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                drugListView.setVisibility(View.GONE);
                 Bundle bundle = new Bundle();
                 bundle.putString("drugName",Drug_name2);
                 Frag_Drug_info.setArguments(bundle);
@@ -203,7 +216,6 @@ public class Drug_information extends AppCompatActivity {
 
     class BackgroudTaskInfo extends AsyncTask<Void, Void, String>{
 
-
         String target;
         @Override
         protected void onPreExecute() {
@@ -250,13 +262,24 @@ public class Drug_information extends AppCompatActivity {
                 int count=0;
                 while(count < jsonArray.length()){
                     JSONObject object = jsonArray.getJSONObject(count);
-                    drugInfo2 = object.getString("drugInfo");
-                    drug2 = new Drug(drugInfo2);
+                    drugInfo = object.getString("drugInfo");
+                    drug2 = new Drug(drugInfo);
                     drugList.clear();
                     drugList.add(drug2);
                     Adapter.notifyDataSetChanged();
-                    Toast.makeText(getApplicationContext(),drugInfo2,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),drugInfo,Toast.LENGTH_SHORT).show();
                     count++;
+                    Fragment fragment = new Fragment_Drug_info();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("drugName",Drug_name2);
+
+                    bundle.putString("drugInfo",drugInfo);
+                   fragment.setArguments(bundle);
+                    //Frag_Drug_info.setArguments(bundle);
+
+                    transaction = fragmentManager.beginTransaction();
+                    transaction.replace(R.id.FrameLayout_Drug, fragment).commitAllowingStateLoss();
                     return;
                 }
 
@@ -269,7 +292,6 @@ public class Drug_information extends AppCompatActivity {
     }
 
     class BackgroudTaskSerch extends AsyncTask<Void, Void, String>{
-
 
         String target;
         @Override
