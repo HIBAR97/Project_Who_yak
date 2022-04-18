@@ -47,10 +47,16 @@ public class activity_Camara_scan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camara_scan);
 
+        Button btnvoice;
+        Button btnhome;
         Button btnPic;
-        Button btnBack;
+        Button btnOcr;
+        Button btnResult;
 
-        btnBack = (Button) findViewById(R.id.btnBack);
+        btnvoice = (Button) findViewById(R.id.btnvoice);
+        btnhome = (Button) findViewById(R.id.btnhome);
+        btnResult = (Button) findViewById(R.id.btnResult);
+        btnOcr = (Button) findViewById(R.id.btnOCR);
         btnPic = (Button) findViewById(R.id.btnPic);
 
         //OCR Textview
@@ -60,13 +66,14 @@ public class activity_Camara_scan extends AppCompatActivity {
         datapath = getFilesDir() + "/tesseract/"; // 언어파일 경로
         //checkFile(new File(datapath + "/tessdata/kor.traineddata")); // 트레이닝 데이터 확인
         checkFile(new File(datapath + "tessdata/"),"kor");
-        String lang = "kor"; // 언어 세팅
+        checkFile(new File(datapath + "tessdata/"),"eng");
+        String lang = "kor+eng"; // 언어 세팅
 
         //OCR 세팅
         mTess = new TessBaseAPI();
         mTess.init(datapath, lang);
 
-        //권한 확인
+        // 카메라 권한 확인
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if(checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
             {
@@ -75,6 +82,15 @@ public class activity_Camara_scan extends AppCompatActivity {
                 Log.d(TAG, "권한 설정 요청");
                 ActivityCompat.requestPermissions(activity_Camara_scan.this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1); }
         }
+
+        //---------리스너 파트-------------//
+        //홈 버튼 리스너
+        btnhome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         //촬영 버튼 리스너
         btnPic.setOnClickListener(new View.OnClickListener() {
@@ -89,12 +105,10 @@ public class activity_Camara_scan extends AppCompatActivity {
             }
         });
 
-        //뒤로가기 버튼 리스너
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        //OCR 버튼 리스너
+        btnOcr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Main으로 이동
-                //finish();
                 BitmapDrawable d = (BitmapDrawable)((ImageView) findViewById(R.id.ivPic)).getDrawable();
                 image = d.getBitmap();
 
@@ -105,10 +119,18 @@ public class activity_Camara_scan extends AppCompatActivity {
                 OCRTextview.setText(OCResult);
             }
         });
+
+        //뒤로가기 버튼 리스너
+        btnResult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
-
-    // 권한 요청
+    //---------권한, 함수 파트-------------//
+    // 카메라 권한 요청
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -139,36 +161,36 @@ public class activity_Camara_scan extends AppCompatActivity {
     }
 
 
-//장치에 파일 복사
-private void copyFiles(String lang) {
-    try{
-        //파일이 있을 위치
-        String filepath = datapath + "/tessdata/"+lang+".traineddata";
+    //장치에 파일 복사
+    private void copyFiles(String lang) {
+        try{
+            //파일이 있을 위치
+            String filepath = datapath + "/tessdata/"+lang+".traineddata";
 
-        //AssetManager에 액세스
-        AssetManager assetManager = getAssets();
+            //AssetManager에 액세스
+            AssetManager assetManager = getAssets();
 
-        //읽기/쓰기를 위한 열린 바이트 스트림
-        InputStream instream = assetManager.open("tessdata/"+lang+".traineddata");
-        OutputStream outstream = new FileOutputStream(filepath);
+            //읽기/쓰기를 위한 열린 바이트 스트림
+            InputStream instream = assetManager.open("tessdata/"+lang+".traineddata");
+            OutputStream outstream = new FileOutputStream(filepath);
 
-        //filepath에 의해 지정된 위치에 파일 복사
-        byte[] buffer = new byte[1024];
-        int read;
+            //filepath에 의해 지정된 위치에 파일 복사
+            byte[] buffer = new byte[1024];
+            int read;
 
-        while ((read = instream.read(buffer)) != -1) {
-            outstream.write(buffer, 0, read);
+            while ((read = instream.read(buffer)) != -1) {
+                outstream.write(buffer, 0, read);
+            }
+            outstream.flush();
+            outstream.close();
+            instream.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        outstream.flush();
-        outstream.close();
-        instream.close();
-
-    } catch (FileNotFoundException e) {
-        e.printStackTrace();
-    } catch (IOException e) {
-        e.printStackTrace();
     }
-}
 
     //check file on the device
     private void checkFile(File dir, String lang) {

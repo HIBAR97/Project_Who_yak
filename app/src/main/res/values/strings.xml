@@ -47,11 +47,12 @@
     <string name="edittext_precaution">Fragment D</string>
 
 <!--activity_camara_scan xml-->
+    <string name="tv_Scan">스캔</string>
     <string name="text_camara">촬영간 유의사항 \n 1. 사각 테두리 내 서류 전체가 들어오도록 촬영</string>
     <string name="btn_takePic">사진 촬영</string>
-    <string name="btn_back">뒤로 가기</string>
+    <string name="btn_OCR">OCR</string>
 
-<!--    activity_bltboard xml-->
+    <!--    activity_bltboard xml-->
     <string name="tv_bltboard">게시판</string>
     <string name="btn_bltboard">게시판</string>
     <string name="btn_rmb">작성글</string>
@@ -146,5 +147,7 @@
         <item>11월</item>
         <item>12월</item>
     </string-array>
+    <string name="btn_OCRresult">검색</string>
+    <string name="btn_back">뒤로가기</string>
 
 </resources>

@@ -85,4 +85,7 @@
     <string name="tv_user">User</string>
     <string name="btn_logOut">Logout</string>
     <string name="btn_withdrawal">User Withdrawal</string>
+    <string name="btn_OCR">OCR</string>
+    <string name="tv_Scan">SCAN</string>
+    <string name="btn_OCRresult">Result</string>
 </resources>
