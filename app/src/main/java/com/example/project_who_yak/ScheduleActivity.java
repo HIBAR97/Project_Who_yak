@@ -1,12 +1,16 @@
 package com.example.project_who_yak;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,9 +25,11 @@ import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
 import com.prolificinteractive.materialcalendarview.format.TitleFormatter;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -34,8 +40,8 @@ public class ScheduleActivity extends AppCompatActivity {
 
     Button btnvoice;
     Button btnhome;
-    ListView lvCal;
-    ListView lvCal2;
+    TextView tv_today;
+    EditText contextEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +50,20 @@ public class ScheduleActivity extends AppCompatActivity {
 
         btnvoice = findViewById(R.id.btnvoice);
         btnhome = findViewById(R.id.btnhome);
+        tv_today = findViewById(R.id.tv_today);
+        contextEditText = findViewById(R.id.contextEditText);
 
         calendarView = findViewById(R.id.calendarView);
+        calendarView.setSelectedDate(CalendarDay.today());
+        //달력에 점 나타내기
+        calendarView.addDecorator(new EventDecorator(Color.RED, calendarView.getSelectedDates()));
 
+        //홈으로 가는 버튼
         btnhome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
-//                setContentView(R.layout.activity_home);
+                setContentView(R.layout.activity_home);
             }
         });
 
@@ -128,7 +140,7 @@ public class ScheduleActivity extends AppCompatActivity {
 //            view.addSpan(new StyleSpan(Typeface.BOLD));   // 달력 안의 모든 숫자들이 볼드 처리됨
         }
     }
-
 }
+
 
 

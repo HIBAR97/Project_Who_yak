@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:theme="@style/CalenderViewCustom"
                 app:mcv_dateTextAppearance="@style/CalenderViewDateCustomText"
-                app:mcv_weekDayTextAppearance="@style/CalenderViewWeekCustomText"/>
+                app:mcv_weekDayTextAppearance="@style/CalenderViewWeekCustomText" />
 
         </LinearLayout>
 
@@ -80,28 +80,43 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="일정"
                 android:fontFamily="@font/yak_air"
+                android:text="일정"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tv_today"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_today"
                 android:fontFamily="@font/yak_air"
-                android:textSize="20sp" />
+                android:text="@string/tv_today"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textSize="20sp"
+                app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
-            <ListView
-                android:id="@+id/lvCal"
-                android:layout_width="match_parent"
-                android:layout_height="150dp" />
+            <EditText
+                android:id="@+id/contextEditText"
+                android:layout_width="0dp"
+                android:layout_height="115dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:ems="10"
+                android:hint="내용을 입력하세요."
+                android:inputType="textMultiLine"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/diaryTextView" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_upComing"
                 android:fontFamily="@font/yak_air"
+                android:text="@string/tv_upComing"
                 android:textSize="20sp" />
 
             <ListView
