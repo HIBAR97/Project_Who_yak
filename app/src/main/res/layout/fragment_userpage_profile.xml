@@ -42,6 +42,7 @@
             android:textSize="20sp" />
 
         <EditText
+            android:id="@+id/frag_Edittext_Password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edittext_Password"
@@ -58,6 +59,7 @@
             android:textSize="20sp" />
 
         <EditText
+            android:id="@+id/frag_Edittext_fixPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edittext_fixPassword"
@@ -73,10 +75,11 @@
             android:textSize="17sp" />
 
         <EditText
+            android:id="@+id/frag_Edittext_reFixPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/edittext_refixPassword"
             android:fontFamily="@font/yak_air"
+            android:hint="@string/edittext_refixPassword"
             android:inputType="textPassword"
             android:textSize="15sp" />
 
@@ -88,6 +91,7 @@
             android:textSize="20sp" />
 
         <EditText
+            android:id="@+id/frag_Edittext_Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/yak_air"
@@ -117,6 +121,7 @@
             android:textSize="20sp"/>
 
         <EditText
+            android:id="@+id/frag_Edittext_Phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/yak_air"
@@ -132,6 +137,7 @@
             android:textSize="25sp" />
 
         <DatePicker
+            android:id="@+id/frag_DatePick"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:layout_gravity="center"
@@ -170,7 +176,7 @@
 
 
         <Button
-            android:id="@+id/btnDel"
+            android:id="@+id/btnFix"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
