@@ -7,17 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Userpage_profile_Request extends StringRequest {
-    final static private String URL ="http://whoyak.dothome.co.kr/UserRegister.php";
+    final static private String URL ="http://whoyak.dothome.co.kr/Userpage_profile_Request.php";
     private Map<String, String> parametrs;
-
-
-    private String Pw;
-    private String rPw;
-    private String fPw;
-    private String Name;
-    private String Phone;
-    private String Burth;
-    private String Sex;
 
     public Userpage_profile_Request(String Pw, String fPw, String Name, String Phone, String Burth, String Sex, Response.Listener<String> listener){
         super(Method.POST, URL, listener, null);
