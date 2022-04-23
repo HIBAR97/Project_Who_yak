@@ -7,10 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SignUp_Request extends StringRequest {
-    final static private String URL ="http://whoyak.dothome.co.kr/UserRegister.php";
+    final static private String URL ="http://whoyak.dothome.co.kr/UserRegister3.php";
     private Map<String, String> parametrs;
 
-    public SignUp_Request(String userID, String userPassword, String userName, String userEmail, String userCID, Response.Listener<String> listener){
+    public SignUp_Request(String userID, String userPassword, String userName, String userEmail, String userCID,
+                          String userGender,String userYear, String userMonth, String userDay, Response.Listener<String> listener){
         super(Method.POST, URL, listener, null);
         parametrs = new HashMap<>();
         parametrs.put("userID",userID);
@@ -18,6 +19,10 @@ public class SignUp_Request extends StringRequest {
         parametrs.put("userName",userName);
         parametrs.put("userEmail",userEmail);
         parametrs.put("userCID",userCID);
+        parametrs.put("userGender",userGender);
+        parametrs.put("userYear",userYear);
+        parametrs.put("userMonth",userMonth);
+        parametrs.put("userDay",userDay);
     }
 
     @Override

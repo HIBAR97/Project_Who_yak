@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -24,8 +27,12 @@ public class SignUp_activity extends AppCompatActivity {
     private String userName;
     private String userEmail;
     private String userCID;
+    private String userDate;
+    private String userGender2;
     private AlertDialog dialog;
     private boolean validate = false;
+    public static String yy,mm,dd;
+    public static boolean check=false;
 
 
 
@@ -41,7 +48,10 @@ public class SignUp_activity extends AppCompatActivity {
         EditText nameText = (EditText) findViewById(R.id.Edittext_Signup_UserName);
         EditText emailText = (EditText) findViewById(R.id.Edittext_Signup_Email);
         EditText cidText = (EditText) findViewById(R.id.Edittext_Signup_CUser);
-
+        DatePicker datePicker = (DatePicker) findViewById(R.id.DatePicker_Sing_Up);
+        RadioGroup genderGroup = (RadioGroup) findViewById(R.id.Sign_Up_radiogroup_sex);
+        int genderGroupID = genderGroup.getCheckedRadioButtonId();
+        userGender2 = ((RadioButton) findViewById(genderGroupID)).getText().toString();
 
         //btn
         Button btnLogin_ID;
@@ -49,6 +59,25 @@ public class SignUp_activity extends AppCompatActivity {
 
         btnLogin_ID = (Button)findViewById(R.id.Login_Button_ID);
         btncheck = (Button)findViewById(R.id.Btn_Id_check);
+
+
+
+        genderGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton genderButton = (RadioButton) findViewById(i);
+                userGender2 = genderButton.getText().toString();
+            }
+        });
+        datePicker.init(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(), new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                yy = Integer.toString(year);
+                mm = Integer.toString(monthOfYear);
+                dd = Integer.toString(dayOfMonth);
+                check = true;
+            }
+        });
 
 
 
@@ -123,16 +152,10 @@ public class SignUp_activity extends AppCompatActivity {
                 String userName = nameText.getText().toString();
                 String userEmail = emailText.getText().toString();
                 String userCID = cidText.getText().toString();
-
-                if(!userrePassword.equals(userPassword))
-                {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(SignUp_activity.this);
-                    dialog = builder.setMessage("비밀번호 와 비밀번호 확인이 다릅니다.")
-                            .setNegativeButton("확인",null)
-                            .create();
-                    dialog.show();
-                    return;
-                }
+                String userYear = yy;
+                String userMonth = mm;
+                String userDay = dd;
+                String userGender = userGender2;
                 if(!validate)
                 {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignUp_activity.this);
@@ -147,6 +170,15 @@ public class SignUp_activity extends AppCompatActivity {
                 {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignUp_activity.this);
                     dialog = builder.setMessage("빈 칸 없이 입력해주세요.")
+                            .setNegativeButton("확인",null)
+                            .create();
+                    dialog.show();
+                    return;
+                }
+                if(!userrePassword.equals(userPassword))
+                {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(SignUp_activity.this);
+                    dialog = builder.setMessage("비밀번호 와 비밀번호 확인이 다릅니다.")
                             .setNegativeButton("확인",null)
                             .create();
                     dialog.show();
@@ -179,7 +211,8 @@ public class SignUp_activity extends AppCompatActivity {
 
                     }
                 };
-                SignUp_Request singUp_request = new SignUp_Request(userID, userPassword, userName, userEmail, userCID, responseListener);
+                SignUp_Request singUp_request = new SignUp_Request(userID, userPassword, userName, userEmail, userCID, userGender,
+                        userYear, userMonth, userDay, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(SignUp_activity.this);
                 queue.add(singUp_request);
 
