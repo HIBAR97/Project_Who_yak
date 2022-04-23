@@ -33,10 +33,10 @@ public class Drug_information extends AppCompatActivity {
     //Variable declaration FragmentManager, Fragment page
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
-    private Fragment_Drug_info Frag_Drug_info;
-    private Fragment_Drug_detail Frag_Drug_detail;
-    private Fragment_Drug_side_effect Frag_Drug_side_effect;
-    private Fragment_Drug_precaution Frag_Drug_precaution;
+    //private Fragment_Drug_info Frag_Drug_info;
+    //private Fragment_Drug_detail Frag_Drug_detail;
+    //private Fragment_Drug_side_effect Frag_Drug_side_effect;
+    //private Fragment_Drug_precaution Frag_Drug_precaution;
 
     private String Drug_name;
     private AlertDialog dialog;
@@ -46,6 +46,9 @@ public class Drug_information extends AppCompatActivity {
     public String Drug_name2;
     public String Drug_Search_name;
     public String drugInfo;
+    public String drugDetail;
+    public String drugSideEffect;
+    public String drugPrecaution;
     public Drug drug2;
     // When activity started
     @Override
@@ -84,11 +87,12 @@ public class Drug_information extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
 
         //Fragment page variable
+        /*
         Frag_Drug_info = new Fragment_Drug_info();
         Frag_Drug_detail = new Fragment_Drug_detail();
         Frag_Drug_side_effect = new Fragment_Drug_side_effect();
         Frag_Drug_precaution = new Fragment_Drug_precaution();
-
+        */
         //Default fragment
         //transaction = fragmentManager.beginTransaction();
         //transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_info).commitAllowingStateLoss();
@@ -137,7 +141,6 @@ public class Drug_information extends AppCompatActivity {
             }
         });
 
-
         btn_Drug_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,8 +159,6 @@ public class Drug_information extends AppCompatActivity {
             }
         });
 
-
-
         btn_Drug_info.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -165,51 +166,52 @@ public class Drug_information extends AppCompatActivity {
                 //버튼 눌러도 정보 보여줄 수 있도록 세팅
                 new BackgroudTaskInfo().execute();
 
-                Bundle bundle = new Bundle();
-                bundle.putString("drugName",Drug_name2);
-                Frag_Drug_info.setArguments(bundle);
-                transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_info).commitAllowingStateLoss();
+                //Bundle bundle = new Bundle();
+               // bundle.putString("drugName",Drug_name2);
+                //Frag_Drug_info.setArguments(bundle);
+                //transaction = fragmentManager.beginTransaction();
+                //transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_info).commitAllowingStateLoss();
             }
         });
 
         btn_Drug_detail.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                drugListView.setVisibility(View.GONE);
+
+                new BackgroudTaskDetail().execute();
+                /*
                 Bundle bundle = new Bundle();
                 bundle.putString("drugName",Drug_name2);
                 Frag_Drug_detail.setArguments(bundle);
                 transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_detail).commitAllowingStateLoss();
+                transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_detail).commitAllowingStateLoss();*/
             }
         });
 
         btn_Drug_side_effect.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                drugListView.setVisibility(View.GONE);
-                Bundle bundle = new Bundle();
-                bundle.putString("drugName",Drug_name2);
-                Frag_Drug_side_effect.setArguments(bundle);
-                transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_side_effect).commitAllowingStateLoss();
+                new BackgroudTaskSideEffect().execute();
+                //Bundle bundle = new Bundle();
+                //bundle.putString("drugName",Drug_name2);
+                //Frag_Drug_side_effect.setArguments(bundle);
+                //transaction = fragmentManager.beginTransaction();
+                //transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_side_effect).commitAllowingStateLoss();
             }
         });
 
         btn_Drug_precaution.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                drugListView.setVisibility(View.GONE);
+                new BackgroudTaskPrecaution().execute();
+                /*
                 Bundle bundle = new Bundle();
                 bundle.putString("drugName",Drug_name2);
                 Frag_Drug_precaution.setArguments(bundle);
                 transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_precaution).commitAllowingStateLoss();
+                transaction.replace(R.id.FrameLayout_Drug, Frag_Drug_precaution).commitAllowingStateLoss();*/
             }
         });
-
-
 
 
         new BackgroudTask().execute();
@@ -266,19 +268,21 @@ public class Drug_information extends AppCompatActivity {
                 while(count < jsonArray.length()){
                     JSONObject object = jsonArray.getJSONObject(count);
                     drugInfo = object.getString("drugInfo");
+                    drugDetail = "drugDetail";
                     drug2 = new Drug(drugInfo);
                     drugList.clear();
                     drugList.add(drug2);
                     Adapter.notifyDataSetChanged();
-                    Toast.makeText(getApplicationContext(),drugInfo,Toast.LENGTH_SHORT).show();
+                    //확인용
+                    //Toast.makeText(getApplicationContext(),drugInfo,Toast.LENGTH_SHORT).show();
                     count++;
                     Fragment fragment = new Fragment_Drug_info();
 
                     Bundle bundle = new Bundle();
                     bundle.putString("drugName",Drug_name2);
-
+                    bundle.putString("drugDetail",drugDetail);
                     bundle.putString("drugInfo",drugInfo);
-                   fragment.setArguments(bundle);
+                    fragment.setArguments(bundle);
                     //Frag_Drug_info.setArguments(bundle);
 
                     transaction = fragmentManager.beginTransaction();
@@ -293,6 +297,234 @@ public class Drug_information extends AppCompatActivity {
         }
 
     }
+
+
+    class BackgroudTaskDetail extends AsyncTask<Void, Void, String>{
+
+        String target;
+        @Override
+        protected void onPreExecute() {
+            try {
+                target = "http://whoyak.dothome.co.kr/DrugDetail.php?drugName="+ URLEncoder.encode(Drug_name2,"UTF-8");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        @Override
+        protected String doInBackground(Void... voids) {
+
+            try {
+                URL url = new URL(target);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String temp;
+                StringBuilder stringBuilder = new StringBuilder();
+                while((temp = bufferedReader.readLine()) != null)
+                {
+                    stringBuilder.append(temp + "\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        public void onProgressUpdate(Void... values){
+            super.onProgressUpdate();
+        }
+
+        @Override
+        public void onPostExecute(String result){
+            try{
+                JSONObject jsonObject = new JSONObject(result);
+                JSONArray jsonArray = jsonObject.getJSONArray("response");
+                int count=0;
+                while(count < jsonArray.length()){
+                    JSONObject object = jsonArray.getJSONObject(count);
+                    drugDetail = object.getString("drugDetail");
+                    drug2 = new Drug(drugDetail);
+                    drugList.clear();
+                    drugList.add(drug2);
+                    Adapter.notifyDataSetChanged();
+                    //확인용
+                    //Toast.makeText(getApplicationContext(),drugInfo,Toast.LENGTH_SHORT).show();
+                    count++;
+                    Fragment fragment_detail = new Fragment_Drug_detail();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("drugDetail",drugDetail);
+                    fragment_detail.setArguments(bundle);
+                    //Frag_Drug_info.setArguments(bundle);
+
+                    transaction = fragmentManager.beginTransaction();
+                    transaction.replace(R.id.FrameLayout_Drug, fragment_detail).commitAllowingStateLoss();
+                    return;
+                }
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+
+    }
+
+
+    class BackgroudTaskSideEffect extends AsyncTask<Void, Void, String>{
+
+        String target;
+        @Override
+        protected void onPreExecute() {
+            try {
+                target = "http://whoyak.dothome.co.kr/DrugSideEffect.php?drugName="+ URLEncoder.encode(Drug_name2,"UTF-8");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        @Override
+        protected String doInBackground(Void... voids) {
+
+            try {
+                URL url = new URL(target);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String temp;
+                StringBuilder stringBuilder = new StringBuilder();
+                while((temp = bufferedReader.readLine()) != null)
+                {
+                    stringBuilder.append(temp + "\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        public void onProgressUpdate(Void... values){
+            super.onProgressUpdate();
+        }
+
+        @Override
+        public void onPostExecute(String result){
+            try{
+                JSONObject jsonObject = new JSONObject(result);
+                JSONArray jsonArray = jsonObject.getJSONArray("response");
+                int count=0;
+                while(count < jsonArray.length()){
+                    JSONObject object = jsonArray.getJSONObject(count);
+                    drugSideEffect = object.getString("drugSideEffect");
+                    //drug2 = new Drug(drugSideEffect);
+                    //drugList.clear();
+                    //drugList.add(drug2);
+                    //Adapter.notifyDataSetChanged();
+                    //확인용
+                    //Toast.makeText(getApplicationContext(),drugInfo,Toast.LENGTH_SHORT).show();
+                    count++;
+                    Fragment fragment_side_effect = new Fragment_Drug_side_effect();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("drugSideEffect",drugSideEffect);
+                    fragment_side_effect.setArguments(bundle);
+                    //Frag_Drug_info.setArguments(bundle);
+                    transaction = fragmentManager.beginTransaction();
+                    transaction.replace(R.id.FrameLayout_Drug, fragment_side_effect).commitAllowingStateLoss();
+                    return;
+                }
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+
+    }
+
+
+    class BackgroudTaskPrecaution extends AsyncTask<Void, Void, String>{
+
+        String target;
+        @Override
+        protected void onPreExecute() {
+            try {
+                target = "http://whoyak.dothome.co.kr/DrugPrecaution.php?drugName="+ URLEncoder.encode(Drug_name2,"UTF-8");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        @Override
+        protected String doInBackground(Void... voids) {
+
+            try {
+                URL url = new URL(target);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String temp;
+                StringBuilder stringBuilder = new StringBuilder();
+                while((temp = bufferedReader.readLine()) != null)
+                {
+                    stringBuilder.append(temp + "\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        public void onProgressUpdate(Void... values){
+            super.onProgressUpdate();
+        }
+
+        @Override
+        public void onPostExecute(String result){
+            try{
+                JSONObject jsonObject = new JSONObject(result);
+                JSONArray jsonArray = jsonObject.getJSONArray("response");
+                int count=0;
+                while(count < jsonArray.length()){
+                    JSONObject object = jsonArray.getJSONObject(count);
+                    drugPrecaution = object.getString("drugPrecaution");
+                    //drug2 = new Drug(drugSideEffect);
+                    //drugList.clear();
+                    //drugList.add(drug2);
+                    //Adapter.notifyDataSetChanged();
+                    //확인용
+                    //Toast.makeText(getApplicationContext(),drugInfo,Toast.LENGTH_SHORT).show();
+                    count++;
+                    Fragment fragment_precaution = new Fragment_Drug_precaution();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("drugPrecaution",drugPrecaution);
+                    fragment_precaution.setArguments(bundle);
+                    //Frag_Drug_info.setArguments(bundle);
+                    transaction = fragmentManager.beginTransaction();
+                    transaction.replace(R.id.FrameLayout_Drug, fragment_precaution).commitAllowingStateLoss();
+                    return;
+                }
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+
+    }
+
 
     class BackgroudTaskSerch extends AsyncTask<Void, Void, String>{
 
@@ -362,6 +594,7 @@ public class Drug_information extends AppCompatActivity {
             }
         }
     }
+
 
     class BackgroudTask extends AsyncTask<Void, Void, String>{
 
