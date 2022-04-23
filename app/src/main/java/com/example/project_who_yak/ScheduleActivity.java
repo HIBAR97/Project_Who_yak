@@ -25,7 +25,6 @@ import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
 import com.prolificinteractive.materialcalendarview.format.TitleFormatter;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Calendar;
@@ -57,6 +56,15 @@ public class ScheduleActivity extends AppCompatActivity {
         calendarView.setSelectedDate(CalendarDay.today());
         //달력에 점 나타내기
         calendarView.addDecorator(new EventDecorator(Color.RED, calendarView.getSelectedDates()));
+
+        //달력에 날짜 보이기
+        //calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            //@Override
+            //public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                //tv_today.setText(String.format("%d / %d / %d",year,month+1,dayOfMonth));
+                //contextEditText.setText("");
+            //}
+        //}); <-오류나는 부분
 
         //홈으로 가는 버튼
         btnhome.setOnClickListener(new View.OnClickListener() {
