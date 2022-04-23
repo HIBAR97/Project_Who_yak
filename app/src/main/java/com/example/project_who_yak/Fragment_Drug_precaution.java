@@ -11,17 +11,18 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class Fragment_Drug_precaution extends Fragment {
-    private EditText drugprecaution;
+    private EditText edt_drugprecaution;
     private View view;
     @Nullable
     //Connect xml file using container
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_drug_precaution, container, false);
-        Bundle bundle = getArguments();
-        String DrugName = bundle.getString("drugName");
-        drugprecaution = view.findViewById(R.id.Frag_precaution_text);
-        drugprecaution.setText(DrugName);
+        edt_drugprecaution = view.findViewById(R.id.Frag_precaution_text);
+        if (this.getArguments() != null){
+            String drugPrecaution = getArguments().getString("drugPrecaution");
+            edt_drugprecaution.setText(drugPrecaution);
+        }
         return view;
     }
 }

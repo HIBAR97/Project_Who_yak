@@ -35,14 +35,14 @@ public class Fragment_Drug_info extends Fragment {
             edt_druginfo.setText(drugInfo);
         }
 
-
+        return view;
 
 //        Bundle bundle = getArguments();
 //        drugInfo = bundle.getString("drugInfo");
 //        edt_druginfo = view.findViewById(R.id.Frag_info_text);
 //        edt_druginfo.setText(drugInfo);
 
-        return view;
+
         //return inflater.inflate(R.layout.fragment_drug_info,null);
 
     }

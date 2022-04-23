@@ -178,6 +178,7 @@
                 android:textSize="20sp" />
 
             <DatePicker
+                android:id="@+id/DatePicker_Sing_Up"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
@@ -198,23 +199,25 @@
                 android:textSize="20sp" />
 
             <RadioGroup
-                android:id="@+id/radiogroup_sex"
+                android:id="@+id/Sign_Up_radiogroup_sex"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/radiobutton_male"
+                    android:id="@+id/Sign_Up_radiobutton_male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/rdbtn_male" />
+                    android:text="@string/rdbtn_male"
+                    android:checked="true"/>
 
                 <RadioButton
-                    android:id="@+id/radiobutton_female"
+                    android:id="@+id/Sign_Up_radiobutton_female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/rdbtn_female" />
+                    android:text="@string/rdbtn_female"
+                    android:checked="false"/>
             </RadioGroup>
         </LinearLayout>
 
