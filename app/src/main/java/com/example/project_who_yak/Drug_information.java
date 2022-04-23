@@ -268,19 +268,19 @@ public class Drug_information extends AppCompatActivity {
                 while(count < jsonArray.length()){
                     JSONObject object = jsonArray.getJSONObject(count);
                     drugInfo = object.getString("drugInfo");
-                    drugDetail = "drugDetail";
-                    drug2 = new Drug(drugInfo);
-                    drugList.clear();
-                    drugList.add(drug2);
-                    Adapter.notifyDataSetChanged();
+//                    drugDetail = "drugDetail";
+//                    drug2 = new Drug(drugInfo);
+//                    drugList.clear();
+//                    drugList.add(drug2);
+//                    Adapter.notifyDataSetChanged();
                     //확인용
                     //Toast.makeText(getApplicationContext(),drugInfo,Toast.LENGTH_SHORT).show();
                     count++;
                     Fragment fragment = new Fragment_Drug_info();
 
                     Bundle bundle = new Bundle();
-                    bundle.putString("drugName",Drug_name2);
-                    bundle.putString("drugDetail",drugDetail);
+//                    bundle.putString("drugName",Drug_name2);
+//                    bundle.putString("drugDetail",drugDetail);
                     bundle.putString("drugInfo",drugInfo);
                     fragment.setArguments(bundle);
                     //Frag_Drug_info.setArguments(bundle);
