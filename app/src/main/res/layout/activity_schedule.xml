@@ -56,14 +56,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_weight="1">
 
             <com.prolificinteractive.materialcalendarview.MaterialCalendarView
                 android:id="@+id/calendarView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="400dp"
                 android:theme="@style/CalenderViewCustom"
                 app:mcv_dateTextAppearance="@style/CalenderViewDateCustomText"
                 app:mcv_weekDayTextAppearance="@style/CalenderViewWeekCustomText" />
@@ -72,7 +73,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="240dp"
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:orientation="vertical">
@@ -98,7 +99,7 @@
             <EditText
                 android:id="@+id/contextEditText"
                 android:layout_width="0dp"
-                android:layout_height="115dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
@@ -122,7 +123,7 @@
             <ListView
                 android:id="@+id/lvCal2"
                 android:layout_width="match_parent"
-                android:layout_height="85dp" />
+                android:layout_height="95dp" />
 
         </LinearLayout>
 
