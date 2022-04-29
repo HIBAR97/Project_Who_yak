@@ -36,3 +36,5 @@ public class Notice {
         this.date = date;
     }
 }
+
+
