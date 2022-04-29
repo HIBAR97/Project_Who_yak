@@ -56,6 +56,8 @@ public class ScheduleActivity extends AppCompatActivity {
         calendarView.setSelectedDate(CalendarDay.today());
         //달력에 점 나타내기
         calendarView.addDecorator(new EventDecorator(Color.RED, calendarView.getSelectedDates()));
+        //달력에 토,일 색상 넣기
+        calendarView.addDecorators(new SaturdayDecorator(),new SundayDecorator());
 
         //달력에 날짜 보이기
         //calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -76,10 +78,10 @@ public class ScheduleActivity extends AppCompatActivity {
         });
 
 
-        // 첫 시작 요일이 월요일이 되도록 설정
+        // 첫 시작 요일이 일요일이 되도록 설정
         calendarView.state()
                 .edit()
-                .setFirstDayOfWeek(Calendar.MONDAY)
+                .setFirstDayOfWeek(Calendar.SUNDAY)
                 .commit();
 
         // 월, 요일을 한글로 보이게 설정 (MonthArrayTitleFormatter의 작동을 확인하려면 밑의 setTitleFormatter()를 지운다)
