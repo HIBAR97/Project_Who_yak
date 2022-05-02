@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,12 +26,16 @@ import org.json.JSONObject;
 
 public class Fragment_Userpage_profile extends Fragment {
 
+    private String ID;
     private String Pw;
     private String rPw;
     private String fPw;
     private String Name;
     private String Phone;
     private String Burth;
+    private String BurthY;
+    private String BurthM;
+    private String BurthD;
     private String Sex;
     private String Male;
     private String Female;
@@ -50,43 +53,49 @@ public class Fragment_Userpage_profile extends Fragment {
         //아이디값을 가져오기위한 bundle
         view = inflater.inflate(R.layout.fragment_userpage_profile, container, false);
         //선언
+        TextView tv_ID = view.findViewById(R.id.frag_userid);
         EditText et_Pw = view.findViewById(R.id.frag_Edittext_Password);
         EditText et_fPw = view.findViewById(R.id.frag_Edittext_fixPassword);
         EditText et_rfPw = view.findViewById(R.id.frag_Edittext_reFixPassword);
         EditText et_Name = view.findViewById(R.id.frag_Edittext_Name);
         EditText et_Phone = view.findViewById(R.id.frag_Edittext_Phone);
         DatePicker dp_burth = view.findViewById(R.id.frag_DatePick);
-        RadioGroup rd_sex = view.findViewById(R.id.radiogroup_sex);
         RadioButton rb_male = view.findViewById(R.id.radiobutton_male);
         RadioButton rb_female = view.findViewById(R.id.radiobutton_female);
         Button btn_Fix = view.findViewById(R.id.btnFix);
 
 
-        //Bundle bundle = getArguments();
-        //String userID = bundle.getString("userID");
-        // fraguserid = view.findViewById(R.id.frag_userid);
-        // fraguserid.setText(userID);
+//        Bundle bundle = getArguments();
+//        String userID = bundle.getString("userID");
+//        tv_ID.setText(userID);
 
         btn_Fix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //선언
+                //ID = tv_ID.getText().toString();
+                ID = "test3";
                 Pw = et_Pw.getText().toString();
                 fPw = et_fPw.getText().toString();
                 rPw = et_rfPw.getText().toString();
                 Name = et_Name.getText().toString();
                 Phone = et_Phone.getText().toString();
+                BurthY = String.valueOf(dp_burth.getYear());
+                BurthM = String.valueOf(dp_burth.getMonth() + 1);
+                BurthD = String.valueOf(dp_burth.getDayOfMonth());
 
-                int day= dp_burth.getDayOfMonth();
-                int month = dp_burth.getMonth() + 1;
-                int year = dp_burth.getYear();
-                Burth = Integer.toString(year)+ "." + Integer.toString(month) + "." + Integer.toString(day);
+//                int day= dp_burth.getDayOfMonth();
+//                int month = dp_burth.getMonth() + 1;
+//                int year = dp_burth.getYear();
+//                Burth = Integer.toString(year)+ "." + Integer.toString(month) + "." + Integer.toString(day);
 
-                switch (v.getId()){
+                switch (view.getId()){
                     case R.id.radiobutton_male:
-                        Sex = rb_male.getText().toString();
+                        //Sex = rb_male.getText().toString();
+                        Sex = "남성";
                     case R.id.radiobutton_female:
-                        Sex = rb_female.getText().toString();
+                        //Sex = rb_female.getText().toString();
+                        Sex = "여성";
                 }
 
 
@@ -95,7 +104,7 @@ public class Fragment_Userpage_profile extends Fragment {
                 if(Pw.equals("") || rPw.equals("") || fPw.equals("") || Name.equals("") || Phone.equals("") || Burth.equals("") || Sex.equals("")){
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     dialog = builder.setMessage("입력되지 않은 변수가 있습니다.")
-                            .setNegativeButton(Burth,null)
+                            .setNegativeButton("확인",null)
                             .create();
                     dialog.show();
                     return;
@@ -148,7 +157,7 @@ public class Fragment_Userpage_profile extends Fragment {
                 };
 
 
-                Userpage_profile_Request Profile_Request = new Userpage_profile_Request(Pw, fPw, Name, Phone, Burth, Sex, responseListener);
+                Userpage_profile_Request Profile_Request = new Userpage_profile_Request(ID, Pw, fPw, Name, Phone, Burth, BurthY, BurthM, BurthD, Sex, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(getActivity());
                 queue.add(Profile_Request);
 

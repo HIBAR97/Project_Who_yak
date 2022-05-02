@@ -67,7 +67,7 @@ public class activity_Camara_scan extends AppCompatActivity {
         //checkFile(new File(datapath + "/tessdata/kor.traineddata")); // 트레이닝 데이터 확인
         checkFile(new File(datapath + "tessdata/"),"kor");
         checkFile(new File(datapath + "tessdata/"),"eng");
-        String lang = "kor+eng"; // 언어 세팅
+        String lang = "kor"; // 언어 세팅
 
         //OCR 세팅
         mTess = new TessBaseAPI();
