@@ -70,8 +70,8 @@ public class activity_bltboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-//                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
             }
         });
 

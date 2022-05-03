@@ -41,12 +41,17 @@
         <entry key="..\:/Users/jwjun/AndroidStudioProjects/Project_Who_yak/app/src/main/res/layout/activity_remember.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/jwjun/AndroidStudioProjects/Project_Who_yak/app/src/main/res/layout/activity_schedule.xml" value="0.3532608695652174" />
         <entry key="..\:/Users/jwjun/AndroidStudioProjects/Project_Who_yak/app/src/main/res/layout/activity_sign_up.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/jwjun/AndroidStudioProjects/Project_Who_yak/app/src/main/res/layout/activity_userpage.xml" value="0.3509963768115942" />
+        <entry key="..\:/Users/jwjun/AndroidStudioProjects/Project_Who_yak/app/src/main/res/layout/druglist.xml" value="0.3509963768115942" />
         <entry key="..\:/Users/jwjun/AndroidStudioProjects/Project_Who_yak/app/src/main/res/layout/fragment_bltboard.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/jwjun/AndroidStudioProjects/Project_Who_yak/app/src/main/res/layout/fragment_drug_details.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/jwjun/AndroidStudioProjects/Project_Who_yak/app/src/main/res/layout/fragment_drug_info.xml" value="0.3532608695652174" />
         <entry key="..\:/Users/jwjun/AndroidStudioProjects/Project_Who_yak/app/src/main/res/layout/fragment_drug_precaution.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/jwjun/AndroidStudioProjects/Project_Who_yak/app/src/main/res/layout/fragment_drug_side_effect.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/jwjun/AndroidStudioProjects/Project_Who_yak/app/src/main/res/layout/fragment_rmbboard.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/jwjun/AndroidStudioProjects/Project_Who_yak/app/src/main/res/layout/fragment_userpage_manual.xml" value="0.3509963768115942" />
+        <entry key="..\:/Users/jwjun/AndroidStudioProjects/Project_Who_yak/app/src/main/res/layout/fragment_userpage_profile.xml" value="0.3509963768115942" />
+        <entry key="..\:/Users/jwjun/AndroidStudioProjects/Project_Who_yak/app/src/main/res/layout/fragment_userpage_setting.xml" value="0.3509963768115942" />
         <entry key="..\:/Users/jwjun/AndroidStudioProjects/Project_Who_yak/app/src/main/res/layout/fragment_wrtboard.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/jwjun/AndroidStudioProjects/Project_Who_yak/app/src/main/res/layout/layout_drug_information.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/jwjun/AndroidStudioProjects/Project_Who_yak/app/src/main/res/layout/notice.xml" value="0.3509963768115942" />
