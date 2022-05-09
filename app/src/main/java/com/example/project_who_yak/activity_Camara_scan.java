@@ -4,21 +4,30 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.accessibility.AccessibilityManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.loader.content.CursorLoader;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.googlecode.tesseract.android.TessBaseAPI;
 
 import java.io.File;
@@ -41,20 +50,29 @@ public class activity_Camara_scan extends AppCompatActivity {
     String datapath = "";
     TextView OCRTextview;
 
+    //로컬이미지 변수
+    private String imageUrl="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //화면 이동
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camara_scan);
 
+        //스크린 위에 accessibility가 있는지 확인
+        AccessibilityManager accessibilityManager = (AccessibilityManager) getSystemService(ACCESSIBILITY_SERVICE);
+        boolean isScreenReaderEnabled = accessibilityManager.isEnabled() && accessibilityManager.isTouchExplorationEnabled();
+
         Button btnvoice;
         Button btnhome;
+        ImageButton btnImg;
         Button btnPic;
         Button btnOcr;
         Button btnResult;
 
         btnvoice = (Button) findViewById(R.id.btnvoice);
         btnhome = (Button) findViewById(R.id.btnhome);
+        btnImg = (ImageButton) findViewById(R.id.Ib_preview);
         btnResult = (Button) findViewById(R.id.btnResult);
         btnOcr = (Button) findViewById(R.id.btnOCR);
         btnPic = (Button) findViewById(R.id.btnPic);
@@ -84,6 +102,32 @@ public class activity_Camara_scan extends AppCompatActivity {
         }
 
         //---------리스너 파트-------------//
+
+        //리스너 버튼 리스터
+        btnvoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isScreenReaderEnabled) {
+                    Toast.makeText(getApplicationContext(),"이미 음성옵션이 설정되어있습니다.",Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+                    startActivity(intent);
+                    //startActivityForResult(intent, 0);
+                }
+            }
+        });
+
+        btnImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
+
+                startActivityForResult(intent,10);
+
+            }
+        });
+
         //홈 버튼 리스너
         btnhome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,6 +183,20 @@ public class activity_Camara_scan extends AppCompatActivity {
             Log.d(TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
         } }
 
+    //이미지 절대경로를 구한다.
+    private String getRealPathFromUri(Uri uri)
+    {
+        String[] proj=  {MediaStore.Images.Media.DATA};
+        CursorLoader cursorLoader = new CursorLoader(this,uri,proj,null,null,null);
+        Cursor cursor = cursorLoader.loadInBackground();
+
+        int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String url = cursor.getString(columnIndex);
+        cursor.close();
+        return  url;
+    }
+
 
     // 카메라로 촬영한 사진의 썸네일을 가져와 이미지뷰에 띄워줌
     @Override
@@ -158,8 +216,15 @@ public class activity_Camara_scan extends AppCompatActivity {
             }
         }break;
         }
+        if(requestCode == 10)
+        {
+            imageUrl = getRealPathFromUri(intent.getData());
+            RequestOptions cropOptions = new RequestOptions();
+            Glide.with(getApplicationContext())
+                    .load(imageUrl)
+                    .into(ivPic);
+        }
     }
-
 
     //장치에 파일 복사
     private void copyFiles(String lang) {

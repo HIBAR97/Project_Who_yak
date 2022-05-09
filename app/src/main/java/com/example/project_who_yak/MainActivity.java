@@ -2,7 +2,9 @@ package com.example.project_who_yak;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
+import android.view.accessibility.AccessibilityManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //스크린 위에 accessibility가 있는지 확인
+        AccessibilityManager accessibilityManager = (AccessibilityManager) getSystemService(ACCESSIBILITY_SERVICE);
+        boolean isScreenReaderEnabled = accessibilityManager.isEnabled() && accessibilityManager.isTouchExplorationEnabled();
+
 
         Button btnSignUp;
         Button btnSignIn;
@@ -101,12 +108,17 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
+                //Acc이 켜있을경우
+                if (isScreenReaderEnabled) {
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
 
-//                Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
-//                startActivityForResult(intent, 0);
-
+                    //꺼져있을 경우
+                } else {
+                    Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+                    startActivity(intent);
+                    //startActivityForResult(intent, 0);
+                }
             }
         });
     }

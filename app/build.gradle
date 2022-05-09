@@ -45,4 +45,9 @@ dependencies {
     implementation('com.rmtheis:tess-two:9.1.0')
     //Schedule
     implementation('com.prolificinteractive:material-calendarview:1.4.3')
+
+    //로컬 이미지 가져오기
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    // Skip this if you don't want to use integration libraries or configure Glide.
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 }
