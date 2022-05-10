@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -62,10 +61,10 @@ public class activity_bltboard extends AppCompatActivity {
         fragment_rmbboard = new fragment_rmbboard();
         fragment_wrtboard = new fragment_wrtboard();
 
-
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.FrameLayout_bltscreen, fragment_bltboard).commitAllowingStateLoss();
 
+        //----리스너 파트----//
         btn_blt_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,7 +98,7 @@ public class activity_bltboard extends AppCompatActivity {
             }
         });
 
-        new BackgrounTask() .execute();
+        new BackgrounTask().execute();
     }
 
     class BackgrounTask extends AsyncTask<Void, Void, String>
