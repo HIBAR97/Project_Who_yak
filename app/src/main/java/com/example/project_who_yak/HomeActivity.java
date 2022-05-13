@@ -28,7 +28,7 @@ public class HomeActivity extends AppCompatActivity {
         btnSchedule = findViewById(R.id.btnSchedule);
         btnBoard = findViewById(R.id.btnBoard);
         //btnVoice = findViewById(R.id.btnvoice);
-         //Intent intentmain = getIntent();
+         //'Intent intentmain = getIntent();
         //String userID = intentmain.getStringExtra("userID");
         //btnVoice.setText(userID);
 

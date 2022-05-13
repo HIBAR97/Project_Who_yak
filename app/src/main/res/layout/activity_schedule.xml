@@ -98,7 +98,7 @@
 
             <EditText
                 android:id="@+id/contextEditText"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
@@ -108,7 +108,6 @@
                 android:ems="10"
                 android:hint="내용을 입력하세요."
                 android:inputType="textMultiLine"
-                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/diaryTextView" />
@@ -123,7 +122,8 @@
             <ListView
                 android:id="@+id/lvCal2"
                 android:layout_width="match_parent"
-                android:layout_height="95dp" />
+                android:layout_height="95dp"
+                android:choiceMode="singleChoice"/>
 
         </LinearLayout>
 

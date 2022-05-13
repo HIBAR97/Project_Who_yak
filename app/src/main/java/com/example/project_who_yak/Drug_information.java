@@ -132,6 +132,7 @@ public class Drug_information extends AppCompatActivity {
 
             }
         });
+
         btn_Drug_info_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

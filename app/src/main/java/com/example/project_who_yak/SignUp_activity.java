@@ -69,6 +69,8 @@ public class SignUp_activity extends AppCompatActivity {
                 userGender2 = genderButton.getText().toString();
             }
         });
+
+
         datePicker.init(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(), new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
