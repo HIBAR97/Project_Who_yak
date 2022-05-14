@@ -103,7 +103,7 @@
     <FrameLayout
         android:id="@+id/FrameLayout_bltscreen"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="fill_parent"
         android:layout_below="@+id/blt_btn"
         android:layout_marginTop="1dp">
 

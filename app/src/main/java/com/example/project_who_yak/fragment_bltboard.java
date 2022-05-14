@@ -115,7 +115,6 @@ public class fragment_bltboard extends Fragment {
                     noticeContent = object.getString("noticeContent");
                     noticeName = object.getString("noticeName");
                     noticeDate = object.getString("noticeDate");
-
                     Notice notice = new Notice(noticeContent, noticeName, noticeDate);
                     noticeList2.add(notice);
                     final NoticeListAdapter NoticeAdapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList2);
