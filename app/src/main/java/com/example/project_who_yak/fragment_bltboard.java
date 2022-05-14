@@ -39,24 +39,29 @@ public class fragment_bltboard extends Fragment {
         view = inflater.inflate(R.layout.fragment_bltboard, container, false);
         noticeListView = (ListView) view.findViewById(R.id.listView);
 
-        this.InitializeMovieData();
-
+        //혹시 몰라서 남겨두는 코드들
 //        noticeList = new ArrayList<Notice>();
 //        adapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList);
 //        noticeListView.setAdapter(adapter);
 
-        final NoticeListAdapter NoticeAdapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList2);
-
-        noticeListView.setAdapter(NoticeAdapter);
+//        noticeList2 = new ArrayList<Notice>();
+//        final NoticeListAdapter NoticeAdapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList2);
+//        noticeListView.setAdapter(NoticeAdapter);
 
         new BackgrounTask().execute();
+
+        //리스트뷰에 데이터 표현
+        //this.InitializeNoticeData();
+
         return view;
     }
 
-    public void InitializeMovieData(){
+    //더미 데이터 넣는 함수
+    public void InitializeNoticeData(){
         noticeList2 = new ArrayList<Notice>();
-
         noticeList2.add(new Notice("공지사항", "미션임파서블","15세 이상관람가"));
+        final NoticeListAdapter NoticeAdapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList2);
+        noticeListView.setAdapter(NoticeAdapter);
     }
 
     class BackgrounTask extends AsyncTask<Void, Void, String>
@@ -109,8 +114,11 @@ public class fragment_bltboard extends Fragment {
                     noticeContent = object.getString("noticeContent");
                     noticeName = object.getString("noticeName");
                     noticeDate = object.getString("noticeDate");
+                    noticeList2 = new ArrayList<Notice>();
                     Notice notice = new Notice(noticeContent, noticeName, noticeDate);
-                    noticeList.add(notice);
+                    noticeList2.add(notice);
+                    final NoticeListAdapter NoticeAdapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList2);
+                    noticeListView.setAdapter(NoticeAdapter);
                     count++;
                 }
             } catch (Exception e) {
