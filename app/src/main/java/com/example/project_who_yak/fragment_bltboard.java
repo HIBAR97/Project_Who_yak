@@ -27,6 +27,8 @@ public class fragment_bltboard extends Fragment {
     private ListView noticeListView;
     private NoticeListAdapter adapter;
     private List<Notice> noticeList;
+
+    private ArrayList<Notice> noticeList2;
     private View view;
 
     @Nullable
@@ -37,12 +39,24 @@ public class fragment_bltboard extends Fragment {
         view = inflater.inflate(R.layout.fragment_bltboard, container, false);
         noticeListView = (ListView) view.findViewById(R.id.listView);
 
-        noticeList = new ArrayList<Notice>();
-        adapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList);
-        noticeListView.setAdapter(adapter);
+        this.InitializeMovieData();
+
+//        noticeList = new ArrayList<Notice>();
+//        adapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList);
+//        noticeListView.setAdapter(adapter);
+
+        final NoticeListAdapter NoticeAdapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList2);
+
+        noticeListView.setAdapter(NoticeAdapter);
 
         new BackgrounTask().execute();
         return view;
+    }
+
+    public void InitializeMovieData(){
+        noticeList2 = new ArrayList<Notice>();
+
+        noticeList2.add(new Notice("공지사항", "미션임파서블","15세 이상관람가"));
     }
 
     class BackgrounTask extends AsyncTask<Void, Void, String>

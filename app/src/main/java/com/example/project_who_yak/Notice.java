@@ -13,15 +13,15 @@ public class Notice {
     }
 
     public String getNotice() {
-        return notice;
+        return this.notice;
     }
 
-    public void setNotice(String notice) {
+    public void getNotice(String notice) {
         this.notice = notice;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -29,7 +29,7 @@ public class Notice {
     }
 
     public String getDate() {
-        return date;
+        return this.date;
     }
 
     public void setDate(String date) {

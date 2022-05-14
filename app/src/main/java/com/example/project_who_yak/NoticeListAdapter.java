@@ -1,18 +1,18 @@
 package com.example.project_who_yak;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
 public class NoticeListAdapter extends BaseAdapter {
 
     private Context context;
+    LayoutInflater mLayoutInflater ;
     private List<Notice> noticeList;
 
     public NoticeListAdapter(Context context, List<Notice> noticeList) {
@@ -38,6 +38,7 @@ public class NoticeListAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v = View.inflate(context, R.layout.notice, null);
+        //View v = mLayoutInflater.inflate(R.layout.notice, null);
         TextView noticeText = (TextView) v.findViewById(R.id.noticeText);
         TextView nameText = (TextView) v.findViewById(R.id.nameText);
         TextView dateText = (TextView) v.findViewById(R.id.dateText);
