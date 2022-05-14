@@ -108,13 +108,14 @@ public class fragment_bltboard extends Fragment {
                 JSONArray jsonArray = jsonObject.getJSONArray("response");
                 int count = 0;
                 String noticeContent, noticeName, noticeDate;
+                noticeList2 = new ArrayList<Notice>();
                 while(count < jsonArray.length())
                 {
                     JSONObject object = jsonArray.getJSONObject(count);
                     noticeContent = object.getString("noticeContent");
                     noticeName = object.getString("noticeName");
                     noticeDate = object.getString("noticeDate");
-                    noticeList2 = new ArrayList<Notice>();
+
                     Notice notice = new Notice(noticeContent, noticeName, noticeDate);
                     noticeList2.add(notice);
                     final NoticeListAdapter NoticeAdapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList2);
