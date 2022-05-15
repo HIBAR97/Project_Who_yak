@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,15 +21,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 public class fragment_bltboard extends Fragment {
 
     private ListView noticeListView;
-    private NoticeListAdapter adapter;
-    private List<Notice> noticeList;
-
-    private ArrayList<Notice> noticeList2;
+    private ArrayList<Notice> noticeList;
     private View view;
 
     @Nullable
@@ -38,6 +35,10 @@ public class fragment_bltboard extends Fragment {
         //선언
         view = inflater.inflate(R.layout.fragment_bltboard, container, false);
         noticeListView = (ListView) view.findViewById(R.id.listView);
+
+        TextView tv_notice = view.findViewById(R.id.gz_name);
+        TextView tv_ppl = view.findViewById(R.id.ppl_name);
+        TextView tv_spn = view.findViewById(R.id.spn_name);
 
         //혹시 몰라서 남겨두는 코드들
 //        noticeList = new ArrayList<Notice>();
@@ -53,14 +54,35 @@ public class fragment_bltboard extends Fragment {
         //리스트뷰에 데이터 표현
         //this.InitializeNoticeData();
 
+        //---------리스너 파트 ----------//
+        tv_notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        tv_ppl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        tv_spn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
         return view;
     }
 
     //더미 데이터 넣는 함수
     public void InitializeNoticeData(){
-        noticeList2 = new ArrayList<Notice>();
-        noticeList2.add(new Notice("공지사항", "미션임파서블","15세 이상관람가"));
-        final NoticeListAdapter NoticeAdapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList2);
+        noticeList = new ArrayList<Notice>();
+        noticeList.add(new Notice("공지사항", "미션임파서블","15세 이상관람가"));
+        final NoticeListAdapter NoticeAdapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList);
         noticeListView.setAdapter(NoticeAdapter);
     }
 
@@ -108,7 +130,7 @@ public class fragment_bltboard extends Fragment {
                 JSONArray jsonArray = jsonObject.getJSONArray("response");
                 int count = 0;
                 String noticeContent, noticeName, noticeDate;
-                noticeList2 = new ArrayList<Notice>();
+                noticeList = new ArrayList<Notice>();
                 while(count < jsonArray.length())
                 {
                     JSONObject object = jsonArray.getJSONObject(count);
@@ -116,8 +138,8 @@ public class fragment_bltboard extends Fragment {
                     noticeName = object.getString("noticeName");
                     noticeDate = object.getString("noticeDate");
                     Notice notice = new Notice(noticeContent, noticeName, noticeDate);
-                    noticeList2.add(notice);
-                    final NoticeListAdapter NoticeAdapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList2);
+                    noticeList.add(notice);
+                    final NoticeListAdapter NoticeAdapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList);
                     noticeListView.setAdapter(NoticeAdapter);
                     count++;
                 }
