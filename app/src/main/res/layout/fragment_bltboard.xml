@@ -7,7 +7,7 @@
     <LinearLayout
         android:id="@+id/Layout_notice_linear"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -18,10 +18,9 @@
             android:text="@string/tv_notice" />
 
         <ListView
-            android:id="@+id/listView"
+            android:id="@+id/listView_Notice"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:background="@color/white" />
 
     </LinearLayout>
@@ -30,7 +29,7 @@
         android:id="@+id/Layout_notice_popular"
         android:layout_below="@+id/Layout_notice_linear"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
             android:id="@+id/ppl_name"
@@ -40,6 +39,7 @@
             android:text="@string/tv_pplName" />
 
         <ListView
+            android:id="@+id/listView_Popular"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/light_blue_600"/>
@@ -95,9 +95,10 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
             <ListView
+                android:id="@+id/listView_Category"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/light_blue_A400"/>

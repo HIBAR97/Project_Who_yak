@@ -104,7 +104,8 @@
         <ListView
             android:id="@+id/lv_HomeNotice"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent" />
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
 
     </LinearLayout>
 

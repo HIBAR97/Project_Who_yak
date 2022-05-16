@@ -26,6 +26,13 @@ public class fragment_bltboard extends Fragment {
 
     private ListView noticeListView;
     private ArrayList<Notice> noticeList;
+
+    private  ListView popularListView;
+    private  ArrayList<Popular> PopularList;
+
+    private ListView categoryListView;
+    private  ArrayList<Category> CategoryList;
+
     private View view;
 
     @Nullable
@@ -34,7 +41,9 @@ public class fragment_bltboard extends Fragment {
 
         //선언
         view = inflater.inflate(R.layout.fragment_bltboard, container, false);
-        noticeListView = (ListView) view.findViewById(R.id.listView);
+        noticeListView = (ListView) view.findViewById(R.id.listView_Notice);
+        popularListView = (ListView) view.findViewById(R.id.listView_Popular);
+        categoryListView = (ListView) view.findViewById(R.id.listView_Category);
 
         TextView tv_notice = view.findViewById(R.id.gz_name);
         TextView tv_ppl = view.findViewById(R.id.ppl_name);
@@ -49,7 +58,9 @@ public class fragment_bltboard extends Fragment {
 //        final NoticeListAdapter NoticeAdapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList2);
 //        noticeListView.setAdapter(NoticeAdapter);
 
-        new BackgrounTask().execute();
+        new BackgrounTask_Notice().execute();
+        new BackgrounTask_Popular().execute();
+        new BackgrounTask_Category().execute();
 
         //리스트뷰에 데이터 표현
         //this.InitializeNoticeData();
@@ -86,7 +97,7 @@ public class fragment_bltboard extends Fragment {
         noticeListView.setAdapter(NoticeAdapter);
     }
 
-    class BackgrounTask extends AsyncTask<Void, Void, String>
+    class BackgrounTask_Notice extends AsyncTask<Void, Void, String>
     {
         String target;
 
@@ -141,6 +152,132 @@ public class fragment_bltboard extends Fragment {
                     noticeList.add(notice);
                     final NoticeListAdapter NoticeAdapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList);
                     noticeListView.setAdapter(NoticeAdapter);
+                    count++;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    class BackgrounTask_Popular extends AsyncTask<Void, Void, String>
+    {
+        String target;
+
+        @Override
+        protected void onPreExecute() {
+            target = "http://whoyak.dothome.co.kr/BltboardNotice.php";
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            try {
+                URL url = new URL(target);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String temp;
+                StringBuilder stringBuilder = new StringBuilder();
+                while ((temp = bufferedReader.readLine()) != null)
+                {
+                    stringBuilder.append(temp + "\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        public void onProgressUpdate(Void... values) {
+            super.onProgressUpdate();
+        }
+
+        @Override
+        public void onPostExecute(String result) {
+            try {
+                JSONObject jsonObject = new JSONObject(result);
+                JSONArray jsonArray = jsonObject.getJSONArray("response");
+                int count = 0;
+                String noticeContent, noticeName, noticeDate;
+                PopularList = new ArrayList<Popular>();
+                while(count < jsonArray.length())
+                {
+                    JSONObject object = jsonArray.getJSONObject(count);
+                    noticeContent = object.getString("noticeContent");
+                    noticeName = object.getString("noticeName");
+                    noticeDate = object.getString("noticeDate");
+                    Popular popular = new Popular(noticeContent, noticeName, noticeDate);
+                    PopularList.add(popular);
+                    final PopularListAdapter PopularAdapter = new PopularListAdapter(getActivity().getApplicationContext(), PopularList);
+                    popularListView.setAdapter(PopularAdapter);
+                    count++;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    class BackgrounTask_Category extends AsyncTask<Void, Void, String>
+    {
+        String target;
+
+        @Override
+        protected void onPreExecute() {
+            target = "http://whoyak.dothome.co.kr/BltboardNotice.php";
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            try {
+                URL url = new URL(target);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String temp;
+                StringBuilder stringBuilder = new StringBuilder();
+                while ((temp = bufferedReader.readLine()) != null)
+                {
+                    stringBuilder.append(temp + "\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        public void onProgressUpdate(Void... values) {
+            super.onProgressUpdate();
+        }
+
+        @Override
+        public void onPostExecute(String result) {
+            try {
+                JSONObject jsonObject = new JSONObject(result);
+                JSONArray jsonArray = jsonObject.getJSONArray("response");
+                int count = 0;
+                String noticeContent, noticeName, noticeDate;
+                CategoryList = new ArrayList<Category>();
+                while(count < jsonArray.length())
+                {
+                    JSONObject object = jsonArray.getJSONObject(count);
+                    noticeContent = object.getString("noticeContent");
+                    noticeName = object.getString("noticeName");
+                    noticeDate = object.getString("noticeDate");
+                    Category category = new Category(noticeContent, noticeName, noticeDate);
+                    CategoryList.add(category);
+                    final CategoryListAdapter CategoryAdapter = new CategoryListAdapter(getActivity().getApplicationContext(), CategoryList);
+                    categoryListView.setAdapter(CategoryAdapter);
                     count++;
                 }
             } catch (Exception e) {
