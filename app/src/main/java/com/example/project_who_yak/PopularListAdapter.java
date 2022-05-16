@@ -45,6 +45,7 @@ public class PopularListAdapter extends BaseAdapter {
         noticeText.setText(PopularList.get(i).getNotice());
         nameText.setText(PopularList.get(i).getName());
         dateText.setText(PopularList.get(i).getDate());
+        dateText.setText(PopularList.get(i).getRate());
 
         v.setTag(PopularList.get(i).getNotice());
         return v;

@@ -97,6 +97,8 @@ public class fragment_bltboard extends Fragment {
         noticeListView.setAdapter(NoticeAdapter);
     }
 
+
+    //------공지사항 DB연동------//
     class BackgrounTask_Notice extends AsyncTask<Void, Void, String>
     {
         String target;
@@ -142,7 +144,8 @@ public class fragment_bltboard extends Fragment {
                 int count = 0;
                 String noticeContent, noticeName, noticeDate;
                 noticeList = new ArrayList<Notice>();
-                while(count < jsonArray.length())
+               //while(count < jsonArray.length())
+                while(count < 3)
                 {
                     JSONObject object = jsonArray.getJSONObject(count);
                     noticeContent = object.getString("noticeContent");
@@ -160,13 +163,15 @@ public class fragment_bltboard extends Fragment {
         }
     }
 
+
+    //------인기글 DB연동------//
     class BackgrounTask_Popular extends AsyncTask<Void, Void, String>
     {
         String target;
 
         @Override
         protected void onPreExecute() {
-            target = "http://whoyak.dothome.co.kr/BltboardNotice.php";
+            target = "http://whoyak.dothome.co.kr/BltboardNotice_Popular.php";
         }
 
         @Override
@@ -203,15 +208,17 @@ public class fragment_bltboard extends Fragment {
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("response");
                 int count = 0;
-                String noticeContent, noticeName, noticeDate;
+                String noticeContent, noticeName, noticeDate, noticeRate;
                 PopularList = new ArrayList<Popular>();
-                while(count < jsonArray.length())
+                //while(count < jsonArray.length())
+                while(count < 3)
                 {
                     JSONObject object = jsonArray.getJSONObject(count);
                     noticeContent = object.getString("noticeContent");
                     noticeName = object.getString("noticeName");
                     noticeDate = object.getString("noticeDate");
-                    Popular popular = new Popular(noticeContent, noticeName, noticeDate);
+                    noticeRate = object.getString("noticePopularity");
+                    Popular popular = new Popular(noticeContent, noticeName, noticeDate, noticeRate);
                     PopularList.add(popular);
                     final PopularListAdapter PopularAdapter = new PopularListAdapter(getActivity().getApplicationContext(), PopularList);
                     popularListView.setAdapter(PopularAdapter);
@@ -223,6 +230,7 @@ public class fragment_bltboard extends Fragment {
         }
     }
 
+    //------카테고리 DB연동------//
     class BackgrounTask_Category extends AsyncTask<Void, Void, String>
     {
         String target;
@@ -268,7 +276,8 @@ public class fragment_bltboard extends Fragment {
                 int count = 0;
                 String noticeContent, noticeName, noticeDate;
                 CategoryList = new ArrayList<Category>();
-                while(count < jsonArray.length())
+                //while(count < jsonArray.length())
+                while(count < 3)
                 {
                     JSONObject object = jsonArray.getJSONObject(count);
                     noticeContent = object.getString("noticeContent");

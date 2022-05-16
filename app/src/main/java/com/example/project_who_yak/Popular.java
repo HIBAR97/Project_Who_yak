@@ -4,11 +4,13 @@ public class Popular {
     String notice;
     String name;
     String date;
+    String rate;
 
-    public Popular(String notice, String name, String date) {
+    public Popular(String notice, String name, String date , String rate) {
         this.notice = notice;
         this.name = name;
         this.date = date;
+        this.rate = rate;
     }
 
     public String getNotice() {
@@ -34,4 +36,8 @@ public class Popular {
     public void setDate(String date) {
         this.date = date;
     }
+
+    public String getRate(){ return this.rate;}
+
+    public void  setRate(String rate){this.rate = rate;}
 }
