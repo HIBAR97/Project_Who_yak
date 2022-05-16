@@ -62,11 +62,13 @@
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2658514492753623" />
         <entry key="app/src/main/res/layout/activity_userpage.xml" value="0.1828774062816616" />
         <entry key="app/src/main/res/layout/bltboard_constraint.xml" value="0.1828774062816616" />
-        <entry key="app/src/main/res/layout/fragment_bltboard.xml" value="0.31544064494317453" />
+        <entry key="app/src/main/res/layout/fragment_bltboard.xml" value="0.27853260869565216" />
         <entry key="app/src/main/res/layout/fragment_drug_info.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/fragment_drug_precaution.xml" value="0.13728470111448834" />
+        <entry key="app/src/main/res/layout/fragment_rmbboard.xml" value="0.322463768115942" />
         <entry key="app/src/main/res/layout/fragment_userpage_manual.xml" value="0.2115036231884058" />
         <entry key="app/src/main/res/layout/fragment_userpage_profile.xml" value="0.2708626357738491" />
+        <entry key="app/src/main/res/layout/fragment_wrtboard.xml" value="0.322463768115942" />
         <entry key="app/src/main/res/layout/layout_drug_information.xml" value="0.26992753623188404" />
         <entry key="app/src/main/res/layout/notice.xml" value="0.2346014492753623" />
       </map>

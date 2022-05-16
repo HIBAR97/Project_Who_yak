@@ -145,7 +145,7 @@ public class fragment_bltboard extends Fragment {
                 String noticeContent, noticeName, noticeDate;
                 noticeList = new ArrayList<Notice>();
                //while(count < jsonArray.length())
-                while(count < 3)
+                while(count < 2)
                 {
                     JSONObject object = jsonArray.getJSONObject(count);
                     noticeContent = object.getString("noticeContent");

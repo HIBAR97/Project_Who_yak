@@ -21,8 +21,7 @@
         <ListView
             android:id="@+id/rmb_listview"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_weight="1"
+            android:layout_height="fill_parent"
             android:background="@color/light_blue_A400" />
 
 
@@ -78,11 +77,12 @@
 
     <LinearLayout
         android:id="@+id/blt_btn"
-        android:layout_below="@+id/blt_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="2"
-        android:orientation="horizontal">
+        android:layout_below="@+id/blt_main"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:weightSum="2">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/blt_brd"

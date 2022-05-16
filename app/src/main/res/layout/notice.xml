@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:text="공지사항"
         android:layout_gravity="center"
-        android:padding="10dp"
+        android:padding="5dp"
         android:textColor="#ffffff"
         android:id="@+id/noticeText"
         android:drawableStart="@drawable/ic_baseline_textsms_24"
