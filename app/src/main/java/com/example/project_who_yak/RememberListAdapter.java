@@ -43,11 +43,11 @@ public class RememberListAdapter extends BaseAdapter {
         TextView nameRmb = (TextView) v.findViewById(R.id.nameRmb);
         TextView dateRmb = (TextView) v.findViewById(R.id.dateRmb);
 
-        titleTRmb.setText(remembersList.get(i).getNotice());
+        titleTRmb.setText(remembersList.get(i).getTitle());
         nameRmb.setText(remembersList.get(i).getName());
         dateRmb.setText(remembersList.get(i).getDate());
 
-        v.setTag(remembersList.get(i).getNotice());
+        v.setTag(remembersList.get(i).getTitle());
         return v;
     }
 

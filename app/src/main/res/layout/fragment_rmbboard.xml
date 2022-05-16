@@ -19,6 +19,7 @@
             android:text="@string/tv_rmb" />
 
         <ListView
+            android:id="@+id/rmb_listview"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_weight="1"

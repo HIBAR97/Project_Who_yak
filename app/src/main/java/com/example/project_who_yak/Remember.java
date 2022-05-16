@@ -12,12 +12,12 @@ public class Remember {
         this.date = date;
     }
 
-    public String getNotice() {
+    public String getTitle() {
         return this.title;
     }
 
-    public void getNotice(String notice) {
-        this.title = notice;
+    public void getTitle(String title) {
+        this.title = title;
     }
 
     public String getName() {
