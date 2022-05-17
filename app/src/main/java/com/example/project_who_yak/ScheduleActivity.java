@@ -99,7 +99,7 @@ public class ScheduleActivity extends AppCompatActivity {
         calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
-//                tv_today.setText(calendarView.getSelectedDates().toString());
+//              tv_today.setText(calendarView.getSelectedDates().toString());
                 tv_today.setText(date.toString());
             }
         });
