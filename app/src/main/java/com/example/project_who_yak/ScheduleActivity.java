@@ -1,6 +1,7 @@
 package com.example.project_who_yak;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -11,6 +12,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,6 +30,7 @@ import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;
 import com.prolificinteractive.materialcalendarview.DayViewFacade;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.OnRangeSelectedListener;
 import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter;
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
@@ -41,6 +44,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -91,13 +96,13 @@ public class ScheduleActivity extends AppCompatActivity {
         calendarView.addDecorators(new SaturdayDecorator(),new SundayDecorator());
 
         //달력에 날짜 보이기
-        //calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            //@Override
-            //public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                //tv_today.setText(String.format("%d / %d / %d",year,month+1,dayOfMonth));
-                //contextEditText.setText("");
-            //}
-        //}); <-오류나는 부분
+        calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
+//                tv_today.setText(calendarView.getSelectedDates().toString());
+                tv_today.setText(date.toString());
+            }
+        });
 
         //홈으로 가는 버튼
         btnhome.setOnClickListener(new View.OnClickListener() {
@@ -155,6 +160,7 @@ public class ScheduleActivity extends AppCompatActivity {
 
 
 
+
         btndel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -202,8 +208,8 @@ public class ScheduleActivity extends AppCompatActivity {
                 // LocalDate로 변환하는 처리가 필요하다
                 Date date = day.getDate();
                 LocalDate inputText = date.toInstant()
-                    .atZone(ZoneId.systemDefault())
-                    .toLocalDate();
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDate();
 
                 String[] calendarHeaderElements = inputText.toString().split("-");
                 StringBuilder calendarHeaderBuilder = new StringBuilder();
