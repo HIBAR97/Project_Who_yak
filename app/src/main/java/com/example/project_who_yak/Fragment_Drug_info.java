@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class Fragment_Drug_info extends Fragment {
 
-    public EditText edt_druginfo;
+    public TextView edt_druginfo;
     private View view;
     private String DrugName_info3;
     private List<Drug> drugList;

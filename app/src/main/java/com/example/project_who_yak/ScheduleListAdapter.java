@@ -1,6 +1,7 @@
 package com.example.project_who_yak;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
