@@ -1,11 +1,22 @@
 package com.example.project_who_yak;
 
+import static com.example.project_who_yak.R.id.gz_name;
+import static com.example.project_who_yak.R.id.listView_Category;
+import static com.example.project_who_yak.R.id.listView_Notice;
+import static com.example.project_who_yak.R.id.listView_Popular;
+import static com.example.project_who_yak.R.id.ppl_name;
+import static com.example.project_who_yak.R.id.rdo1;
+import static com.example.project_who_yak.R.id.spn_main;
+import static com.example.project_who_yak.R.id.spn_name;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,13 +52,20 @@ public class fragment_bltboard extends Fragment {
 
         //선언
         view = inflater.inflate(R.layout.fragment_bltboard, container, false);
-        noticeListView = (ListView) view.findViewById(R.id.listView_Notice);
-        popularListView = (ListView) view.findViewById(R.id.listView_Popular);
-        categoryListView = (ListView) view.findViewById(R.id.listView_Category);
+        noticeListView = (ListView) view.findViewById(listView_Notice);
+        popularListView = (ListView) view.findViewById(listView_Popular);
+        categoryListView = (ListView) view.findViewById(listView_Category);
 
-        TextView tv_notice = view.findViewById(R.id.gz_name);
-        TextView tv_ppl = view.findViewById(R.id.ppl_name);
-        TextView tv_spn = view.findViewById(R.id.spn_name);
+        TextView tv_notice = view.findViewById(gz_name);
+        TextView tv_ppl = view.findViewById(ppl_name);
+        TextView tv_spn = view.findViewById(spn_name);
+        Spinner spinner = view.findViewById(spn_main);
+
+        RadioGroup Radio = view.findViewById(rdo1);
+        int checkedRadioButtonId = Radio.getCheckedRadioButtonId();
+
+        //------스피너에 카테고리 추가------//
+        //String Spinner_category = spinner.getSelectedItem().toString();
 
         //혹시 몰라서 남겨두는 코드들
 //        noticeList = new ArrayList<Notice>();
@@ -64,6 +82,8 @@ public class fragment_bltboard extends Fragment {
 
         //리스트뷰에 데이터 표현
         //this.InitializeNoticeData();
+
+
 
         //---------리스너 파트 ----------//
         tv_notice.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +106,21 @@ public class fragment_bltboard extends Fragment {
                 
             }
         });
+
+        Radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedRadioButtonId == R.id.rdo_btn1){
+                    String Radio_select = "최신순";
+                    tv_notice.setText(Radio_select);
+                }
+                else if (checkedRadioButtonId == R.id.rdo_btn2) {
+                    String Radio_select = "인기순";
+                    tv_notice.setText(Radio_select);
+                }
+            }
+        });
+
         return view;
     }
 
