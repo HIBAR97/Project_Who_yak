@@ -46,6 +46,9 @@ public class fragment_bltboard extends Fragment {
     private ListView categoryListView;
     private  ArrayList<Category> CategoryList;
 
+    private ListView Category1L_View;
+    private  ArrayList<Category1_Latest> category1_Latest;
+
     private View view;
 
     @Nullable
@@ -84,10 +87,6 @@ public class fragment_bltboard extends Fragment {
 
         //리스트뷰에 데이터 표현
         //this.InitializeNoticeData();
-
-//        ArrayAdapter<String> Category_ada = new ArrayAdapter<String>(getActivity(), R.layout.fragment_bltboard, Category_list);
-//        spinner.setAdapter(Category_ada);
-//        spinner.setSelection(0);
 
         ArrayAdapter Category_ada = ArrayAdapter.createFromResource(getActivity(), R.array.Category, android.R.layout.simple_spinner_dropdown_item);
         Category_ada.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -130,13 +129,35 @@ public class fragment_bltboard extends Fragment {
         Radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                //최신순 선택
                 if (checkedId == R.id.rdo_btn1){
                     String Radio_select = "최신순";
-//                    tv_notice.setText(Radio_select);
+                    String spinner_Text = spinner.getSelectedItem().toString();
+
+                    //어떤 카테고리가 선택되었는지 확인
+                    if (spinner_Text .equals("카테고리 1")){
+                        new BackgrounTask_Category1L().execute();
+                    }else if (spinner_Text .equals("카테고리 2")){
+
+                    }else if (spinner_Text .equals("카테고리 3")){
+
+                    }
+//                    tv_notice.setText(spinner_Text);
                 }
                 else if (checkedId == R.id.rdo_btn2) {
+                    //인기순 선택
                     String Radio_select = "인기순";
-//                    tv_notice.setText(Radio_select);
+                    String spinner_Text = spinner.getSelectedItem().toString();
+
+                    //어떤 카테고리가 선택되었는지 확인
+                    if (spinner_Text .equals("카테고리 1")){
+//
+                    }else if (spinner_Text .equals("카테고리 2")){
+
+                    }else if (spinner_Text .equals("카테고리 3")){
+
+                    }
+                    tv_notice.setText(spinner_Text);
                 }
             }
         });
@@ -219,7 +240,6 @@ public class fragment_bltboard extends Fragment {
             }
         }
     }
-
 
     //------인기글 DB연동------//
     class BackgrounTask_Popular extends AsyncTask<Void, Void, String>
@@ -351,4 +371,76 @@ public class fragment_bltboard extends Fragment {
             }
         }
     }
+
+    //------카테고리1 최신순------//
+    class BackgrounTask_Category1L extends AsyncTask<Void, Void, String>
+    {
+        String target;
+
+        @Override
+        protected void onPreExecute() {
+            target = "http://whoyak.dothome.co.kr/BltboardNotice_Category1(Date).php";
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            try {
+                URL url = new URL(target);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String temp;
+                StringBuilder stringBuilder = new StringBuilder();
+                while ((temp = bufferedReader.readLine()) != null)
+                {
+                    stringBuilder.append(temp + "\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        public void onProgressUpdate(Void... values) {
+            super.onProgressUpdate();
+        }
+
+        @Override
+        public void onPostExecute(String result) {
+            try {
+                JSONObject jsonObject = new JSONObject(result);
+                JSONArray jsonArray = jsonObject.getJSONArray("response");
+                int count = 0;
+                String noticeContent, noticeName, noticeDate, noticeRate, noticeCat;
+                //위에서 선언된거 가져와야됨
+                category1_Latest = new ArrayList<Category1_Latest>();
+                while(count < 3)
+                {
+                    JSONObject object = jsonArray.getJSONObject(count);
+                    noticeContent = object.getString("noticeContent");
+                    noticeName = object.getString("noticeName");
+                    noticeDate = object.getString("noticeDate");
+                    noticeRate = object.getString("noticeRate");
+                    noticeCat = object.getString("noticeCategory");
+                    //리스트 선언 + arr 리스트 이름 가져오기
+                    Category1_Latest category1L = new Category1_Latest(noticeContent, noticeName, noticeDate, noticeRate, noticeCat);
+                    category1_Latest.add(category1L);
+                    //어뎁터 선언
+                    final Category1_Latest_Adapter CategoryAdapter1L = new Category1_Latest_Adapter(getActivity().getApplicationContext(), category1_Latest);
+                    //위에서 선언된 리스트뷰
+                    categoryListView.setAdapter(CategoryAdapter1L);
+                    count++;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 }
