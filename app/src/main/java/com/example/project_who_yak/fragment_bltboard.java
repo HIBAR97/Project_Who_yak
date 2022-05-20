@@ -14,6 +14,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -83,7 +85,13 @@ public class fragment_bltboard extends Fragment {
         //리스트뷰에 데이터 표현
         //this.InitializeNoticeData();
 
+//        ArrayAdapter<String> Category_ada = new ArrayAdapter<String>(getActivity(), R.layout.fragment_bltboard, Category_list);
+//        spinner.setAdapter(Category_ada);
+//        spinner.setSelection(0);
 
+        ArrayAdapter Category_ada = ArrayAdapter.createFromResource(getActivity(), R.array.Category, android.R.layout.simple_spinner_dropdown_item);
+        Category_ada.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(Category_ada);
 
         //---------리스너 파트 ----------//
         tv_notice.setOnClickListener(new View.OnClickListener() {
@@ -103,26 +111,40 @@ public class fragment_bltboard extends Fragment {
         tv_spn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
+            }
+        });
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
         Radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedRadioButtonId == R.id.rdo_btn1){
+                if (checkedId == R.id.rdo_btn1){
                     String Radio_select = "최신순";
-                    tv_notice.setText(Radio_select);
+//                    tv_notice.setText(Radio_select);
                 }
-                else if (checkedRadioButtonId == R.id.rdo_btn2) {
+                else if (checkedId == R.id.rdo_btn2) {
                     String Radio_select = "인기순";
-                    tv_notice.setText(Radio_select);
+//                    tv_notice.setText(Radio_select);
                 }
             }
         });
 
         return view;
     }
+
+
 
     //더미 데이터 넣는 함수
     public void InitializeNoticeData(){
