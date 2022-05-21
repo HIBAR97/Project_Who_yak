@@ -9,6 +9,7 @@ import static com.example.project_who_yak.R.id.rdo1;
 import static com.example.project_who_yak.R.id.spn_main;
 import static com.example.project_who_yak.R.id.spn_name;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -51,6 +52,8 @@ public class fragment_bltboard extends Fragment {
     private ArrayList<Category3_Latest> category3_Latest;
 
     private ArrayList<Category1_Popular> category1_populars;
+    private ArrayList<Category1_Popular> category2_populars;
+    private ArrayList<Category1_Popular> category3_populars;
 
     private View view;
 
@@ -72,18 +75,7 @@ public class fragment_bltboard extends Fragment {
         RadioGroup Radio = view.findViewById(rdo1);
         int checkedRadioButtonId = Radio.getCheckedRadioButtonId();
 
-        //------스피너에 카테고리 추가------//
-        //String Spinner_category = spinner.getSelectedItem().toString();
-
-        //혹시 몰라서 남겨두는 코드들
-//        noticeList = new ArrayList<Notice>();
-//        adapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList);
-//        noticeListView.setAdapter(adapter);
-
-//        noticeList2 = new ArrayList<Notice>();
-//        final NoticeListAdapter NoticeAdapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList2);
-//        noticeListView.setAdapter(NoticeAdapter);
-
+        //------페이지가 켜지면 정보 표현------//
         new BackgrounTask_Notice().execute();
         new BackgrounTask_Popular().execute();
         new BackgrounTask_Category().execute();
@@ -91,33 +83,23 @@ public class fragment_bltboard extends Fragment {
         //리스트뷰에 데이터 표현
         //this.InitializeNoticeData();
 
+        //------스피너에 카테고리 삽입------//
         ArrayAdapter Category_ada = ArrayAdapter.createFromResource(getActivity(), R.array.Category, android.R.layout.simple_spinner_dropdown_item);
         Category_ada.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(Category_ada);
 
         //---------리스너 파트 ----------//
-        tv_notice.setOnClickListener(new View.OnClickListener() {
+        noticeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        tv_ppl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        tv_spn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //임시 xml 표시
+                Intent intent = new Intent(getActivity().getApplicationContext(), SignUp_activity.class);
+                startActivity(intent);
             }
         });
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            //스피너에 있는 정보를 가져옴
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -145,20 +127,18 @@ public class fragment_bltboard extends Fragment {
                     }else if (spinner_Text .equals("카테고리 3")){
                         new BackgrounTask_Category3L().execute();
                     }
-//                    tv_notice.setText(spinner_Text);
-                }
-                else if (checkedId == R.id.rdo_btn2) {
+                } else if (checkedId == R.id.rdo_btn2) {
                     //인기순 선택
                     String Radio_select = "인기순";
                     String spinner_Text = spinner.getSelectedItem().toString();
 
                     //어떤 카테고리가 선택되었는지 확인
                     if (spinner_Text .equals("카테고리 1")){
-//
+                        new BackgrounTask_Category1P().execute();
                     }else if (spinner_Text .equals("카테고리 2")){
-
+//                        new BackgrounTask_Category2P().execute();
                     }else if (spinner_Text .equals("카테고리 3")){
-
+//                        new BackgrounTask_Category3P().execute();
                     }
 //                    tv_notice.setText(spinner_Text);
                 }
@@ -170,7 +150,7 @@ public class fragment_bltboard extends Fragment {
 
 
 
-    //더미 데이터 넣는 함수
+    //리스트 뷰 더미 데이터 넣는 함수
     public void InitializeNoticeData(){
         noticeList = new ArrayList<Notice>();
         noticeList.add(new Notice("공지사항", "미션임파서블","15세 이상관람가"));
@@ -653,4 +633,5 @@ public class fragment_bltboard extends Fragment {
             }
         }
     }
+
 }
