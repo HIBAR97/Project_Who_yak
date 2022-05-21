@@ -49,4 +49,4 @@ public class Category3_Latest_Adapter extends BaseAdapter {
                 v.setTag(Category3_Latest.get(i).getNotice());
                 return v;
         }
-        }
+}
