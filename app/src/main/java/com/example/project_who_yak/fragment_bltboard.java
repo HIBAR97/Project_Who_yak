@@ -46,8 +46,9 @@ public class fragment_bltboard extends Fragment {
     private ListView categoryListView;
     private  ArrayList<Category> CategoryList;
 
-    private ListView Category1L_View;
-    private  ArrayList<Category1_Latest> category1_Latest;
+    private ArrayList<Category1_Latest> category1_Latest;
+    private ArrayList<Category2_Latest> category2_Latest;
+    private ArrayList<Category3_Latest> category3_Latest;
 
     private View view;
 
@@ -138,7 +139,7 @@ public class fragment_bltboard extends Fragment {
                     if (spinner_Text .equals("카테고리 1")){
                         new BackgrounTask_Category1L().execute();
                     }else if (spinner_Text .equals("카테고리 2")){
-
+                        new BackgrounTask_Category2L().execute();
                     }else if (spinner_Text .equals("카테고리 3")){
 
                     }
@@ -157,7 +158,7 @@ public class fragment_bltboard extends Fragment {
                     }else if (spinner_Text .equals("카테고리 3")){
 
                     }
-                    tv_notice.setText(spinner_Text);
+//                    tv_notice.setText(spinner_Text);
                 }
             }
         });
@@ -174,7 +175,6 @@ public class fragment_bltboard extends Fragment {
         final NoticeListAdapter NoticeAdapter = new NoticeListAdapter(getActivity().getApplicationContext(), noticeList);
         noticeListView.setAdapter(NoticeAdapter);
     }
-
 
     //------공지사항 DB연동------//
     class BackgrounTask_Notice extends AsyncTask<Void, Void, String>
@@ -442,5 +442,143 @@ public class fragment_bltboard extends Fragment {
         }
     }
 
+    //------카테고리2 최신순------//
+    class BackgrounTask_Category2L extends AsyncTask<Void, Void, String>
+    {
+        String target;
 
+        @Override
+        protected void onPreExecute() {
+            target = "http://whoyak.dothome.co.kr/BltboardNotice_Category2(Date).php";
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            try {
+                URL url = new URL(target);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String temp;
+                StringBuilder stringBuilder = new StringBuilder();
+                while ((temp = bufferedReader.readLine()) != null)
+                {
+                    stringBuilder.append(temp + "\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        public void onProgressUpdate(Void... values) {
+            super.onProgressUpdate();
+        }
+
+        @Override
+        public void onPostExecute(String result) {
+            try {
+                JSONObject jsonObject = new JSONObject(result);
+                JSONArray jsonArray = jsonObject.getJSONArray("response");
+                int count = 0;
+                String noticeContent, noticeName, noticeDate, noticeRate, noticeCat;
+                //위에서 선언된거 가져와야됨
+                category2_Latest = new ArrayList<Category2_Latest>();
+                while(count < 3)
+                {
+                    JSONObject object = jsonArray.getJSONObject(count);
+                    noticeContent = object.getString("noticeContent");
+                    noticeName = object.getString("noticeName");
+                    noticeDate = object.getString("noticeDate");
+                    noticeRate = object.getString("noticeRate");
+                    noticeCat = object.getString("noticeCategory");
+                    //리스트 선언 + arr 리스트 이름 가져오기
+                    Category2_Latest category2L = new Category2_Latest(noticeContent, noticeName, noticeDate, noticeRate, noticeCat);
+                    category2_Latest.add(category2L);
+                    //어뎁터 선언
+                    final Category2_Latest_Adapter CategoryAdapter2L = new Category2_Latest_Adapter(getActivity().getApplicationContext(), category2_Latest);
+                    //위에서 선언된 리스트뷰
+                    categoryListView.setAdapter(CategoryAdapter2L);
+                    count++;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //------카테고리3 최신순------//
+    class BackgrounTask_Category3L extends AsyncTask<Void, Void, String>
+    {
+        String target;
+
+        @Override
+        protected void onPreExecute() {
+            target = "http://whoyak.dothome.co.kr/BltboardNotice_Category3(Date).php";
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            try {
+                URL url = new URL(target);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String temp;
+                StringBuilder stringBuilder = new StringBuilder();
+                while ((temp = bufferedReader.readLine()) != null)
+                {
+                    stringBuilder.append(temp + "\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        public void onProgressUpdate(Void... values) {
+            super.onProgressUpdate();
+        }
+
+        @Override
+        public void onPostExecute(String result) {
+            try {
+                JSONObject jsonObject = new JSONObject(result);
+                JSONArray jsonArray = jsonObject.getJSONArray("response");
+                int count = 0;
+                String noticeContent, noticeName, noticeDate, noticeRate, noticeCat;
+                //위에서 선언된거 가져와야됨
+                category3_Latest = new ArrayList<Category3_Latest>();
+                while(count < 3)
+                {
+                    JSONObject object = jsonArray.getJSONObject(count);
+                    noticeContent = object.getString("noticeContent");
+                    noticeName = object.getString("noticeName");
+                    noticeDate = object.getString("noticeDate");
+                    noticeRate = object.getString("noticeRate");
+                    noticeCat = object.getString("noticeCategory");
+                    //리스트 선언 + arr 리스트 이름 가져오기
+                    Category3_Latest category3L = new Category3_Latest(noticeContent, noticeName, noticeDate, noticeRate, noticeCat);
+                    category3_Latest.add(category3L);
+                    //어뎁터 선언
+                    final Category3_Latest_Adapter CategoryAdapter3L = new Category3_Latest_Adapter(getActivity().getApplicationContext(), category3_Latest);
+                    //위에서 선언된 리스트뷰
+                    categoryListView.setAdapter(CategoryAdapter3L);
+                    count++;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
