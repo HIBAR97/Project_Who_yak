@@ -153,6 +153,7 @@ public class Drug_information extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"빈칸입니다.",Toast.LENGTH_SHORT).show();
                     return;
                 }
+                drugList.clear();
                 new BackgroudTaskSerch().execute();
 
 //                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -578,7 +579,6 @@ public class Drug_information extends AppCompatActivity {
                     JSONObject object = jsonArray.getJSONObject(count);
                     drugName = object.getString("drugName");
                     Drug drug = new Drug(drugName);
-                    drugList.clear();
                     drugList.add(drug);
                     Adapter.notifyDataSetChanged();
                     count++;

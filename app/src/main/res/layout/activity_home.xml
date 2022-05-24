@@ -106,6 +106,20 @@
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1" />
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="오늘의 일정"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:layout_marginBottom="15dp"-->
+<!--            android:textSize="25sp"-->
+<!--            android:fontFamily="@font/yak_air"-->
+<!--            android:textStyle="bold"/>-->
+        <ListView
+            android:id="@+id/lv_HOMECalendar"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
 
     </LinearLayout>
 

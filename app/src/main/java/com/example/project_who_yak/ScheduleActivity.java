@@ -100,12 +100,16 @@ public class ScheduleActivity extends AppCompatActivity {
         //달력에 토,일 색상 넣기
         calendarView.addDecorators(new SaturdayDecorator(),new SundayDecorator());
 
+
         //달력에 날짜 보이기
         calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
-//              tv_today.setText(calendarView.getSelectedDates().toString());
-                tv_today.setText(date.toString().substring(12, date.toString().length()-1));
+//              tv_today.setText(calendarView.getSelectedDates().toString());\
+                String[] array=date.toString().substring(12, date.toString().length()-1).split("-");
+                int month = Integer.parseInt(array[1])+1 ;
+                String date2 = array[0]+"-"+ month + "-" +array[2];
+                tv_today.setText(date2); //2022-xx-xx-xx
 
             }
         });

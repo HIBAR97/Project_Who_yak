@@ -21,11 +21,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
     private ArrayList<Notice> noticeList;
     private AlertDialog dialog;
+
+    private ScheduleListAdapter Adapter;
+    private List<Schedule> scheduleList;
 
     String userID;
     Button btnSearch;
@@ -36,6 +40,7 @@ public class HomeActivity extends AppCompatActivity {
     Button btnVoice;
 
     ListView lv_notice;
+    ListView lv_calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,10 @@ public class HomeActivity extends AppCompatActivity {
         btnSchedule = findViewById(R.id.btnSchedule);
         btnBoard = findViewById(R.id.btnBoard);
         btnVoice = findViewById(R.id.btnvoice);
+        lv_calendar = (ListView) findViewById(R.id.lv_HOMECalendar);
+        scheduleList = new ArrayList<Schedule>();
+        Adapter = new ScheduleListAdapter(getApplicationContext(), scheduleList);
+        lv_calendar.setAdapter(Adapter);
          //'Intent intentmain = getIntent();
         //String userID = intentmain.getStringExtra("userID");
         //btnVoice.setText(userID);
@@ -123,6 +132,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         new HomeActivity.BackgrounTask().execute();
+        new BackgroudTaskschedule().execute();
     }
 
     //--------공지사항 연동------------//
@@ -188,4 +198,66 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
     }
+
+    class BackgroudTaskschedule extends AsyncTask<Void, Void, String> {
+
+
+        String target;
+
+        @Override
+        protected void onPreExecute() {
+            target = "http://whoyak.dothome.co.kr/ScheduleList.php";
+        }
+        @Override
+        protected String doInBackground(Void... voids) {
+
+            try {
+                URL url = new URL(target);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String temp;
+                StringBuilder stringBuilder = new StringBuilder();
+                while((temp = bufferedReader.readLine()) != null)
+                {
+                    stringBuilder.append(temp + "\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        public void onProgressUpdate(Void... values){
+            super.onProgressUpdate();
+        }
+
+        @Override
+        public void onPostExecute(String result){
+            try{
+
+                JSONObject jsonObject = new JSONObject(result);
+                JSONArray jsonArray = jsonObject.getJSONArray("response");
+                int count=0;
+                String scheduleName;
+                while(count < jsonArray.length()){
+                    JSONObject object = jsonArray.getJSONObject(count);
+                    scheduleName = object.getString("schedule");
+                    Schedule schedule = new Schedule(scheduleName);
+                    scheduleList.add(schedule);
+                    Adapter.notifyDataSetChanged();
+                    count++;
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 }
