@@ -36,6 +36,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class activity_Camara_scan extends AppCompatActivity {
 
@@ -205,6 +207,7 @@ public class activity_Camara_scan extends AppCompatActivity {
         ImageView iv_preview1;
         ivPic = (ImageView)findViewById(R.id.ivPic);
         iv_preview1 = (ImageView)findViewById(R.id.Iv_preview1);
+        List<Bitmap> SliderItems = new ArrayList<>();
         super.onActivityResult(requestCode, resultCode, intent);
 
         switch (requestCode) { case TAKE_PICTURE: if (resultCode == RESULT_OK && intent.hasExtra("data")) {
@@ -212,6 +215,11 @@ public class activity_Camara_scan extends AppCompatActivity {
 
             if (bitmap != null) {
                 ivPic.setImageBitmap(bitmap);
+
+                //카메라에서 찍은 사진을 슬라이더 리스트에 추가
+                SliderItems.add(bitmap);
+
+                //아래 프리뷰 변경하는 함수
                 iv_preview1.setImageBitmap(bitmap);
             }
         }break;

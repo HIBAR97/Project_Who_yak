@@ -79,18 +79,22 @@
         <entry key="..\:/Users/kim sungsoo/AndroidStudioProjects/who_yak2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2985" />
         <entry key="..\:/Users/kim sungsoo/AndroidStudioProjects/who_yak2/app/src/main/res/layout/activity_main.xml" value="0.26313405797101447" />
         <entry key="..\:/Users/kim sungsoo/AndroidStudioProjects/who_yak2/app/src/main/res/layout/activity_sign_up.xml" value="0.26313405797101447" />
-        <entry key="app/src/main/res/layout/activity_camara_scan.xml" value="0.2115036231884058" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.13728470111448834" />
+        <entry key="app/src/main/res/layout/activity_camara_scan.xml" value="0.13728470111448834" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.22192028985507245" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3392210144927536" />
         <entry key="app/src/main/res/layout/activity_schedule.xml" value="0.1828774062816616" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2658514492753623" />
-        <entry key="app/src/main/res/layout/activity_userpage.xml" value="0.1828774062816616" />
+        <entry key="app/src/main/res/layout/activity_userpage.xml" value="0.22192028985507245" />
+        <entry key="app/src/main/res/layout/druglist.xml" value="0.1828774062816616" />
         <entry key="app/src/main/res/layout/fragment_bltboard.xml" value="0.27853260869565216" />
         <entry key="app/src/main/res/layout/fragment_drug_info.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/fragment_drug_precaution.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/fragment_userpage_manual.xml" value="0.2115036231884058" />
         <entry key="app/src/main/res/layout/fragment_userpage_profile.xml" value="0.2708626357738491" />
         <entry key="app/src/main/res/layout/layout_drug_information.xml" value="0.26992753623188404" />
+        <entry key="app/src/main/res/layout/notice.xml" value="0.1828774062816616" />
+        <entry key="app/src/main/res/layout/remember.xml" value="0.2962799072265625" />
+        <entry key="app/src/main/res/layout/schedulelist.xml" value="0.2900978652660366" />
       </map>
     </option>
   </component>
