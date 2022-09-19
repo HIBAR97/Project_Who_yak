@@ -1,6 +1,7 @@
 package com.example.project_who_yak;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -9,25 +10,27 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.project_who_yak.databinding.SlideItemBinding;
 
 import java.util.List;
 
-public class SLiderAdapter_Camara_scan extends RecyclerView.Adapter<SLiderAdapter_Camara_scan.SliderViewHolder> {
+public class SliderAdapter_Camara_scan extends RecyclerView.Adapter<SliderAdapter_Camara_scan.SliderViewHolder> {
 
     private static final String TAG = "SliderAdapter";
 
     private Context mContext;
-    private List<String> sliderItems;
+    private List<Bitmap> sliderItems;
 
-    public SLiderAdapter_Camara_scan(Context context, List<String> sliderItems){
+    public SliderAdapter_Camara_scan(Context context, List<Bitmap> SliderItems){
         mContext = context;
-        this.sliderItems = sliderItems;
+        this.sliderItems = SliderItems;
     }
+
 
     @NonNull
     @Override
     public SliderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
-        return new SLiderAdapter_Camara_scan(SlideItemBinding.inflate(LayoutInflater.from(parent.getContext()),
+        return new SliderViewHolder(SlideItemBinding.inflate(LayoutInflater.from(parent.getContext()),
                 parent,
                 false));
     }
@@ -39,10 +42,11 @@ public class SLiderAdapter_Camara_scan extends RecyclerView.Adapter<SLiderAdapte
 
     @Override
     public void onBindViewHolder(@NonNull SliderViewHolder Holder, int position){
-        Holder.bind(sliderItems.get(position));
+        Holder.bind(String.valueOf(sliderItems.get(position)));
     }
 
     class SliderViewHolder extends RecyclerView.ViewHolder{
+
         private SlideItemBinding mBinding;
 
         public SliderViewHolder(SlideItemBinding binding){
