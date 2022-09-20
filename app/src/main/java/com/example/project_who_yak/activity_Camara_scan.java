@@ -10,6 +10,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
@@ -28,6 +29,7 @@ import androidx.loader.content.CursorLoader;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.project_who_yak.databinding.ActivityCamaraScanBinding;
 import com.googlecode.tesseract.android.TessBaseAPI;
 
 import java.io.File;
@@ -54,6 +56,8 @@ public class activity_Camara_scan extends AppCompatActivity {
 
     //로컬이미지 변수
     private String imageUrl="";
+    ActivityCamaraScanBinding mBinding;
+    private Handler sliderHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +78,7 @@ public class activity_Camara_scan extends AppCompatActivity {
 
         btnvoice = (Button) findViewById(R.id.btnvoice);
         btnhome = (Button) findViewById(R.id.btnhome);
-        btnImg = (ImageButton) findViewById(R.id.Ib_preview);
+        //btnImg = (ImageButton) findViewById(R.id.Ib_preview);
         btnResult = (Button) findViewById(R.id.btnResult);
         btnOcr = (Button) findViewById(R.id.btnOCR);
         btnPic = (Button) findViewById(R.id.btnPic);
@@ -92,6 +96,10 @@ public class activity_Camara_scan extends AppCompatActivity {
         //OCR 세팅
         mTess = new TessBaseAPI();
         mTess.init(datapath, lang);
+
+        //Slider 변수
+        mBinding = ActivityCamaraScanBinding.inflate(getLayoutInflater());
+        //setContentView(mBinding.getRoot());
 
         // 카메라 권한 확인
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -119,16 +127,16 @@ public class activity_Camara_scan extends AppCompatActivity {
             }
         });
 
-        btnImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
-
-                startActivityForResult(intent,10);
-
-            }
-        });
+//        btnImg.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(Intent.ACTION_PICK);
+//                intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
+//
+//                startActivityForResult(intent,10);
+//
+//            }
+//        });
 
         //홈 버튼 리스너
         btnhome.setOnClickListener(new View.OnClickListener() {
@@ -206,7 +214,7 @@ public class activity_Camara_scan extends AppCompatActivity {
         ImageView ivPic;
         ImageView iv_preview1;
         ivPic = (ImageView)findViewById(R.id.ivPic);
-        iv_preview1 = (ImageView)findViewById(R.id.Iv_preview1);
+        //iv_preview1 = (ImageView)findViewById(R.id.Iv_preview1);
         List<Bitmap> SliderItems = new ArrayList<>();
         super.onActivityResult(requestCode, resultCode, intent);
 
@@ -216,11 +224,13 @@ public class activity_Camara_scan extends AppCompatActivity {
             if (bitmap != null) {
                 ivPic.setImageBitmap(bitmap);
 
+                //아래 프리뷰 변경하는 함수
+                //iv_preview1.setImageBitmap(bitmap);
+
                 //카메라에서 찍은 사진을 슬라이더 리스트에 추가
                 SliderItems.add(bitmap);
+                mBinding.vpImageSlider.setAdapter(new SliderAdapter_Camara_scan(this, mBinding.vpImageSlider, SliderItems));
 
-                //아래 프리뷰 변경하는 함수
-                iv_preview1.setImageBitmap(bitmap);
             }
         }break;
         }

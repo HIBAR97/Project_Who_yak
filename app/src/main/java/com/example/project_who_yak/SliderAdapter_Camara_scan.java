@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.bumptech.glide.Glide;
 import com.example.project_who_yak.databinding.SlideItemBinding;
@@ -19,10 +20,12 @@ public class SliderAdapter_Camara_scan extends RecyclerView.Adapter<SliderAdapte
     private static final String TAG = "SliderAdapter";
 
     private Context mContext;
+    private ViewPager2 mViewPager2;
     private List<Bitmap> sliderItems;
 
-    public SliderAdapter_Camara_scan(Context context, List<Bitmap> SliderItems){
+    public SliderAdapter_Camara_scan(Context context, ViewPager2 viewPager2, List<Bitmap> SliderItems){
         mContext = context;
+        mViewPager2 = viewPager2;
         this.sliderItems = SliderItems;
     }
 

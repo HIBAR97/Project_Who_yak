@@ -112,9 +112,9 @@
 
 <!--        </LinearLayout>-->
         <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_image_slider"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_below="@+id/Layout_Pic"/>
+            android:layout_height="match_parent"/>
 
     </HorizontalScrollView>
 
