@@ -244,6 +244,13 @@ public class activity_Camara_scan extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mBinding = null;
+    }
+
+
     //장치에 파일 복사
     private void copyFiles(String lang) {
         try{
