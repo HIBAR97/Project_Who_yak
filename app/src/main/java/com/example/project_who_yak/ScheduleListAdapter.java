@@ -38,9 +38,14 @@ public class ScheduleListAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v =View.inflate(context,R.layout.schedulelist,null);
         TextView schedule = (TextView) v.findViewById(R.id.scheduleList);
+        TextView schedule_date = (TextView) v.findViewById(R.id.scheduleList_date);
 
-        schedule.setText(schedulelist.get(i).getschedule());
-        v.setTag(schedulelist.get(i).getschedule());
+
+
+        schedule.setText(schedulelist.get(i).getSchedule());
+        schedule_date.setText(schedulelist.get(i).getDate());
+        v.setTag(schedulelist.get(i).getSchedule());
+
         return v;
     }
 

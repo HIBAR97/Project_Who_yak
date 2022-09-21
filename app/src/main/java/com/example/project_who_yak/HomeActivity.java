@@ -252,10 +252,13 @@ public class HomeActivity extends AppCompatActivity {
                 JSONArray jsonArray = jsonObject.getJSONArray("response");
                 int count=0;
                 String scheduleName;
+                String scheduledate;
                 while(count < jsonArray.length()){
                     JSONObject object = jsonArray.getJSONObject(count);
                     scheduleName = object.getString("schedule");
-                    Schedule schedule = new Schedule(scheduleName);
+                    scheduledate = object.getString("schedule_date");
+                    scheduledate= scheduledate.substring(5,scheduledate.length());
+                    Schedule schedule = new Schedule(scheduleName,scheduledate);
                     scheduleList.add(schedule);
                     Adapter.notifyDataSetChanged();
                     count++;

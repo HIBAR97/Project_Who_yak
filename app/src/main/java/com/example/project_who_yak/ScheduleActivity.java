@@ -67,6 +67,7 @@ public class ScheduleActivity extends AppCompatActivity {
     private ScheduleListAdapter Adapter;
     public List<Schedule> scheduleList;
     public String select_schedule;
+    private String schedule_date;
     Button btnvoice;
     Button btnhome;
     Button btnadd;
@@ -102,19 +103,27 @@ public class ScheduleActivity extends AppCompatActivity {
         calendarView.setSelectedDate(CalendarDay.today());
         //달력에 점 나타내기
         calendarView.addDecorator(new EventDecorator(Color.RED, calendarView.getSelectedDates()));
+
+//        tv_today.setText(schedule_date);
         //달력에 토,일 색상 넣기
         calendarView.addDecorators(new SaturdayDecorator(),new SundayDecorator());
 
+
+        //db에 넣을 날짜 초기화(선택 안했을 경우 오늘 날짜
+        schedule_date=calendarView.getSelectedDates().toString();
+        String[] array=schedule_date.substring(13, schedule_date.toString().length()-2).split("-");
+        int month = Integer.parseInt(array[1])+1 ;
+        schedule_date = array[0]+"-"+ month + "-" +array[2]; //2022-xx-xx-xx
 
         //달력에 날짜 보이기
         calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
-//              tv_today.setText(calendarView.getSelectedDates().toString());\
+//              schedule_date=calendarView.getSelectedDates().toString();
                 String[] array=date.toString().substring(12, date.toString().length()-1).split("-");
                 int month = Integer.parseInt(array[1])+1 ;
-                String date2 = array[0]+"-"+ month + "-" +array[2];
-                tv_today.setText(date2); //2022-xx-xx-xx
+                schedule_date = array[0]+"-"+ month + "-" +array[2];
+                tv_today.setText(schedule_date); //2022-xx-xx-xx
 
             }
         });
@@ -131,8 +140,8 @@ public class ScheduleActivity extends AppCompatActivity {
         scheduleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                select_schedule = scheduleList.get(i).getschedule();
-
+                select_schedule = scheduleList.get(i).getSchedule();
+                //날짜 입력 필요함
             }
         });
 
@@ -164,7 +173,7 @@ public class ScheduleActivity extends AppCompatActivity {
 
                         }
                     };
-                    ScheduleAddRequest scheduleAddRequest = new ScheduleAddRequest(userID, addSchedule, responseListener);
+                    ScheduleAddRequest scheduleAddRequest = new ScheduleAddRequest(userID, addSchedule, schedule_date, responseListener);
                     RequestQueue queue = Volley.newRequestQueue(ScheduleActivity.this);
                     queue.add(scheduleAddRequest);
 
@@ -385,16 +394,19 @@ public class ScheduleActivity extends AppCompatActivity {
         @Override
         public void onPostExecute(String result){
             try{
+
                 scheduleList.clear();
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("response");
                 int count=0;
                 String scheduleName;
-
+                String scheduledate;
                 while(count < jsonArray.length()){
                     JSONObject object = jsonArray.getJSONObject(count);
                     scheduleName = object.getString("schedule");
-                    Schedule schedule = new Schedule(scheduleName);
+                    scheduledate = object.getString("schedule_date");
+                    scheduledate= scheduledate.substring(5,scheduledate.length());
+                    Schedule schedule = new Schedule(scheduleName,scheduledate);
                     scheduleList.add(schedule);
                     Adapter.notifyDataSetChanged();
                     count++;

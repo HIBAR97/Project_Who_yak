@@ -2,17 +2,30 @@ package com.example.project_who_yak;
 
 public class Schedule {
 
-    String schedule;
+    private String schedule;
+    private String date;
 
-    public Schedule(String schedule) {
+
+    public Schedule(String schedule,String date) {
         this.schedule = schedule;
+        this.date = date;
     }
 
-    public String getschedule() {
+    public String getSchedule() {
         return schedule;
     }
 
-    public void setschedule(String schedule) {
+    public void setSchedule(String schedule) {
         this.schedule = schedule;
     }
+
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
 }
