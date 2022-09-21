@@ -45,8 +45,10 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -72,13 +74,16 @@ public class ScheduleActivity extends AppCompatActivity {
     Button btnmod;
     TextView tv_today;
     EditText contextEditText;
-    String userID= "test1";
+//    String userID= "test1";
+    // 로그인한  user_id가져오기 코드
+    String userID ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
-
+        Intent intentmain = getIntent();
+        userID = intentmain.getStringExtra("userID");
         btnvoice = findViewById(R.id.btnvoice);
         btnhome = findViewById(R.id.btnhome);
         btnadd = findViewById(R.id.btnAdd);
@@ -136,35 +141,36 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String addSchedule = contextEditText.getText().toString();
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                if(addSchedule.equals("")) {
+                    Toast.makeText(getApplicationContext(), "일정을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                }else{
+                    Response.Listener<String> responseListener = new Response.Listener<String>() {
 
-                    @Override
-                    public void onResponse(String response) {
-                        try
-                        {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            boolean success = jsonResponse.getBoolean("success");
-                            if(success) {
-                                Toast.makeText(getApplicationContext(),"일정을 추가했습니다.",Toast.LENGTH_SHORT).show();
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonResponse = new JSONObject(response);
+                                boolean success = jsonResponse.getBoolean("success");
+                                if (success) {
+                                    Toast.makeText(getApplicationContext(), "일정을 추가했습니다.", Toast.LENGTH_SHORT).show();
 
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "일정 추가에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (Exception e) {
+                                Toast.makeText(getApplicationContext(), "json에러", Toast.LENGTH_SHORT).show();
+                                e.printStackTrace();
                             }
-                            else {
-                                Toast.makeText(getApplicationContext(),"일정 추가에 실패했습니다.",Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        catch (Exception e){
-                            Toast.makeText(getApplicationContext(),"json에러",Toast.LENGTH_SHORT).show();
-                            e.printStackTrace();
-                        }
 
-                    }
-                };
-                ScheduleAddRequest scheduleAddRequest = new ScheduleAddRequest(userID, addSchedule, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(ScheduleActivity.this);
-                queue.add(scheduleAddRequest);
+                        }
+                    };
+                    ScheduleAddRequest scheduleAddRequest = new ScheduleAddRequest(userID, addSchedule, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(ScheduleActivity.this);
+                    queue.add(scheduleAddRequest);
 
-                sleep(200);
-                new BackgroudTaskschedule().execute();
+                    sleep(200);
+                    new BackgroudTaskschedule().execute();
+                }
             }
         });
 
@@ -340,7 +346,12 @@ public class ScheduleActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            target = "http://whoyak.dothome.co.kr/ScheduleList.php";
+            try {
+                target = "http://whoyak.dothome.co.kr/ScheduleList.php?userID=" +URLEncoder.encode(userID,"UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
         }
         @Override
         protected String doInBackground(Void... voids) {

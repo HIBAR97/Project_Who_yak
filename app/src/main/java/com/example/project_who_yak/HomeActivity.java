@@ -18,8 +18,10 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +32,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private ScheduleListAdapter Adapter;
     private List<Schedule> scheduleList;
-
-    String userID;
+    private String userID;
     Button btnSearch;
     Button btnScan;
     Button btnSchedule;
@@ -58,9 +59,10 @@ public class HomeActivity extends AppCompatActivity {
         scheduleList = new ArrayList<Schedule>();
         Adapter = new ScheduleListAdapter(getApplicationContext(), scheduleList);
         lv_calendar.setAdapter(Adapter);
-         //'Intent intentmain = getIntent();
-        //String userID = intentmain.getStringExtra("userID");
-        //btnVoice.setText(userID);
+        Intent intentmain = getIntent();
+        userID = intentmain.getStringExtra("userID");
+//        btnScan.setText(userID);
+
 
         lv_notice = findViewById(R.id.lv_HomeNotice);
 
@@ -72,7 +74,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), UserpageActivity.class);
-                //intent.putExtra("userID",userID);
+                intent.putExtra("userID",userID);
                 startActivity(intent);
 
 
@@ -100,6 +102,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ScheduleActivity.class);
+                intent.putExtra("userID",userID);
                 startActivity(intent);
             }
         });
@@ -206,7 +209,11 @@ public class HomeActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            target = "http://whoyak.dothome.co.kr/ScheduleList.php";
+            try {
+                target = "http://whoyak.dothome.co.kr/ScheduleList.php?userID=" + URLEncoder.encode(userID,"UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
         }
         @Override
         protected String doInBackground(Void... voids) {
