@@ -1,9 +1,12 @@
 package com.example.project_who_yak;
 
+import static android.os.SystemClock.sleep;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.PaintDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -60,12 +63,13 @@ public class ScheduleActivity extends AppCompatActivity {
     private MaterialCalendarView calendarView;
     private ListView scheduleListView;
     private ScheduleListAdapter Adapter;
-    private List<Schedule> scheduleList;
+    public List<Schedule> scheduleList;
     public String select_schedule;
     Button btnvoice;
     Button btnhome;
     Button btnadd;
     Button btndel;
+    Button btnmod;
     TextView tv_today;
     EditText contextEditText;
     String userID= "test1";
@@ -78,6 +82,7 @@ public class ScheduleActivity extends AppCompatActivity {
         btnvoice = findViewById(R.id.btnvoice);
         btnhome = findViewById(R.id.btnhome);
         btnadd = findViewById(R.id.btnAdd);
+        btnmod = findViewById(R.id.btnFix);
         btndel = findViewById(R.id.btnDel);
 
         scheduleListView = (ListView) findViewById(R.id.lvCal2);
@@ -144,7 +149,7 @@ public class ScheduleActivity extends AppCompatActivity {
 
                             }
                             else {
-                                Toast.makeText(getApplicationContext(),"일정을 추가에 실패했습니다.",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"일정 추가에 실패했습니다.",Toast.LENGTH_SHORT).show();
                             }
                         }
                         catch (Exception e){
@@ -158,21 +163,89 @@ public class ScheduleActivity extends AppCompatActivity {
                 RequestQueue queue = Volley.newRequestQueue(ScheduleActivity.this);
                 queue.add(scheduleAddRequest);
 
-
+                sleep(200);
+                new BackgroudTaskschedule().execute();
             }
         });
 
 
+
+        btnmod.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String before_schedule = select_schedule.toString();
+                String after_schedule = contextEditText.getText().toString();
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        try
+                        {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean success = jsonResponse.getBoolean("success");
+                            if(success) {
+                                Toast.makeText(getApplicationContext(),"일정을 수정했습니다.",Toast.LENGTH_SHORT).show();
+
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(),"일정 스장에 실패했습니다.",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        catch (Exception e){
+                            Toast.makeText(getApplicationContext(),"json에러",Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                        }
+
+                    }
+                };
+                ScheduleModRequest scheduleModRequestt = new ScheduleModRequest(after_schedule,userID, before_schedule, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(ScheduleActivity.this);
+                queue.add(scheduleModRequestt);
+
+                sleep(200);
+                new BackgroudTaskschedule().execute();
+            }
+        });
 
 
 
         btndel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    Toast.makeText(getApplicationContext(),select_schedule,Toast.LENGTH_SHORT).show();
+
+
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        try
+                        {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean success = jsonResponse.getBoolean("success");
+                            if(success) {
+                                Toast.makeText(getApplicationContext(),"일정을 삭제했습니다.",Toast.LENGTH_SHORT).show();
+
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(),"일정 삭제에 실패했습니다.",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        catch (Exception e){
+                            Toast.makeText(getApplicationContext(),"json에러",Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                        }
+
+                    }
+                };
+                ScheduleDelRequest scheduleDelRequest = new ScheduleDelRequest(userID, select_schedule, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(ScheduleActivity.this);
+                queue.add(scheduleDelRequest);
+                sleep(200);
+                new BackgroudTaskschedule().execute();
 
             }
         });
+
 
 
 
@@ -301,10 +374,12 @@ public class ScheduleActivity extends AppCompatActivity {
         @Override
         public void onPostExecute(String result){
             try{
+                scheduleList.clear();
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("response");
                 int count=0;
                 String scheduleName;
+
                 while(count < jsonArray.length()){
                     JSONObject object = jsonArray.getJSONObject(count);
                     scheduleName = object.getString("schedule");

@@ -20,7 +20,7 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
 
     private AlertDialog dialog;
-    private String userID;
+    private String userID="test1";
     private String userPassword;
 
     @Override
@@ -72,10 +72,10 @@ public class MainActivity extends AppCompatActivity {
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
                             if(success) {
-                                //String userID = jsonResponse.getString("userID");
+                                String userID = jsonResponse.getString("userID");
                                 Toast.makeText(getApplicationContext(),"로그인에 성공했습니다.",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                                //intent.putExtra("userID",userID);
+                                intent.putExtra("userID",userID);
                                 startActivity(intent);
                                 finish();
                             }
@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
 //                    startActivity(intent);
                     //startActivityForResult(intent, 0);
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    intent.putExtra("userID",userID);
                     startActivity(intent);
                 }
             }
