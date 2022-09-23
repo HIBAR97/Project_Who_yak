@@ -72,64 +72,69 @@
     </LinearLayout>
 
     //Additional pic Layout
-    <HorizontalScrollView
-    android:id="@+id/Hrz_view"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@+id/Layout_Pic"
-        android:orientation="horizontal">
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:layout_margin="10dp">-->
-
-<!--&lt;!&ndash;            <ImageView&ndash;&gt;-->
-<!--&lt;!&ndash;                android:id="@+id/Iv_preview1"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_width="fill_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_height="fill_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_marginRight="10dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:scaleType="fitCenter"&ndash;&gt;-->
-<!--&lt;!&ndash;                app:srcCompat="@drawable/ic_launcher_foreground" />&ndash;&gt;-->
-
-<!--&lt;!&ndash;            <ImageView&ndash;&gt;-->
-<!--&lt;!&ndash;                android:id="@+id/Iv_preview2"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_width="fill_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_height="fill_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_marginRight="10dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:scaleType="fitCenter"&ndash;&gt;-->
-<!--&lt;!&ndash;                app:srcCompat="@drawable/ic_launcher_foreground" />&ndash;&gt;-->
-
-<!--&lt;!&ndash;            //Add imgbtn&ndash;&gt;-->
-<!--&lt;!&ndash;            <ImageButton&ndash;&gt;-->
-<!--&lt;!&ndash;                android:id="@+id/Ib_preview"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_width="fill_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_height="fill_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_marginRight="10dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:scaleType="fitCenter"&ndash;&gt;-->
-<!--&lt;!&ndash;                app:srcCompat="@drawable/ic_launcher_foreground" />&ndash;&gt;-->
-
-<!--        </LinearLayout>-->
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/vp_image_slider"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-    </HorizontalScrollView>
-
 
 
     //Warning msg Layout
 
     //Button Layout
 
+<!--    <HorizontalScrollView-->
+<!--        android:id="@+id/Hrz_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_below="@+id/Layout_Pic"-->
+<!--        android:layout_marginTop="13dp"-->
+<!--        android:orientation="horizontal">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:layout_margin="10dp">-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/Iv_preview1"-->
+<!--                        android:layout_width="fill_parent"-->
+<!--                        android:layout_height="fill_parent"-->
+<!--                        android:layout_marginRight="10dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        app:srcCompat="@drawable/ic_launcher_foreground" />-->
+
+        <!--&lt;!&ndash;            <ImageView&ndash;&gt;-->
+        <!--&lt;!&ndash;                android:id="@+id/Iv_preview2"&ndash;&gt;-->
+        <!--&lt;!&ndash;                android:layout_width="fill_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;                android:layout_height="fill_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;                android:layout_marginRight="10dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;                android:scaleType="fitCenter"&ndash;&gt;-->
+        <!--&lt;!&ndash;                app:srcCompat="@drawable/ic_launcher_foreground" />&ndash;&gt;-->
+
+        <!--&lt;!&ndash;            //Add imgbtn&ndash;&gt;-->
+        <!--&lt;!&ndash;            <ImageButton&ndash;&gt;-->
+        <!--&lt;!&ndash;                android:id="@+id/Ib_preview"&ndash;&gt;-->
+        <!--&lt;!&ndash;                android:layout_width="fill_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;                android:layout_height="fill_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;                android:layout_marginRight="10dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;                android:scaleType="fitCenter"&ndash;&gt;-->
+        <!--&lt;!&ndash;                app:srcCompat="@drawable/ic_launcher_foreground" />&ndash;&gt;-->
+
+
+<!--                </LinearLayout>-->
+<!--    </HorizontalScrollView>-->
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_image_slider"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/Layout_Pic"
+        android:layout_marginTop="13dp"
+        android:scaleType="fitCenter"/>
+
     <LinearLayout
         android:id="@+id/Layout_warning_msg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/Latout_button"
-        android:layout_below="@+id/Hrz_view"
+        android:layout_below="@+id/vp_image_slider"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="10dp"
         android:orientation="vertical">

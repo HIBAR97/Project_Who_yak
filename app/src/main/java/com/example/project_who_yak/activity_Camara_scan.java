@@ -59,6 +59,8 @@ public class activity_Camara_scan extends AppCompatActivity {
     ActivityCamaraScanBinding mBinding;
     private Handler sliderHandler = new Handler();
 
+    List<Bitmap> SliderItems = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //화면 이동
@@ -99,7 +101,6 @@ public class activity_Camara_scan extends AppCompatActivity {
 
         //Slider 변수
         mBinding = ActivityCamaraScanBinding.inflate(getLayoutInflater());
-        //setContentView(mBinding.getRoot());
 
         // 카메라 권한 확인
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -112,7 +113,6 @@ public class activity_Camara_scan extends AppCompatActivity {
         }
 
         //---------리스너 파트-------------//
-
         //리스너 버튼 리스터
         btnvoice.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -215,7 +215,7 @@ public class activity_Camara_scan extends AppCompatActivity {
         ImageView iv_preview1;
         ivPic = (ImageView)findViewById(R.id.ivPic);
         //iv_preview1 = (ImageView)findViewById(R.id.Iv_preview1);
-        List<Bitmap> SliderItems = new ArrayList<>();
+
         super.onActivityResult(requestCode, resultCode, intent);
 
         switch (requestCode) { case TAKE_PICTURE: if (resultCode == RESULT_OK && intent.hasExtra("data")) {
@@ -229,6 +229,7 @@ public class activity_Camara_scan extends AppCompatActivity {
 
                 //카메라에서 찍은 사진을 슬라이더 리스트에 추가
                 SliderItems.add(bitmap);
+                //SliderItems.add(R.drawable.ic_baseline_textsms_24)
                 mBinding.vpImageSlider.setAdapter(new SliderAdapter_Camara_scan(this, mBinding.vpImageSlider, SliderItems));
 
             }
