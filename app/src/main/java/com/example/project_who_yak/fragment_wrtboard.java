@@ -72,10 +72,10 @@ public class fragment_wrtboard extends Fragment {
                                 JSONObject jsonResponse = new JSONObject(response);
                                 boolean success = jsonResponse.getBoolean("success");
                                 if (success) {
-                                    Toast.makeText(getActivity().getApplicationContext(), "일정을 추가했습니다.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity().getApplicationContext(), "게시글을 등록했습니다.", Toast.LENGTH_SHORT).show();
 
                                 } else {
-                                    Toast.makeText(getActivity().getApplicationContext(), "일정 추가에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity().getApplicationContext(), "게시글 등록에 실패했습니다.", Toast.LENGTH_SHORT).show();
                                 }
                             } catch (Exception e) {
                                 Toast.makeText(getActivity().getApplicationContext(), "json에러", Toast.LENGTH_SHORT).show();
