@@ -64,7 +64,7 @@
             android:text="@string/tv_text" />
 
         <EditText
-            android:id="@+id/wrt_bonmun"
+            android:id="@+id/wrt_content"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:gravity="clip_horizontal"
