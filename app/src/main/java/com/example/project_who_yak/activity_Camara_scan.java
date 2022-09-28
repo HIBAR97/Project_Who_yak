@@ -72,14 +72,14 @@ public class activity_Camara_scan extends AppCompatActivity {
         boolean isScreenReaderEnabled = accessibilityManager.isEnabled() && accessibilityManager.isTouchExplorationEnabled();
 
         Button btnvoice;
-        Button btnhome;
+        Button btn_search;
         ImageButton btnImg;
         Button btnPic;
         Button btnOcr;
         Button btnResult;
 
         btnvoice = (Button) findViewById(R.id.btnvoice);
-        btnhome = (Button) findViewById(R.id.btnhome);
+        btn_search = (Button) findViewById(R.id.btn_Drug_search);
         //btnImg = (ImageButton) findViewById(R.id.Ib_preview);
         btnResult = (Button) findViewById(R.id.btnResult);
         btnOcr = (Button) findViewById(R.id.btnOCR);
@@ -138,13 +138,6 @@ public class activity_Camara_scan extends AppCompatActivity {
 //            }
 //        });
 
-        //홈 버튼 리스너
-        btnhome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
 
         //촬영 버튼 리스너
         btnPic.setOnClickListener(new View.OnClickListener() {
@@ -171,6 +164,14 @@ public class activity_Camara_scan extends AppCompatActivity {
                 mTess.setImage(image);
                 OCResult = mTess.getUTF8Text();
                 OCRTextview.setText(OCResult);
+            }
+        });
+
+        //OCR 검색 결과 리스너
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
