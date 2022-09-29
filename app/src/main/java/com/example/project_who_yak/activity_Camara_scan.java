@@ -48,18 +48,20 @@ public class activity_Camara_scan extends AppCompatActivity {
     String mCurrentPhotoPath;
     final int REQUEST_TAKE_PHOTO = 1;
 
-    //OCR 변수
-    Bitmap image;
-    private TessBaseAPI mTess;
-    String datapath = "";
-    TextView OCRTextview;
+    //글로벌 변수
+    List<Bitmap> SliderItems = new ArrayList<>();
+    Bundle Drug_Name = new Bundle();
 
     //로컬이미지 변수
     private String imageUrl="";
     ActivityCamaraScanBinding mBinding;
     private Handler sliderHandler = new Handler();
 
-    List<Bitmap> SliderItems = new ArrayList<>();
+    //OCR 변수
+    Bitmap image;
+    private TessBaseAPI mTess;
+    String datapath = "";
+    TextView OCRTextview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,6 +165,9 @@ public class activity_Camara_scan extends AppCompatActivity {
                 String OCResult = null;
                 mTess.setImage(image);
                 OCResult = mTess.getUTF8Text();
+
+                //글로벌 변수 저장
+                Drug_Name.putString("Drug_name",OCResult);
                 OCRTextview.setText(OCResult);
             }
         });
@@ -175,11 +180,11 @@ public class activity_Camara_scan extends AppCompatActivity {
             }
         });
 
-        //뒤로가기 버튼 리스너
+        //검색 버튼 리스너
         btnResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //FragmentTransaction transaction = Activity.
             }
         });
     }
