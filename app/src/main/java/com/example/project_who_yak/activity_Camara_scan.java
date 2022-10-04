@@ -48,16 +48,20 @@ public class activity_Camara_scan extends AppCompatActivity {
     String mCurrentPhotoPath;
     final int REQUEST_TAKE_PHOTO = 1;
 
-    //OCR 변수
-    Bitmap image;
-    private TessBaseAPI mTess;
-    String datapath = "";
-    TextView OCRTextview;
+    //글로벌 변수
+    List<Bitmap> SliderItems = new ArrayList<>();
+    Bundle Drug_Name = new Bundle();
 
     //로컬이미지 변수
     private String imageUrl="";
     ActivityCamaraScanBinding mBinding;
     private Handler sliderHandler = new Handler();
+
+    //OCR 변수
+    Bitmap image;
+    private TessBaseAPI mTess;
+    String datapath = "";
+    TextView OCRTextview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,14 +74,14 @@ public class activity_Camara_scan extends AppCompatActivity {
         boolean isScreenReaderEnabled = accessibilityManager.isEnabled() && accessibilityManager.isTouchExplorationEnabled();
 
         Button btnvoice;
-        Button btnhome;
+        Button btn_search;
         ImageButton btnImg;
         Button btnPic;
         Button btnOcr;
         Button btnResult;
 
         btnvoice = (Button) findViewById(R.id.btnvoice);
-        btnhome = (Button) findViewById(R.id.btnhome);
+        btn_search = (Button) findViewById(R.id.btn_Drug_search);
         //btnImg = (ImageButton) findViewById(R.id.Ib_preview);
         btnResult = (Button) findViewById(R.id.btnResult);
         btnOcr = (Button) findViewById(R.id.btnOCR);
@@ -99,7 +103,6 @@ public class activity_Camara_scan extends AppCompatActivity {
 
         //Slider 변수
         mBinding = ActivityCamaraScanBinding.inflate(getLayoutInflater());
-        //setContentView(mBinding.getRoot());
 
         // 카메라 권한 확인
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -112,7 +115,6 @@ public class activity_Camara_scan extends AppCompatActivity {
         }
 
         //---------리스너 파트-------------//
-
         //리스너 버튼 리스터
         btnvoice.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,13 +140,6 @@ public class activity_Camara_scan extends AppCompatActivity {
 //            }
 //        });
 
-        //홈 버튼 리스너
-        btnhome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
 
         //촬영 버튼 리스너
         btnPic.setOnClickListener(new View.OnClickListener() {
@@ -170,15 +165,26 @@ public class activity_Camara_scan extends AppCompatActivity {
                 String OCResult = null;
                 mTess.setImage(image);
                 OCResult = mTess.getUTF8Text();
+
+                //글로벌 변수 저장
+                Drug_Name.putString("Drug_name",OCResult);
                 OCRTextview.setText(OCResult);
             }
         });
 
-        //뒤로가기 버튼 리스너
-        btnResult.setOnClickListener(new View.OnClickListener() {
+        //OCR 검색 결과 리스너
+        btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+        //검색 버튼 리스너
+        btnResult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //FragmentTransaction transaction = Activity.
             }
         });
     }
@@ -215,7 +221,7 @@ public class activity_Camara_scan extends AppCompatActivity {
         ImageView iv_preview1;
         ivPic = (ImageView)findViewById(R.id.ivPic);
         //iv_preview1 = (ImageView)findViewById(R.id.Iv_preview1);
-        List<Bitmap> SliderItems = new ArrayList<>();
+
         super.onActivityResult(requestCode, resultCode, intent);
 
         switch (requestCode) { case TAKE_PICTURE: if (resultCode == RESULT_OK && intent.hasExtra("data")) {
@@ -229,6 +235,7 @@ public class activity_Camara_scan extends AppCompatActivity {
 
                 //카메라에서 찍은 사진을 슬라이더 리스트에 추가
                 SliderItems.add(bitmap);
+                //SliderItems.add(R.drawable.ic_baseline_textsms_24)
                 mBinding.vpImageSlider.setAdapter(new SliderAdapter_Camara_scan(this, mBinding.vpImageSlider, SliderItems));
 
             }
