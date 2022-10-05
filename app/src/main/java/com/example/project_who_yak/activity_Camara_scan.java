@@ -1,6 +1,7 @@
 package com.example.project_who_yak;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
@@ -63,6 +64,7 @@ public class activity_Camara_scan extends AppCompatActivity {
     String datapath = "";
     TextView OCRTextview;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //화면 이동
@@ -74,14 +76,14 @@ public class activity_Camara_scan extends AppCompatActivity {
         boolean isScreenReaderEnabled = accessibilityManager.isEnabled() && accessibilityManager.isTouchExplorationEnabled();
 
         Button btnvoice;
-        Button btn_search;
+        Button btn_Home;
         ImageButton btnImg;
         Button btnPic;
         Button btnOcr;
         Button btnResult;
 
         btnvoice = (Button) findViewById(R.id.btnvoice);
-        btn_search = (Button) findViewById(R.id.btn_Drug_search);
+        btn_Home = (Button) findViewById(R.id.btn_Drug_Home);
         //btnImg = (ImageButton) findViewById(R.id.Ib_preview);
         btnResult = (Button) findViewById(R.id.btnResult);
         btnOcr = (Button) findViewById(R.id.btnOCR);
@@ -158,6 +160,9 @@ public class activity_Camara_scan extends AppCompatActivity {
         btnOcr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //변수 초기화
+                Drug_Name = null;
+
                 BitmapDrawable d = (BitmapDrawable)((ImageView) findViewById(R.id.ivPic)).getDrawable();
                 image = d.getBitmap();
 
@@ -173,7 +178,7 @@ public class activity_Camara_scan extends AppCompatActivity {
         });
 
         //OCR 검색 결과 리스너
-        btn_search.setOnClickListener(new View.OnClickListener() {
+        btn_Home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -184,7 +189,12 @@ public class activity_Camara_scan extends AppCompatActivity {
         btnResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //FragmentTransaction transaction = Activity.
+//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//
+//                Fragment_Drug_info Drug_info = new Fragment_Drug_info(); //약물 검색으로 이동 준비
+//                Drug_info.setArguments(bundle);//번들을 프래그먼트2로 보낼 준비
+//                transaction.replace(R.id.frame, fragment2);
+//                transaction.commit();
             }
         });
     }
