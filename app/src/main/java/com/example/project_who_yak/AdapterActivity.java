@@ -99,3 +99,4 @@ public class AdapterActivity extends BaseAdapter {
         TextView hourText, minuteText, am_pm, month, day;
     }
 }
+
