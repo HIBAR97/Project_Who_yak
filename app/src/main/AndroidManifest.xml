@@ -32,6 +32,9 @@
             android:name=".activity_Camara_scan"
             android:exported="false" />
         <activity
+            android:name=".AlamActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignUp_activity"
             android:exported="false" />
         <activity
