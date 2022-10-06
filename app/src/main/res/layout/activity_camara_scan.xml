@@ -36,7 +36,7 @@
                 android:textSize="35sp" />
 
             <Button
-                android:id="@+id/btn_Drug_search"
+                android:id="@+id/btn_Drug_Home"
                 android:layout_width="75dp"
                 android:layout_height="45dp"
                 android:layout_gravity="right"
