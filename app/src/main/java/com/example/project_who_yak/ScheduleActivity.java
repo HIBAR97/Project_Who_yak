@@ -50,6 +50,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -67,7 +68,8 @@ public class ScheduleActivity extends AppCompatActivity {
     private ScheduleListAdapter Adapter;
     public List<Schedule> scheduleList;
     public String select_schedule;
-    private String schedule_date;
+    private String schedule_date; //선택한 날의 일정
+    private int select_schedule_id; //선택한 날의 DB PRIMARY KEY
     Button btnvoice;
     Button btnhome;
     Button btnadd;
@@ -75,9 +77,9 @@ public class ScheduleActivity extends AppCompatActivity {
     Button btnmod;
     TextView tv_today;
     EditText contextEditText;
-//    String userID= "test1";
-    // 로그인한  user_id가져오기 코드
-    String userID ;
+    String userID ; // 로그인한  user_id가져오기 코드
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd");    //날짜 형식
+    Date d_date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +96,6 @@ public class ScheduleActivity extends AppCompatActivity {
         scheduleListView = (ListView) findViewById(R.id.lvCal2);
         scheduleList = new ArrayList<Schedule>();
         Adapter = new ScheduleListAdapter(getApplicationContext(), scheduleList);
-        scheduleListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         scheduleListView.setAdapter(Adapter);
 
         tv_today = findViewById(R.id.tv_today);
@@ -115,6 +116,15 @@ public class ScheduleActivity extends AppCompatActivity {
         int month = Integer.parseInt(array[1])+1 ;
         schedule_date = array[0]+"-"+ month + "-" +array[2]; //2022-xx-xx-xx
 
+        try {
+            d_date = mFormat.parse(schedule_date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        schedule_date = mFormat.format(d_date);
+
+
         //달력에 날짜 보이기
         calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
@@ -123,7 +133,16 @@ public class ScheduleActivity extends AppCompatActivity {
                 String[] array=date.toString().substring(12, date.toString().length()-1).split("-");
                 int month = Integer.parseInt(array[1])+1 ;
                 schedule_date = array[0]+"-"+ month + "-" +array[2];
+                try {
+                    d_date = mFormat.parse(schedule_date);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                schedule_date = mFormat.format(d_date);
                 tv_today.setText(schedule_date); //2022-xx-xx-xx
+                scheduleList.clear();
+                new BackgroudTaskschedule().execute();
+                Adapter.notifyDataSetChanged();
 
             }
         });
@@ -141,7 +160,10 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 select_schedule = scheduleList.get(i).getSchedule();
+                select_schedule_id = scheduleList.get(i).getSchedule_id();
                 //날짜 입력 필요함
+                contextEditText.setText(select_schedule);
+                contextEditText.setSelection(contextEditText.length()); // 커서 마지막 줄에 두기
             }
         });
 
@@ -162,7 +184,8 @@ public class ScheduleActivity extends AppCompatActivity {
                                 boolean success = jsonResponse.getBoolean("success");
                                 if (success) {
                                     Toast.makeText(getApplicationContext(), "일정을 추가했습니다.", Toast.LENGTH_SHORT).show();
-
+                                    new BackgroudTaskschedule().execute();
+                                    Adapter.notifyDataSetChanged();
                                 } else {
                                     Toast.makeText(getApplicationContext(), "일정 추가에 실패했습니다.", Toast.LENGTH_SHORT).show();
                                 }
@@ -177,8 +200,6 @@ public class ScheduleActivity extends AppCompatActivity {
                     RequestQueue queue = Volley.newRequestQueue(ScheduleActivity.this);
                     queue.add(scheduleAddRequest);
 
-                    sleep(200);
-                    new BackgroudTaskschedule().execute();
                 }
             }
         });
@@ -188,8 +209,7 @@ public class ScheduleActivity extends AppCompatActivity {
         btnmod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String before_schedule = select_schedule.toString();
-                String after_schedule = contextEditText.getText().toString();
+                String schedule_update = contextEditText.getText().toString();
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
 
                     @Override
@@ -200,10 +220,11 @@ public class ScheduleActivity extends AppCompatActivity {
                             boolean success = jsonResponse.getBoolean("success");
                             if(success) {
                                 Toast.makeText(getApplicationContext(),"일정을 수정했습니다.",Toast.LENGTH_SHORT).show();
-
+                                new BackgroudTaskschedule().execute();
+                                Adapter.notifyDataSetChanged();
                             }
                             else {
-                                Toast.makeText(getApplicationContext(),"일정 스장에 실패했습니다.",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"일정 수정에 실패했습니다.",Toast.LENGTH_SHORT).show();
                             }
                         }
                         catch (Exception e){
@@ -213,12 +234,11 @@ public class ScheduleActivity extends AppCompatActivity {
 
                     }
                 };
-                ScheduleModRequest scheduleModRequestt = new ScheduleModRequest(after_schedule,userID, before_schedule, responseListener);
+                ScheduleModRequest scheduleModRequestt = new ScheduleModRequest(Integer.toString(select_schedule_id), schedule_update, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(ScheduleActivity.this);
                 queue.add(scheduleModRequestt);
 
-                sleep(200);
-                new BackgroudTaskschedule().execute();
+
             }
         });
 
@@ -227,10 +247,7 @@ public class ScheduleActivity extends AppCompatActivity {
         btndel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
-
                     @Override
                     public void onResponse(String response) {
                         try
@@ -239,7 +256,8 @@ public class ScheduleActivity extends AppCompatActivity {
                             boolean success = jsonResponse.getBoolean("success");
                             if(success) {
                                 Toast.makeText(getApplicationContext(),"일정을 삭제했습니다.",Toast.LENGTH_SHORT).show();
-
+                                new BackgroudTaskschedule().execute();
+                                Adapter.notifyDataSetChanged();
                             }
                             else {
                                 Toast.makeText(getApplicationContext(),"일정 삭제에 실패했습니다.",Toast.LENGTH_SHORT).show();
@@ -252,12 +270,9 @@ public class ScheduleActivity extends AppCompatActivity {
 
                     }
                 };
-                ScheduleDelRequest scheduleDelRequest = new ScheduleDelRequest(userID, select_schedule, responseListener);
+                ScheduleDelRequest scheduleDelRequest = new ScheduleDelRequest(Integer.toString(select_schedule_id), responseListener);
                 RequestQueue queue = Volley.newRequestQueue(ScheduleActivity.this);
                 queue.add(scheduleDelRequest);
-                sleep(200);
-                new BackgroudTaskschedule().execute();
-
             }
         });
 
@@ -320,6 +335,7 @@ public class ScheduleActivity extends AppCompatActivity {
 
         new BackgroudTaskschedule().execute();
 
+
     }
 
     /* 선택된 요일의 background를 설정하는 Decorator 클래스 */
@@ -356,7 +372,8 @@ public class ScheduleActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             try {
-                target = "http://whoyak.dothome.co.kr/ScheduleList.php?userID=" +URLEncoder.encode(userID,"UTF-8");
+                target = "http://whoyak.dothome.co.kr/ScheduleList.php?userID=" +URLEncoder.encode(userID,"UTF-8")
+                +"&schedule_date=" +URLEncoder.encode(schedule_date,"UTF-8");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
@@ -394,19 +411,21 @@ public class ScheduleActivity extends AppCompatActivity {
         @Override
         public void onPostExecute(String result){
             try{
-
                 scheduleList.clear();
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("response");
                 int count=0;
+                String schedule_id;
                 String scheduleName;
                 String scheduledate;
+                Adapter.notifyDataSetChanged();
                 while(count < jsonArray.length()){
                     JSONObject object = jsonArray.getJSONObject(count);
+                    schedule_id = object.getString("schedule_id");
                     scheduleName = object.getString("schedule");
                     scheduledate = object.getString("schedule_date");
                     scheduledate= scheduledate.substring(5,scheduledate.length());
-                    Schedule schedule = new Schedule(scheduleName,scheduledate);
+                    Schedule schedule = new Schedule(Integer.parseInt(schedule_id),scheduleName,scheduledate);
                     scheduleList.add(schedule);
                     Adapter.notifyDataSetChanged();
                     count++;

@@ -7,14 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ScheduleDelRequest extends StringRequest {
-    final static private String URL ="http://whoyak.dothome.co.kr/ScheduleDel.php";
+    final static private String URL ="http://whoyak.dothome.co.kr/ScheduleDel2.php";
     private Map<String, String> parametrs;
 
-    public ScheduleDelRequest(String userID, String schedule, Response.Listener<String> listener){
+    public ScheduleDelRequest(String schedule_id, Response.Listener<String> listener){
         super(Method.POST, URL, listener, null);
         parametrs = new HashMap<>();
-        parametrs.put("userID",userID);
-        parametrs.put("schedule",schedule);
+        parametrs.put("schedule_id",schedule_id);
     }
 
     @Override
