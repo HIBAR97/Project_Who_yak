@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ScheduleModRequest extends StringRequest {
-    final static private String URL ="http://whoyak.dothome.co.kr/ScheduleMod2.php";
+    final static private String URL ="http://whoyak.dothome.co.kr/ScheduleMod.php";
     private Map<String, String> parametrs;
 
     public ScheduleModRequest(String schedule_id, String schedule_update,  Response.Listener<String> listener){
