@@ -54,14 +54,14 @@ public class TimePickerActivity extends AppCompatActivity {
                 am_pm = AM_PM(hour);
                 hour = timeSet(hour);
 
-//                Intent sendIntent = new Intent(TimePickerActivity.this, AlamActivity.class);  //알람 액티비티를 주석 처리 하니 에러가 나서 주석 처리
-//
-//                sendIntent.putExtra("hour",hour);
-//                sendIntent.putExtra("minute",minute);
-//                sendIntent.putExtra("am_pm",am_pm);
-//                sendIntent.putExtra("month",stMonth);
-//                sendIntent.putExtra("day",stDay);
-//                setResult(RESULT_OK, sendIntent);
+                Intent sendIntent = new Intent(TimePickerActivity.this, AlamActivity.class);  //알람 액티비티를 주석 처리 하니 에러가 나서 주석 처리
+
+                sendIntent.putExtra("hour",hour);
+                sendIntent.putExtra("minute",minute);
+                sendIntent.putExtra("am_pm",am_pm);
+                sendIntent.putExtra("month",stMonth);
+                sendIntent.putExtra("day",stDay);
+                setResult(RESULT_OK, sendIntent);
 
                 finish();
             }
