@@ -192,8 +192,8 @@ public class activity_Camara_scan extends AppCompatActivity {
 //                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 //
 //                Fragment_Drug_info Drug_info = new Fragment_Drug_info(); //약물 검색으로 이동 준비
-//                Drug_info.setArguments(bundle);//번들을 프래그먼트2로 보낼 준비
-//                transaction.replace(R.id.frame, fragment2);
+//                Drug_info.setArguments(Drug_Name);//번들을 프래그먼트2로 보낼 준비
+//                transaction.replace(R.layout.activity_camara_scan, R.layout.layout_drug_information);
 //                transaction.commit();
             }
         });
