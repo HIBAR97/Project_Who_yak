@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -16,7 +17,7 @@ public class activity_bltboard extends AppCompatActivity {
     private fragment_bltboard fragment_bltboard;
     private fragment_wrtboard fragment_wrtboard;
     private fragment_rmbboard fragment_rmbboard;
-
+    private fragment_bltboard_detail fragment_bltboard_detail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class activity_bltboard extends AppCompatActivity {
         fragment_bltboard = new fragment_bltboard();
         fragment_rmbboard = new fragment_rmbboard();
         fragment_wrtboard = new fragment_wrtboard();
+        fragment_bltboard_detail = new fragment_bltboard_detail();
 
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.FrameLayout_bltscreen, fragment_bltboard).commitAllowingStateLoss();
@@ -80,5 +82,9 @@ public class activity_bltboard extends AppCompatActivity {
 
     }
 
+    public void replaceFragment() {
+        transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.FrameLayout_bltscreen, fragment_bltboard_detail).commit();// Fragment로 사용할 MainActivity내의 layout공간을 선택합니다.
+    }
 
 }
