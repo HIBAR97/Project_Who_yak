@@ -2,13 +2,13 @@
 
 This project is Team ESCH's(Engineering Student who takes Care of Health) college graduation work
 
-+ Team leader - joy9610027
++ Team leader - lemoncoat
 + Member - HIBAR97
 + Member - kimchimanna
 + Member - jyun23
 ----------
 + Full stack 
-  + joy9610027
+  + lemoncoat
   + HIBAR97
   + kimchimanna
   + jyun23
@@ -20,7 +20,7 @@ This project is Team ESCH's(Engineering Student who takes Care of Health) colleg
     + jyun23
   
 + back end
-  +  joy9610027
+  +  lemoncoat
   +  kimchimanna
   
 ## Commit Formet 

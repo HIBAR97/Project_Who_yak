@@ -10,12 +10,11 @@ public class ScheduleModRequest extends StringRequest {
     final static private String URL ="http://whoyak.dothome.co.kr/ScheduleMod.php";
     private Map<String, String> parametrs;
 
-    public ScheduleModRequest(String after_schedule,String userID, String before_schedule,  Response.Listener<String> listener){
+    public ScheduleModRequest(String schedule_id, String schedule_update,  Response.Listener<String> listener){
         super(Method.POST, URL, listener, null);
         parametrs = new HashMap<>();
-        parametrs.put("after_schedule",after_schedule);
-        parametrs.put("userID",userID);
-        parametrs.put("before_schedule",before_schedule);
+        parametrs.put("schedule_update",schedule_update);
+        parametrs.put("schedule_id",schedule_id);
     }
 
     @Override

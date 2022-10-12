@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SignUp_Request extends StringRequest {
-    final static private String URL ="http://whoyak.dothome.co.kr/UserRegister3.php";
+    final static private String URL ="http://whoyak.dothome.co.kr/UserRegister.php";
     private Map<String, String> parametrs;
 
     public SignUp_Request(String userID, String userPassword, String userName, String userEmail, String userCID,

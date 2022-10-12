@@ -22,7 +22,10 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
@@ -42,9 +45,19 @@ public class HomeActivity extends AppCompatActivity {
 
     ListView lv_notice;
     ListView lv_calendar;
+    //날짜
+    long mNow;
+    Date mDate;
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd");
+    private String schedule_date;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
@@ -61,7 +74,9 @@ public class HomeActivity extends AppCompatActivity {
         lv_calendar.setAdapter(Adapter);
         Intent intentmain = getIntent();
         userID = intentmain.getStringExtra("userID");
-//        btnScan.setText(userID);
+        //btnScan.setText(userID);
+        //날짜
+        schedule_date = getTime();
 
 
         lv_notice = findViewById(R.id.lv_HomeNotice);
@@ -80,6 +95,7 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+
 
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
@@ -137,6 +153,111 @@ public class HomeActivity extends AppCompatActivity {
         new HomeActivity.BackgrounTask().execute();
         new BackgroudTaskschedule().execute();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setContentView(R.layout.activity_home);
+
+        //------- 선언 ----------//
+        btnUserPage = findViewById(R.id.btnUserpage);
+        btnSearch = findViewById(R.id.btnSearch);
+        btnScan = findViewById(R.id.btnScan);
+        btnSchedule = findViewById(R.id.btnSchedule);
+        btnBoard = findViewById(R.id.btnBoard);
+        btnVoice = findViewById(R.id.btnvoice);
+        lv_calendar = (ListView) findViewById(R.id.lv_HOMECalendar);
+        scheduleList = new ArrayList<Schedule>();
+        Adapter = new ScheduleListAdapter(getApplicationContext(), scheduleList);
+        lv_calendar.setAdapter(Adapter);
+        Intent intentmain = getIntent();
+        userID = intentmain.getStringExtra("userID");
+        //btnScan.setText(userID);
+        //날짜
+        schedule_date = getTime();
+
+
+        lv_notice = findViewById(R.id.lv_HomeNotice);
+
+        //스크린 위에 accessibility가 있는지 확인
+        AccessibilityManager accessibilityManager = (AccessibilityManager) getSystemService(ACCESSIBILITY_SERVICE);
+        boolean isScreenReaderEnabled = accessibilityManager.isEnabled() && accessibilityManager.isTouchExplorationEnabled();
+
+        btnUserPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), UserpageActivity.class);
+                intent.putExtra("userID",userID);
+                startActivity(intent);
+
+
+            }
+        });
+
+
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Drug_information.class);
+                startActivity(intent);
+            }
+        });
+
+        btnScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), activity_Camara_scan.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSchedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ScheduleActivity.class);
+                intent.putExtra("userID",userID);
+                startActivity(intent);
+            }
+        });
+
+        btnBoard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), activity_bltboard.class);
+                startActivity(intent);
+            }
+        });
+
+        btnVoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Acc이 켜있을경우
+                if (isScreenReaderEnabled) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+                    dialog = builder.setMessage("이미 ACC가 켜져있습니다.")
+                            .setNegativeButton("확인", null)
+                            .create();
+                    dialog.show();
+                    //꺼져있을 경우
+                } else {
+                    Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+                    startActivity(intent);
+                    startActivityForResult(intent, 0);
+                }
+            }
+        });
+
+        new HomeActivity.BackgrounTask().execute();
+        new BackgroudTaskschedule().execute();
+    }
+
+    private String getTime(){
+        mNow = System.currentTimeMillis();
+        mDate = new Date(mNow);
+        return mFormat.format(mDate);
+    }
+
 
     //--------공지사항 연동------------//
     class BackgrounTask extends AsyncTask<Void, Void, String>
@@ -210,10 +331,12 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             try {
-                target = "http://whoyak.dothome.co.kr/ScheduleList.php?userID=" + URLEncoder.encode(userID,"UTF-8");
+                target = "http://whoyak.dothome.co.kr/ScheduleList.php?userID=" +URLEncoder.encode(userID,"UTF-8")
+                        +"&schedule_date=" +URLEncoder.encode(schedule_date,"UTF-8");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
+
         }
         @Override
         protected String doInBackground(Void... voids) {
@@ -247,18 +370,21 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public void onPostExecute(String result){
             try{
-
+                scheduleList.clear();
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("response");
                 int count=0;
+                String schedule_id;
                 String scheduleName;
                 String scheduledate;
+                Adapter.notifyDataSetChanged();
                 while(count < jsonArray.length()){
                     JSONObject object = jsonArray.getJSONObject(count);
+                    schedule_id = object.getString("schedule_id");
                     scheduleName = object.getString("schedule");
                     scheduledate = object.getString("schedule_date");
                     scheduledate= scheduledate.substring(5,scheduledate.length());
-                    Schedule schedule = new Schedule(scheduleName,scheduledate);
+                    Schedule schedule = new Schedule(Integer.parseInt(schedule_id),scheduleName,scheduledate);
                     scheduleList.add(schedule);
                     Adapter.notifyDataSetChanged();
                     count++;
