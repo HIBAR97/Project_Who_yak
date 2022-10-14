@@ -36,6 +36,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+import androidx.fragment.app.Fragment;
+
 public class fragment_bltboard extends Fragment {
 
     private ListView noticeListView;
@@ -93,8 +95,8 @@ public class fragment_bltboard extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //임시 xml 표시
-                Intent intent = new Intent(getActivity().getApplicationContext(), SignUp_activity.class);
-                startActivity(intent);
+                ((activity_bltboard)getActivity()).replaceFragment();
+
             }
         });
 

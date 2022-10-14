@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/blt_main"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/board_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
+            android:textSize="20sp"
+            android:text="@string/tv_title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/board_spn"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="5dp"
+                android:allowClickWhenDisabled="true"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/rmb_bonmun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/yak_air"
+            android:textSize="20sp"
+            android:text="@string/tv_text" />
+
+        <TextView
+            android:id="@+id/board_content"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:gravity="clip_horizontal"
+            android:fontFamily="@font/yak_air"
+            android:lines="20"
+            android:inputType="textMultiLine"
+            android:scrollHorizontally="false"
+            android:text="@string/tv_text" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/blt_btn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/blt_main"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/blt_brd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
+            android:text="@string/btn_WriteAdd">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/blt_rmb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/yak_air"
+            android:text="@string/btn_Cancel">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+    </LinearLayout>
+
+</RelativeLayout>
