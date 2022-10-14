@@ -48,6 +48,19 @@
         </FrameLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/FrameLayout_DrugInfo"
+        android:layout_below="@+id/Layout_homeBtn"
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/Frame_DrugInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"/>
+    </LinearLayout>
     //Pic Layout
 
     <LinearLayout

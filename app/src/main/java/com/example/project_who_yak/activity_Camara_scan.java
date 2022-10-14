@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.loader.content.CursorLoader;
 
 import com.bumptech.glide.Glide;
@@ -81,6 +83,8 @@ public class activity_Camara_scan extends AppCompatActivity {
         Button btnPic;
         Button btnOcr;
         Button btnResult;
+        
+        FrameLayout Frame_DrugInfo;
 
         btnvoice = (Button) findViewById(R.id.btnvoice);
         btn_Home = (Button) findViewById(R.id.btn_Drug_Home);
@@ -88,6 +92,8 @@ public class activity_Camara_scan extends AppCompatActivity {
         btnResult = (Button) findViewById(R.id.btnResult);
         btnOcr = (Button) findViewById(R.id.btnOCR);
         btnPic = (Button) findViewById(R.id.btnPic);
+
+        Frame_DrugInfo = (FrameLayout) findViewById(R.id.Frame_DrugInfo);
 
         //OCR Textview
         OCRTextview = (TextView) findViewById(R.id.ocrResult);
@@ -189,12 +195,16 @@ public class activity_Camara_scan extends AppCompatActivity {
         btnResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//
-//                Fragment_Drug_info Drug_info = new Fragment_Drug_info(); //약물 검색으로 이동 준비
-//                Drug_info.setArguments(Drug_Name);//번들을 프래그먼트2로 보낼 준비
-//                transaction.replace(R.layout.activity_camara_scan, R.layout.layout_drug_information);
-//                transaction.commit();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+                Fragment_Drug_info Drug_info = new Fragment_Drug_info(); //약물 검색으로 이동 준비
+                Drug_info.setArguments(Drug_Name);//번들을 프래그먼트2로 보낼 준비
+                Frame_DrugInfo.setVisibility(View.VISIBLE);
+                transaction.replace(R.id.Frame_DrugInfo, Drug_info);
+                transaction.commit();
+
+//                Intent intent = new Intent(getApplicationContext(), Drug_information.class);
+//                startActivity(intent);
             }
         });
     }
