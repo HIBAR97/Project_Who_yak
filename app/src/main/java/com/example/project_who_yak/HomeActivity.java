@@ -12,6 +12,10 @@ import android.widget.ListView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.project_who_yak.bltboard.BltBoardActivity;
+import com.example.project_who_yak.bltboard.notice.Notice;
+import com.example.project_who_yak.bltboard.notice.NoticeListAdapter;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -22,7 +26,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -126,7 +129,7 @@ public class HomeActivity extends AppCompatActivity {
         btnBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), activity_bltboard.class);
+                Intent intent = new Intent(getApplicationContext(), BltBoardActivity.class);
                 startActivity(intent);
             }
         });
@@ -224,7 +227,7 @@ public class HomeActivity extends AppCompatActivity {
         btnBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), activity_bltboard.class);
+                Intent intent = new Intent(getApplicationContext(), BltBoardActivity.class);
                 startActivity(intent);
             }
         });
@@ -266,7 +269,7 @@ public class HomeActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            target = "http://whoyak.dothome.co.kr/BltboardNotice.php";
+            target = "http://whoyak.dothome.co.kr/BltBoardNoticeList.php";
         }
 
         @Override
@@ -303,15 +306,21 @@ public class HomeActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("response");
                 int count = 0;
-                String noticeContent, noticeName, noticeDate;
+                String noticeNo, noticeTitle, noticeWriter,noticeDate,noticeCategory,noticePopularity;
                 noticeList = new ArrayList<Notice>();
                 while(count < jsonArray.length())
                 {
                     JSONObject object = jsonArray.getJSONObject(count);
-                    noticeContent = object.getString("noticeContent");
-                    noticeName = object.getString("noticeName");
+                    noticeNo = object.getString("noticeNo");
+                    noticeTitle = object.getString("noticeTitle");
+                    noticeWriter = object.getString("noticeWriter");
                     noticeDate = object.getString("noticeDate");
-                    Notice notice = new Notice(noticeContent, noticeName, noticeDate);
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    Date date = sdf.parse(noticeDate);
+                    noticeDate = sdf.format(date);
+                    noticeCategory = object.getString("noticeCategory");
+                    noticePopularity = object.getString("noticePopularity");
+                    Notice notice = new Notice(noticeNo, noticeTitle, noticeWriter, noticeDate, noticeCategory,noticePopularity);
                     noticeList.add(notice);
                     final NoticeListAdapter NoticeAdapter = new NoticeListAdapter(getApplicationContext(), noticeList);
                     lv_notice.setAdapter(NoticeAdapter);

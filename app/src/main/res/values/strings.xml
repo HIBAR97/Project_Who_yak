@@ -52,6 +52,9 @@
     <string name="btn_takePic">사진 촬영</string>
     <string name="btn_OCR">OCR</string>
 
+    <!--notice xml-->
+    <string name="tv_popular">인기도</string>
+
     <!--    activity_bltboard xml-->
     <string name="tv_bltboard">게시판</string>
     <string name="btn_bltboard">게시판</string>
@@ -78,7 +81,8 @@
     <string name="tv_text">본문</string>
     <string name="btn_WriteAdd">등록</string>
     <string name="btn_Cancel">취소</string>
-    
+    <string name="btn_Popular">추천</string>
+
 <!--    activity_schedule xml-->
     <string name="tv_calendar">달력</string>
     <string name="tv_schedule">일정</string>

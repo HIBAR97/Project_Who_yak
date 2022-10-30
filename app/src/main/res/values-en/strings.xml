@@ -88,4 +88,7 @@
     <string name="btn_OCR">OCR</string>
     <string name="tv_Scan">SCAN</string>
     <string name="btn_OCRresult">Result</string>
+    <string name="btn_Popular">Recommend</string>
+    <string name="tv_popular">Popularity</string>
+
 </resources>

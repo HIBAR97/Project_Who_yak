@@ -1,4 +1,4 @@
-package com.example.project_who_yak;
+package com.example.project_who_yak.bltboard.notice;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,26 +7,30 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.example.project_who_yak.R;
+
 import java.util.List;
 
-public class Category1_Popular_Adapter extends BaseAdapter {
+public class NoticeListAdapter extends BaseAdapter {
+
     private Context context;
     LayoutInflater mLayoutInflater ;
-    private List<Category1_Popular> Category1_Popular;
+    private List<Notice> noticeList;
 
-    public Category1_Popular_Adapter(Context context, ArrayList<Category1_Popular> Category1_Popular_List) {
+    public NoticeListAdapter(Context context, List<Notice> noticeList) {
         this.context = context;
-        this.Category1_Popular = Category1_Popular_List;
+        this.noticeList = noticeList;
     }
 
     @Override
     public int getCount() {
-        return Category1_Popular.size();
+        return noticeList.size();
     }
 
     @Override
-    public Object getItem(int i) {return Category1_Popular.get(i);}
+    public Object getItem(int i) {
+        return noticeList.get(i);
+    }
 
     @Override
     public long getItemId(int i) {
@@ -36,17 +40,19 @@ public class Category1_Popular_Adapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v = View.inflate(context, R.layout.notice, null);
+        //View v = mLayoutInflater.inflate(R.layout.notice, null);
         TextView noticeText = (TextView) v.findViewById(R.id.noticeText);
         TextView nameText = (TextView) v.findViewById(R.id.nameText);
         TextView dateText = (TextView) v.findViewById(R.id.dateText);
+        TextView popularText = (TextView) v.findViewById(R.id.popularText);
 
-        noticeText.setText(Category1_Popular.get(i).getNotice());
-        nameText.setText(Category1_Popular.get(i).getName());
-        dateText.setText(Category1_Popular.get(i).getDate());
-        dateText.setText(Category1_Popular.get(i).getRate());
-        dateText.setText(Category1_Popular.get(i).getCategory());
+        noticeText.setText(noticeList.get(i).getTitle());
+        nameText.setText(noticeList.get(i).getWriter());
+        dateText.setText(noticeList.get(i).getDate());
+        popularText.setText(noticeList.get(i).getPopularity());
 
-        v.setTag(Category1_Popular.get(i).getNotice());
+        v.setTag(noticeList.get(i).getTitle());
         return v;
     }
+
 }

@@ -26,12 +26,20 @@
             android:orientation="horizontal">
 
             <Spinner
-                android:id="@+id/board_spn"
+                android:id="@+id/board_category"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="5dp" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/board_writer"
                 android:layout_width="150dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="5dp"
-                android:allowClickWhenDisabled="true"
-                android:spinnerMode="dropdown" />
+                android:gravity="right" />
 
         </LinearLayout>
 
@@ -67,23 +75,15 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/blt_brd"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/yak_air"
-            android:text="@string/btn_WriteAdd">
+            android:text="@string/btn_Popular">
 
         </androidx.appcompat.widget.AppCompatButton>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/blt_rmb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/yak_air"
-            android:text="@string/btn_Cancel">
 
-        </androidx.appcompat.widget.AppCompatButton>
 
     </LinearLayout>
 

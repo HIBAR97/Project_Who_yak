@@ -20,7 +20,7 @@
             android:name=".UserpageActivity"
             android:exported="false"/>
         <activity
-            android:name=".activity_bltboard"
+            android:name=".bltboard.BltBoardActivity"
             android:exported="false"/>
         <activity
             android:name=".HomeActivity"

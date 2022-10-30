@@ -1,4 +1,4 @@
-package com.example.project_who_yak;
+package com.example.project_who_yak.bltboard.fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.project_who_yak.R;
+import com.example.project_who_yak.Remember;
+import com.example.project_who_yak.RememberListAdapter;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.BufferedReader;
@@ -17,7 +22,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-public class fragment_rmbboard extends Fragment {
+public class FragmentMyBltBoard extends Fragment {
 
     private ListView rememberListView;
     private ArrayList<Remember> rememberList;

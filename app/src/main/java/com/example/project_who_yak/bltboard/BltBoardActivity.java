@@ -1,4 +1,4 @@
-package com.example.project_who_yak;
+package com.example.project_who_yak.bltboard;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,18 +6,24 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-public class activity_bltboard extends AppCompatActivity {
+import com.example.project_who_yak.HomeActivity;
+import com.example.project_who_yak.R;
+import com.example.project_who_yak.bltboard.fragment.FragmentBltBoardMain;
+import com.example.project_who_yak.bltboard.fragment.FragmentBltBoardDetail;
+import com.example.project_who_yak.bltboard.fragment.FragmentMyBltBoard;
+import com.example.project_who_yak.bltboard.fragment.FragmentBltBoardWrite;
+
+public class BltBoardActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
-    private fragment_bltboard fragment_bltboard;
-    private fragment_wrtboard fragment_wrtboard;
-    private fragment_rmbboard fragment_rmbboard;
-    private fragment_bltboard_detail fragment_bltboard_detail;
+    private FragmentBltBoardMain fragment_bltboard;
+    private FragmentBltBoardWrite fragment_wrtboard;
+    private FragmentMyBltBoard fragment_rmbboard;
+    private FragmentBltBoardDetail fragment_bltboard_detail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +44,10 @@ public class activity_bltboard extends AppCompatActivity {
 
         fragmentManager = getSupportFragmentManager();
 
-        fragment_bltboard = new fragment_bltboard();
-        fragment_rmbboard = new fragment_rmbboard();
-        fragment_wrtboard = new fragment_wrtboard();
-        fragment_bltboard_detail = new fragment_bltboard_detail();
+        fragment_bltboard = new FragmentBltBoardMain();
+        fragment_rmbboard = new FragmentMyBltBoard();
+        fragment_wrtboard = new FragmentBltBoardWrite();
+        fragment_bltboard_detail = new FragmentBltBoardDetail();
 
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.FrameLayout_bltscreen, fragment_bltboard).commitAllowingStateLoss();
