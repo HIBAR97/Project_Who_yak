@@ -255,7 +255,8 @@ public class activity_Camara_scan extends AppCompatActivity {
 
                 //카메라에서 찍은 사진을 슬라이더 리스트에 추가
                 SliderItems.add(bitmap);
-                //SliderItems.add(R.drawable.ic_baseline_textsms_24)
+                //SliderItems.add(BitmapFactory.decodeResource(context.getResouurces(),R.drawable.ic_baseline_textsms_24);
+                //SliderItems.add(R.drawable.ic_baseline_textsms_24);
                 mBinding.vpImageSlider.setAdapter(new SliderAdapter_Camara_scan(this, mBinding.vpImageSlider, SliderItems));
 
             }
