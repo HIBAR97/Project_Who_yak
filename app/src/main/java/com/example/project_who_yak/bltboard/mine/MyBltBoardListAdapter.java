@@ -1,4 +1,4 @@
-package com.example.project_who_yak.bltboard.notice;
+package com.example.project_who_yak.bltboard.mine;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,25 +11,25 @@ import com.example.project_who_yak.R;
 
 import java.util.List;
 
-public class NoticeListAdapter extends BaseAdapter {
+public class MyBltBoardListAdapter extends BaseAdapter {
 
     private Context context;
     LayoutInflater mLayoutInflater ;
-    private List<Notice> noticeList;
+    private List<MyBltBoard> myBltBoardList;
 
-    public NoticeListAdapter(Context context, List<Notice> noticeList) {
+    public MyBltBoardListAdapter(Context context, List<MyBltBoard> myBltBoardList) {
         this.context = context;
-        this.noticeList = noticeList;
+        this.myBltBoardList = myBltBoardList;
     }
 
     @Override
     public int getCount() {
-        return noticeList.size();
+        return myBltBoardList.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return noticeList.get(i);
+        return myBltBoardList.get(i);
     }
 
     @Override
@@ -46,12 +46,12 @@ public class NoticeListAdapter extends BaseAdapter {
         TextView dateText = (TextView) v.findViewById(R.id.dateText);
         TextView popularText = (TextView) v.findViewById(R.id.popularText);
 
-        titleText.setText(noticeList.get(i).getTitle());
-        writerText.setText(noticeList.get(i).getWriter());
-        dateText.setText(noticeList.get(i).getDate());
-        popularText.setText(noticeList.get(i).getPopularity());
+        titleText.setText(myBltBoardList.get(i).getTitle());
+        writerText.setText(myBltBoardList.get(i).getWriter());
+        dateText.setText(myBltBoardList.get(i).getDate());
+        popularText.setText(myBltBoardList.get(i).getPopularity());
 
-        v.setTag(noticeList.get(i).getTitle());
+        v.setTag(myBltBoardList.get(i).getTitle());
         return v;
     }
 

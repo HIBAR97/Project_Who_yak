@@ -24,6 +24,7 @@ public class BltBoardActivity extends AppCompatActivity {
     private FragmentBltBoardWrite fragment_wrtboard;
     private FragmentMyBltBoard fragment_rmbboard;
     private FragmentBltBoardDetail fragment_bltboard_detail;
+    private String userID=HomeActivity.userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

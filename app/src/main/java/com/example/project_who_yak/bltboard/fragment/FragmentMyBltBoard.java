@@ -11,8 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.project_who_yak.R;
-import com.example.project_who_yak.Remember;
-import com.example.project_who_yak.RememberListAdapter;
+import com.example.project_who_yak.bltboard.mine.MyBltBoard;
+import com.example.project_who_yak.bltboard.mine.MyBltBoardListAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,8 +24,8 @@ import java.net.URL;
 import java.util.ArrayList;
 public class FragmentMyBltBoard extends Fragment {
 
-    private ListView rememberListView;
-    private ArrayList<Remember> rememberList;
+    private ListView myBltBoardListView;
+    private ArrayList<MyBltBoard> myBltBoardList;
 
     private View view;
 
@@ -35,11 +35,11 @@ public class FragmentMyBltBoard extends Fragment {
 
         //선언
         view = inflater.inflate(R.layout.fragment_rmbboard, container, false);
-        rememberListView = (ListView) view.findViewById(R.id.rmb_listview);
+        myBltBoardListView = (ListView) view.findViewById(R.id.rmb_listview);
 
         TextView tv_remember = view.findViewById(R.id.rmb_name);
 
-        new BackgrounTask_Remember().execute();
+        new BackgrounTask_MyBltBoard().execute();
 
         //---------리스너 파트 ----------//
         tv_remember.setOnClickListener(new View.OnClickListener() {
@@ -49,15 +49,17 @@ public class FragmentMyBltBoard extends Fragment {
         });
         return view;
     }
+/*
     //더미 데이터 넣는 함수
     public void InitializeRememberData(){
-        rememberList = new ArrayList<Remember>();
-        rememberList.add(new Remember("작성글", "홍길동","2022-01-01"));
-        final RememberListAdapter RememberAdapter = new RememberListAdapter(getActivity().getApplicationContext(), rememberList);
+        myBltBoardList = new ArrayList<MyBltBoard>();
+        myBltBoardList.add(new MyBltBoard("작성글", "홍길동","2022-01-01"));
+        final RememberListAdapter RememberAdapter = new RememberListAdapter(getActivity().getApplicationContext(), myBltBoardList);
         rememberListView.setAdapter(RememberAdapter);
     }
+*/
 
-    class BackgrounTask_Remember extends AsyncTask<Void, Void, String>
+    class BackgrounTask_MyBltBoard extends AsyncTask<Void, Void, String>
     {
         String target;
 
@@ -98,17 +100,17 @@ public class FragmentMyBltBoard extends Fragment {
                 JSONArray jsonArray = jsonObject.getJSONArray("response");
                 int count = 0;
                 String rememberTitle, rememberName, rememberDate;
-                rememberList = new ArrayList<Remember>();
+                myBltBoardList = new ArrayList<MyBltBoard>();
                 while(count < jsonArray.length())
                 {
                     JSONObject object = jsonArray.getJSONObject(count);
                     rememberTitle = object.getString("rememberTitle");
                     rememberName = object.getString("rememberName");
                     rememberDate = object.getString("rememberDate");
-                    Remember remember = new Remember(rememberTitle, rememberName, rememberDate);
-                    rememberList.add(remember);
-                    final RememberListAdapter RememberAdapter = new RememberListAdapter(getActivity().getApplicationContext(), rememberList);
-                    rememberListView.setAdapter(RememberAdapter);
+                    MyBltBoard myBltBoard = new MyBltBoard("","","",rememberTitle, rememberName, rememberDate);
+                    myBltBoardList.add(myBltBoard);
+                    final MyBltBoardListAdapter RememberAdapter = new MyBltBoardListAdapter(getActivity().getApplicationContext(), myBltBoardList);
+                    myBltBoardListView.setAdapter(RememberAdapter);
                     count++;
                 }
             } catch (Exception e) {

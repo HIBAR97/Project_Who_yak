@@ -38,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private ScheduleListAdapter Adapter;
     private List<Schedule> scheduleList;
-    private String userID;
+    public static String userID;
     Button btnSearch;
     Button btnScan;
     Button btnSchedule;
@@ -55,6 +55,7 @@ public class HomeActivity extends AppCompatActivity {
     private String schedule_date;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -63,6 +64,8 @@ public class HomeActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Intent intentmain = getIntent();
+        userID = intentmain.getStringExtra("userID");
 
         //------- 선언 ----------//
         btnUserPage = findViewById(R.id.btnUserpage);
@@ -75,8 +78,7 @@ public class HomeActivity extends AppCompatActivity {
         scheduleList = new ArrayList<Schedule>();
         Adapter = new ScheduleListAdapter(getApplicationContext(), scheduleList);
         lv_calendar.setAdapter(Adapter);
-        Intent intentmain = getIntent();
-        userID = intentmain.getStringExtra("userID");
+
         //btnScan.setText(userID);
         //날짜
         schedule_date = getTime();

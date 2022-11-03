@@ -8,13 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
 
 import com.example.project_who_yak.R;
 
@@ -33,12 +30,12 @@ public class FragmentBltBoardDetail extends Fragment {
 
     private View view;
     private TextView spinner;
-    private TextView tv_noticeTitle;
-    private TextView tv_noticeDetail;
-    private TextView tv_noticeWriter;
-    private Spinner spinner_noticeCategory;
-    private String noticeNo;
-    private String[] category={"s"};
+    private TextView tv_boardTitle;
+    private TextView tv_boardContent;
+    private TextView tv_boardWriter;
+    private Spinner spinner_boardCategory;
+    private String boardNo;
+    private String[] category={"dummy"};
 
 
     @Nullable
@@ -49,20 +46,22 @@ public class FragmentBltBoardDetail extends Fragment {
         view = inflater.inflate(R.layout.fragment_bltboard_detail, container, false);
 
 
-        tv_noticeTitle = (TextView) view.findViewById(R.id.board_title);
-        tv_noticeDetail = (TextView) view.findViewById(R.id.board_content);
-        tv_noticeWriter = (TextView) view.findViewById(R.id.board_writer);
-        spinner_noticeCategory = (Spinner) view.findViewById(R.id.board_category);
-        noticeNo =FragmentBltBoardMain.boardNo;
+        tv_boardTitle = (TextView) view.findViewById(R.id.board_title);
+        tv_boardContent = (TextView) view.findViewById(R.id.board_content);
+        tv_boardWriter = (TextView) view.findViewById(R.id.board_writer);
+        spinner_boardCategory = (Spinner) view.findViewById(R.id.board_category);
+        boardNo =FragmentBltBoardMain.boardNo;
 
 
         new BackgrounTaskGetDetail().execute();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item,category);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_noticeCategory.setAdapter(adapter);
-        spinner_noticeCategory.setEnabled(false);
+        spinner_boardCategory.setAdapter(adapter);
+        spinner_boardCategory.setEnabled(false);
         return view;
+
     }
+
 
 
     class BackgrounTaskGetDetail extends AsyncTask<Void, Void, String> {
@@ -71,7 +70,7 @@ public class FragmentBltBoardDetail extends Fragment {
         @Override
         protected void onPreExecute() {
             try {
-                target = "http://whoyak.dothome.co.kr/BltBoardDetail.php?noticeNo=" + URLEncoder.encode(noticeNo, "UTF-8");
+                target = "http://whoyak.dothome.co.kr/BltBoardDetail.php?noticeNo=" + URLEncoder.encode(boardNo, "UTF-8");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
@@ -117,14 +116,14 @@ public class FragmentBltBoardDetail extends Fragment {
                     noticeWriter = object.getString("noticeWriter");
                     noticeDetail = object.getString("noticeDetail");
                     noticeCategory = object.getString("noticeCategory");
-                    tv_noticeTitle.setText(noticeTitle);
-                    tv_noticeWriter.setText("작성자 : "+noticeWriter);
-                    tv_noticeDetail.setText(noticeDetail);
+                    tv_boardTitle.setText(noticeTitle);
+                    tv_boardWriter.setText("작성자 : "+noticeWriter);
+                    tv_boardContent.setText(noticeDetail);
                     category[0]=noticeCategory;
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item,category);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinner_noticeCategory.setAdapter(adapter);
-                    spinner_noticeCategory.setEnabled(false);
+                    spinner_boardCategory.setAdapter(adapter);
+                    spinner_boardCategory.setEnabled(false);
                     count++;
                 }
             } catch (Exception e) {

@@ -38,7 +38,7 @@ public class PopularListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        View v = View.inflate(context, R.layout.notice, null);
+        View v = View.inflate(context, R.layout.board, null);
         //View v = mLayoutInflater.inflate(R.layout.notice, null);
         TextView noticeText = (TextView) v.findViewById(R.id.noticeText);
         TextView nameText = (TextView) v.findViewById(R.id.nameText);
