@@ -83,6 +83,8 @@ public class activity_Camara_scan extends AppCompatActivity {
         Button btnPic;
         Button btnOcr;
         Button btnResult;
+
+        ImageView ivPic;
         
         FrameLayout Frame_DrugInfo;
 
@@ -92,6 +94,8 @@ public class activity_Camara_scan extends AppCompatActivity {
         btnResult = (Button) findViewById(R.id.btnResult);
         btnOcr = (Button) findViewById(R.id.btnOCR);
         btnPic = (Button) findViewById(R.id.btnPic);
+
+        ivPic = (ImageView) findViewById(R.id.ivPic);
 
         Frame_DrugInfo = (FrameLayout) findViewById(R.id.Frame_DrugInfo);
 
@@ -167,7 +171,7 @@ public class activity_Camara_scan extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //변수 초기화
-                Drug_Name = null;
+                //Drug_Name = null;
 
                 BitmapDrawable d = (BitmapDrawable)((ImageView) findViewById(R.id.ivPic)).getDrawable();
                 image = d.getBitmap();
@@ -203,6 +207,7 @@ public class activity_Camara_scan extends AppCompatActivity {
                 transaction.replace(R.id.Frame_DrugInfo, Drug_info);
                 transaction.commit();
 
+                ivPic.setVisibility(View.INVISIBLE);
 //                Intent intent = new Intent(getApplicationContext(), Drug_information.class);
 //                startActivity(intent);
             }
